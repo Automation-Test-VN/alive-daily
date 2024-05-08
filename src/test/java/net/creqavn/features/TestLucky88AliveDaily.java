@@ -2,6 +2,7 @@ package net.creqavn.features;
 
 import net.creqavn.tasks.RandomValueGenerator;
 import net.serenitybdd.annotations.Managed;
+import net.serenitybdd.core.pages.WebElementState;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
@@ -9,6 +10,8 @@ import net.serenitybdd.screenplay.actions.*;
 import net.serenitybdd.screenplay.ensure.Ensure;
 
 
+import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
+import net.serenitybdd.screenplay.questions.WebElementQuestion;
 import net.serenitybdd.screenplay.ui.PageElement;
 
 import org.junit.FixMethodOrder;
@@ -17,6 +20,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
 
@@ -55,6 +59,31 @@ public class TestLucky88AliveDaily {
                 Click.on("//div[@class='lucky-content__item'][1]"),
                 Click.on(".lucky-content__btn")
         );
-        Ensure.that(PageElement.located(By.xpath("//div[@class='welcome']")));
+        then(swagger).should(
+            seeThat(WebElementQuestion.the("//div[@class='welcome']"),WebElementStateMatchers. isVisible())
+
+        );
+    }
+
+    @Test
+    public void bLoginWithAccountHasBalance(){
+        swagger.can(BrowseTheWeb.with(mightyBrowser));
+        swagger.attemptsTo(Open.url("https://lucky88.vip/"));
+        when(swagger).attemptsTo(
+                Enter.keyValues("atcasea10").into(By.name("username")),
+                Enter.keyValues("Creq@123321").into(By.name("password")),
+                Click.on("//button[contains(@class,'btn--home-login')]"),
+                Ensure.thatTheCurrentPage().currentUrl().contains("type=no-hu"));
+    }
+
+    @Test
+    public void bLoginWithAccountNonBalance(){
+        swagger.can(BrowseTheWeb.with(mightyBrowser));
+        swagger.attemptsTo(Open.url("https://lucky88.vip/"));
+        when(swagger).attemptsTo(
+                Enter.keyValues("xczx2131").into(By.name("username")),
+                Enter.keyValues("Creq@123321").into(By.name("password")),
+                Click.on("//button[contains(@class,'btn--home-login')]"),
+                Ensure.thatTheCurrentPage().currentUrl().contains("account/deposit"));
     }
 }

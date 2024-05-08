@@ -1,4 +1,17 @@
 -------------------------------------------------------------------------------
 Test set: net.creqavn.features.TestLucky88AliveDaily
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 34.183 s - in net.creqavn.features.TestLucky88AliveDaily
+Tests run: 3, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 56.629 s <<< FAILURE! - in net.creqavn.features.TestLucky88AliveDaily
+net.creqavn.features.TestLucky88AliveDaily.aRegisterNewAccount  Time elapsed: 43.437 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: an element that is visible
+     but: no matching element found by [//div[@class='welcome'] located with: //div[@class='welcome']]
+	at casino@1.0-SNAPSHOT/net.creqavn.features.TestLucky88AliveDaily.aRegisterNewAccount(TestLucky88AliveDaily.java:62)
+
+net.creqavn.features.TestLucky88AliveDaily.bLoginWithAccountHasBalance  Time elapsed: 3.152 s  <<< FAILURE!
+java.lang.AssertionError: 
+Expected: a value that contains: <[type=no-hu]>
+Actual:   <"https://lucky88.vip/">
+	at casino@1.0-SNAPSHOT/net.creqavn.features.TestLucky88AliveDaily.bLoginWithAccountHasBalance(TestLucky88AliveDaily.java:72)
+
