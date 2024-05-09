@@ -1,4 +1,4 @@
-package net.creqavn.ui;
+package net.creqavn.ui.mayman;
 
 import net.serenitybdd.screenplay.targets.Target;
 
@@ -7,6 +7,8 @@ public class Lucky88Elements {
     public static final String DOMAIN="https://lucky88.vip/";
     public static final String ACCOUNT_HAS_BALANCE="atcasea10";
     public static final String ACCOUNT_NON_BALANCE="xczx2131";
+    public static final Target AVATAR_USER=Target.the("avatar user").locatedBy("//div[@class='avatar user-login-information__avatar']");
+    public static final Target LOGOUT_BTN=Target.the("logout button").locatedBy("//span[.='Đăng xuất']");
 
     // REGISTER FORM
     public static final Target REGISTER_FORM =Target.the("{0} field").locatedBy(" //form[@class='form-register register__form']//input[@placeholder='{0}']");

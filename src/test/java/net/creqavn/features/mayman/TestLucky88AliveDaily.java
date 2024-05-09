@@ -5,6 +5,8 @@ import net.creqavn.models.RegisterAccount;
 import net.creqavn.tasks.Login;
 import net.creqavn.tasks.Register;
 import net.serenitybdd.annotations.Managed;
+import net.serenitybdd.annotations.WithTag;
+import net.serenitybdd.annotations.WithTags;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
@@ -20,7 +22,7 @@ import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
 
-import static net.creqavn.ui.Lucky88Elements.*;
+import static net.creqavn.ui.mayman.Lucky88Elements.*;
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
 
 @RunWith(SerenityRunner.class)
@@ -35,6 +37,11 @@ public class TestLucky88AliveDaily {
     public static void init(){
         swagger.can(BrowseTheWeb.with(mightyBrowser));
     }
+
+
+    @WithTags({
+            @WithTag("fbc1:mayman"),
+    })
     @Test
     public void RegisterNewAccount() {
         swagger.attemptsTo(Open.url(DOMAIN));
@@ -47,8 +54,12 @@ public class TestLucky88AliveDaily {
         );
     }
 
+
+    @WithTags({
+            @WithTag("fbc1:mayman"),
+    })
     @Test
-    public void LoginWithAccountHasBalanceCase1(){
+    public void LoginWithAccountHasBalance(){
         swagger.attemptsTo(Open.url(DOMAIN));
 
         LoginAccount loginAccount = new LoginAccount();
@@ -59,8 +70,12 @@ public class TestLucky88AliveDaily {
         );
     }
 
+
+    @WithTags({
+            @WithTag("fbc1:mayman"),
+    })
     @Test
-    public void LoginWithAccountNonBalanceCase1(){
+    public void LoginWithAccountNonBalance(){
         swagger.attemptsTo(Open.url(DOMAIN));
         LoginAccount loginAccount = new LoginAccount();
 
@@ -70,8 +85,12 @@ public class TestLucky88AliveDaily {
         );
     }
 
+
+    @WithTags({
+            @WithTag("fbc1:mayman"),
+    })
     @Test
-    public void LoginWithAccountHasBalanceCase2(){
+    public void AccessFunctionWithAccountHasBalance(){
         swagger.attemptsTo(Open.url(DOMAIN));
 
         LoginAccount loginAccount = new LoginAccount();
@@ -84,8 +103,12 @@ public class TestLucky88AliveDaily {
         );
     }
 
+
+    @WithTags({
+            @WithTag("fbc1:mayman"),
+    })
     @Test
-    public void LoginWithAccountNonBalanceCase2(){
+    public void AccessFunctionWithAccountNonBalance(){
         swagger.attemptsTo(Open.url(DOMAIN));
 
         LoginAccount loginAccount = new LoginAccount();
@@ -98,6 +121,11 @@ public class TestLucky88AliveDaily {
                 Ensure.that(POPUP_DEPOSIT).isDisplayed()
         );
     }
+
+
+    @WithTags({
+            @WithTag("fbc1:mayman"),
+    })
     @Test
     public void ForgetPassword(){
         swagger.attemptsTo(Open.url(DOMAIN));
@@ -107,6 +135,23 @@ public class TestLucky88AliveDaily {
                 Enter.keyValues(VERIFIED_EMAIL).into(EMAIL_RESTORE_FIELD),
                 Click.on(EMAIL_RESTORE_BTN),
                 Ensure.that(RESTORE_NOTIFY).isDisplayed()
+        );
+    }
+
+
+    @WithTags({
+            @WithTag("fbc1:mayman"),
+    })
+    @Test
+    public void LogOut(){
+        swagger.attemptsTo(Open.url(DOMAIN));
+        LoginAccount loginAccount = new LoginAccount();
+
+        when(swagger).attemptsTo(
+                Login.theAccountNonBalance(loginAccount),
+                Click.on(AVATAR_USER),
+                Click.on(LOGOUT_BTN),
+                Ensure.that(LOGIN_USERNAME).isDisplayed()
         );
     }
 }

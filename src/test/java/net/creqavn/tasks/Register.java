@@ -6,7 +6,7 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 
-import static net.creqavn.ui.Lucky88Elements.*;
+import static net.creqavn.ui.mayman.Lucky88Elements.*;
 
 public class Register {
     public static Performable theUser(RegisterAccount registerAccount) {
