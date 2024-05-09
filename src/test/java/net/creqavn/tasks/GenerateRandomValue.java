@@ -1,7 +1,7 @@
 package net.creqavn.tasks;
 import java.util.Random;
 
-public class RandomValueGenerator {
+public class GenerateRandomValue {
 
     private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     private static final String NUMBERS = "0123456789";
