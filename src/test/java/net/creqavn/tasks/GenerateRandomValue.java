@@ -18,8 +18,9 @@ public class GenerateRandomValue {
     public static String generateRandomNumericString(int length) {
         StringBuilder sb = new StringBuilder(length);
         Random random = new Random();
+        String combinedChars = CHARACTERS + NUMBERS; // Kết hợp ký tự và số
         for (int i = 0; i < length; i++) {
-            sb.append(NUMBERS.charAt(random.nextInt(NUMBERS.length())));
+            sb.append(combinedChars.charAt(random.nextInt(combinedChars.length())));
         }
         return sb.toString();
     }

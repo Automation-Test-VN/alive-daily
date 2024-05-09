@@ -25,17 +25,15 @@ import static net.serenitybdd.screenplay.GivenWhenThen.*;
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestLucky88AliveDaily {
-
-
     static Actor swagger = Actor.named("Swagger");
 
     @Managed(uniqueSession = true)
     public static WebDriver mightyBrowser;
 
     @Test
-    public void aRegisterNewAccount() {
+    public void RegisterNewAccount() {
         swagger.can(BrowseTheWeb.with(mightyBrowser));
-        swagger.attemptsTo(Open.url("https://lucky88.vip/"));
+        swagger.attemptsTo(Open.url(DOMAIN));
 
         RegisterAccount registerAccount = new RegisterAccount();
 
@@ -43,13 +41,12 @@ public class TestLucky88AliveDaily {
                 Register.theUser(registerAccount),
                 Ensure.that(WELCOME_POPUP).isEnabled()
         );
-
     }
 
     @Test
-    public void bLoginWithAccountHasBalanceCase1(){
+    public void LoginWithAccountHasBalanceCase1(){
         swagger.can(BrowseTheWeb.with(mightyBrowser));
-        swagger.attemptsTo(Open.url("https://lucky88.vip/"));
+        swagger.attemptsTo(Open.url(DOMAIN));
 
         LoginAccount loginAccount = new LoginAccount();
 
@@ -60,14 +57,45 @@ public class TestLucky88AliveDaily {
     }
 
     @Test
-    public void bLoginWithAccountNonBalanceCase1(){
+    public void LoginWithAccountNonBalanceCase1(){
         swagger.can(BrowseTheWeb.with(mightyBrowser));
-        swagger.attemptsTo(Open.url("https://lucky88.vip/"));
+        swagger.attemptsTo(Open.url(DOMAIN));
         LoginAccount loginAccount = new LoginAccount();
 
         when(swagger).attemptsTo(
                 Login.theAccountNonBalance(loginAccount),
                 Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_DEPOSIT)
+        );
+    }
+
+    @Test
+    public void LoginWithAccountHasBalanceCase2(){
+        swagger.can(BrowseTheWeb.with(mightyBrowser));
+        swagger.attemptsTo(Open.url(DOMAIN));
+
+        LoginAccount loginAccount = new LoginAccount();
+
+        when(swagger).attemptsTo(
+                Click.on(GAME_BAI_BTN),
+                Click.on(GAME_BAI_TLMN),
+                Login.theAccountHasBalanceOnPopup(loginAccount),
+                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_GAME_BAI)
+        );
+    }
+
+    @Test
+    public void LoginWithAccountNonBalanceCase2(){
+        swagger.can(BrowseTheWeb.with(mightyBrowser));
+        swagger.attemptsTo(Open.url(DOMAIN));
+
+        LoginAccount loginAccount = new LoginAccount();
+
+        when(swagger).attemptsTo(
+                Click.on(GAME_BAI_BTN),
+                Click.on(GAME_BAI_TLMN),
+                Login.theAccountNonBalanceOnPopup(loginAccount),
+                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_GAME_BAI),
+                Ensure.that(POPUP_DEPOSIT).isDisplayed()
         );
     }
 }
