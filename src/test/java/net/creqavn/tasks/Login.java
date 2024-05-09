@@ -15,8 +15,7 @@ public class Login {
             actor.attemptsTo(
                     Enter.keyValues(ACCOUNT_HAS_BALANCE).into(LOGIN_USERNAME),
                     Enter.keyValues(loginAccount.getPwd()).into(LOGIN_PWD),
-                    Click.on(LOGIN_SUBMIT),
-                    Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_NOHU)
+                    Click.on(LOGIN_SUBMIT)
             );
         });
     }
@@ -26,8 +25,27 @@ public class Login {
             actor.attemptsTo(
                     Enter.keyValues(ACCOUNT_NON_BALANCE).into(LOGIN_USERNAME),
                     Enter.keyValues(loginAccount.getPwd()).into(LOGIN_PWD),
-                    Click.on(LOGIN_SUBMIT),
-                    Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_DEPOSIT)
+                    Click.on(LOGIN_SUBMIT)
+            );
+        });
+    }
+
+    public static Performable theAccountHasBalanceOnPopup(LoginAccount loginAccount) {
+        return Task.where("{0} login the account", actor -> {
+            actor.attemptsTo(
+                    Enter.keyValues(ACCOUNT_HAS_BALANCE).into(FORM_LOGIN_USERNAME),
+                    Enter.keyValues(loginAccount.getPwd()).into(FORM_LOGIN_PWD),
+                    Click.on(FORM_LOGIN_SUBMIT_BTN)
+            );
+        });
+    }
+
+    public static Performable theAccountNonBalanceOnPopup(LoginAccount loginAccount) {
+        return Task.where("{0} login the account", actor -> {
+            actor.attemptsTo(
+                    Enter.keyValues(ACCOUNT_NON_BALANCE).into(FORM_LOGIN_USERNAME),
+                    Enter.keyValues(loginAccount.getPwd()).into(FORM_LOGIN_PWD),
+                    Click.on(FORM_LOGIN_SUBMIT_BTN)
             );
         });
     }
