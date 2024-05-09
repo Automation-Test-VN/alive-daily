@@ -15,8 +15,8 @@ public class Login {
             actor.attemptsTo(
                     Enter.keyValues(ACCOUNT_HAS_BALANCE).into(LOGIN_USERNAME),
                     Enter.keyValues(loginAccount.getPwd()).into(LOGIN_PWD),
-                    Click.on(LOGIN_SUBMIT),
-                    Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_NOHU)
+                    Click.on(LOGIN_SUBMIT)
+
             );
         });
     }
@@ -26,8 +26,7 @@ public class Login {
             actor.attemptsTo(
                     Enter.keyValues(ACCOUNT_NON_BALANCE).into(LOGIN_USERNAME),
                     Enter.keyValues(loginAccount.getPwd()).into(LOGIN_PWD),
-                    Click.on(LOGIN_SUBMIT),
-                    Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_DEPOSIT)
+                    Click.on(LOGIN_SUBMIT)
             );
         });
     }

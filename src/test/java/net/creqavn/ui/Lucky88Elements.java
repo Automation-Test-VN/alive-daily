@@ -20,4 +20,6 @@ public class Lucky88Elements {
     public static final Target LOGIN_SUBMIT=Target.the("login submit button").locatedBy("//button[contains(@class,'btn--home-login')]");
     public static final String CONTAINS_NOHU="type=no-hu";
     public static final String CONTAINS_DEPOSIT="account/deposit";
+    public static final Target GAME_BAI_BTN=Target.the("game bai button").locatedBy("//span[.='Game bài']");
+    public static final Target GAME_BAI_TLMN=Target.the("game tien len mien nam").locatedBy("//img[@alt='Tiến Lên Miền Nam']");
 }

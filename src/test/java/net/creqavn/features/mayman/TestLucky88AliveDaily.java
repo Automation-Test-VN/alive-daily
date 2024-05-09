@@ -1,7 +1,9 @@
 package net.creqavn.features.mayman;
 
 import net.creqavn.models.LoginAccount;
+import net.creqavn.models.RegisterAccount;
 import net.creqavn.tasks.Login;
+import net.creqavn.tasks.Register;
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
@@ -9,6 +11,7 @@ import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.*;
 
 
+import net.serenitybdd.screenplay.ensure.Ensure;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +19,7 @@ import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
 
+import static net.creqavn.ui.Lucky88Elements.*;
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
 
 @RunWith(SerenityRunner.class)
@@ -28,40 +32,42 @@ public class TestLucky88AliveDaily {
     @Managed(uniqueSession = true)
     public static WebDriver mightyBrowser;
 
-//    @Test
-//    public void aRegisterNewAccount() {
-//        swagger.can(BrowseTheWeb.with(mightyBrowser));
-//        swagger.attemptsTo(Open.url("https://lucky88.vip/"));
-//
-//        RegisterAccount registerAccount = new RegisterAccount();
-//
-//        when(swagger).attemptsTo(
-//                Register.theUser(registerAccount),
-//                Ensure.that(WELCOME_POPUP).isEnabled()
-//        );
-//
-//    }
+    @Test
+    public void aRegisterNewAccount() {
+        swagger.can(BrowseTheWeb.with(mightyBrowser));
+        swagger.attemptsTo(Open.url("https://lucky88.vip/"));
+
+        RegisterAccount registerAccount = new RegisterAccount();
+
+        when(swagger).attemptsTo(
+                Register.theUser(registerAccount),
+                Ensure.that(WELCOME_POPUP).isEnabled()
+        );
+
+    }
 
     @Test
-    public void bLoginWithAccountHasBalance(){
+    public void bLoginWithAccountHasBalanceCase1(){
         swagger.can(BrowseTheWeb.with(mightyBrowser));
         swagger.attemptsTo(Open.url("https://lucky88.vip/"));
 
         LoginAccount loginAccount = new LoginAccount();
 
         when(swagger).attemptsTo(
-                Login.theAccountHasBalance(loginAccount)
+                Login.theAccountHasBalance(loginAccount),
+                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_NOHU)
         );
     }
 
     @Test
-    public void bLoginWithAccountNonBalance(){
+    public void bLoginWithAccountNonBalanceCase1(){
         swagger.can(BrowseTheWeb.with(mightyBrowser));
         swagger.attemptsTo(Open.url("https://lucky88.vip/"));
         LoginAccount loginAccount = new LoginAccount();
 
         when(swagger).attemptsTo(
-                Login.theAccountNonBalance(loginAccount)
+                Login.theAccountNonBalance(loginAccount),
+                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_DEPOSIT)
         );
     }
 }
