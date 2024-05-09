@@ -5,9 +5,8 @@ import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
-import net.serenitybdd.screenplay.ensure.Ensure;
 
-import static net.creqavn.ui.Lucky88Elements.*;
+import static net.creqavn.ui.mayman.Lucky88Elements.*;
 
 public class Login {
     public static Performable theAccountHasBalance(LoginAccount loginAccount) {
