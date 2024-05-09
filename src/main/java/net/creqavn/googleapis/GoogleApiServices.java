@@ -15,10 +15,6 @@ import com.google.api.services.drive.DriveScopes;
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.SheetsScopes;
-import net.creqavn.Config;
-import net.creqavn.ISP;
-import net.creqavn.TraceLog;
-import net.creqavn.telegram7.TelegramBotNotifier;
 
 import java.io.File;
 import java.io.IOException;

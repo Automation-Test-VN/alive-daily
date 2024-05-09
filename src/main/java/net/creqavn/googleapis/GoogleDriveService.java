@@ -3,10 +3,6 @@ package net.creqavn.googleapis;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.model.File;
 import com.google.api.services.drive.model.FileList;
-import net.creqavn.Baymax;
-import net.creqavn.Config;
-import net.creqavn.TraceLog;
-import net.creqavn.image.Extractor;
 
 import java.io.IOException;
 import java.util.List;
