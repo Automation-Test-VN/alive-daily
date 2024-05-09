@@ -12,6 +12,7 @@ import net.serenitybdd.screenplay.actions.*;
 
 
 import net.serenitybdd.screenplay.ensure.Ensure;
+import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,9 +31,12 @@ public class TestLucky88AliveDaily {
     @Managed(uniqueSession = true)
     public static WebDriver mightyBrowser;
 
+    @BeforeClass
+    public static void init(){
+        swagger.can(BrowseTheWeb.with(mightyBrowser));
+    }
     @Test
     public void RegisterNewAccount() {
-        swagger.can(BrowseTheWeb.with(mightyBrowser));
         swagger.attemptsTo(Open.url(DOMAIN));
 
         RegisterAccount registerAccount = new RegisterAccount();
@@ -45,7 +49,6 @@ public class TestLucky88AliveDaily {
 
     @Test
     public void LoginWithAccountHasBalanceCase1(){
-        swagger.can(BrowseTheWeb.with(mightyBrowser));
         swagger.attemptsTo(Open.url(DOMAIN));
 
         LoginAccount loginAccount = new LoginAccount();
@@ -58,7 +61,6 @@ public class TestLucky88AliveDaily {
 
     @Test
     public void LoginWithAccountNonBalanceCase1(){
-        swagger.can(BrowseTheWeb.with(mightyBrowser));
         swagger.attemptsTo(Open.url(DOMAIN));
         LoginAccount loginAccount = new LoginAccount();
 
@@ -70,7 +72,6 @@ public class TestLucky88AliveDaily {
 
     @Test
     public void LoginWithAccountHasBalanceCase2(){
-        swagger.can(BrowseTheWeb.with(mightyBrowser));
         swagger.attemptsTo(Open.url(DOMAIN));
 
         LoginAccount loginAccount = new LoginAccount();
@@ -85,7 +86,6 @@ public class TestLucky88AliveDaily {
 
     @Test
     public void LoginWithAccountNonBalanceCase2(){
-        swagger.can(BrowseTheWeb.with(mightyBrowser));
         swagger.attemptsTo(Open.url(DOMAIN));
 
         LoginAccount loginAccount = new LoginAccount();
@@ -96,6 +96,17 @@ public class TestLucky88AliveDaily {
                 Login.theAccountNonBalanceOnPopup(loginAccount),
                 Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_GAME_BAI),
                 Ensure.that(POPUP_DEPOSIT).isDisplayed()
+        );
+    }
+    @Test
+    public void ForgetPassword(){
+        swagger.attemptsTo(Open.url(DOMAIN));
+
+        when(swagger).attemptsTo(
+                Click.on(FORGET_PWD_BTN),
+                Enter.keyValues(VERIFIED_EMAIL).into(EMAIL_RESTORE_FIELD),
+                Click.on(EMAIL_RESTORE_BTN),
+                Ensure.that(RESTORE_NOTIFY).isDisplayed()
         );
     }
 }

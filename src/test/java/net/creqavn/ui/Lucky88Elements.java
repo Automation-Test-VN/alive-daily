@@ -39,5 +39,9 @@ public class Lucky88Elements {
     public static final Target FORM_LOGIN_SUBMIT_BTN=Target.the("form login submit button").locatedBy(".form-login__btn");
     public static final Target POPUP_DEPOSIT=Target.the("popup deposit").locatedBy("//div[@class='modal-deposit']");
 
-
+    public static final Target FORGET_PWD_BTN=Target.the("forget password button").locatedBy("//img[@class='user-not-login__forgot-password']");
+    public static final Target EMAIL_RESTORE_FIELD=Target.the("email restore field").locatedBy("//input[@name='email']");
+    public static final Target EMAIL_RESTORE_BTN=Target.the("email restore button").locatedBy("//form[@class='form-forgot-password user-not-login__form']//button");
+    public static final String VERIFIED_EMAIL="titss222@yopmail.com";
+    public static final Target RESTORE_NOTIFY=Target.the("restore notify").locatedBy("//div[@class='swal2-html-container']");
 }
