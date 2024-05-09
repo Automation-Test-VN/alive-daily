@@ -38,6 +38,7 @@ public class TestLucky88AliveDaily {
         swagger.can(BrowseTheWeb.with(mightyBrowser));
     }
 
+
     @WithTags({
             @WithTag("fbc1:mayman"),
     })
@@ -53,11 +54,12 @@ public class TestLucky88AliveDaily {
         );
     }
 
+
     @WithTags({
             @WithTag("fbc1:mayman"),
     })
     @Test
-    public void LoginWithAccountHasBalanceCase1(){
+    public void LoginWithAccountHasBalance(){
         swagger.attemptsTo(Open.url(DOMAIN));
 
         LoginAccount loginAccount = new LoginAccount();
@@ -68,11 +70,12 @@ public class TestLucky88AliveDaily {
         );
     }
 
+
     @WithTags({
             @WithTag("fbc1:mayman"),
     })
     @Test
-    public void LoginWithAccountNonBalanceCase1(){
+    public void LoginWithAccountNonBalance(){
         swagger.attemptsTo(Open.url(DOMAIN));
         LoginAccount loginAccount = new LoginAccount();
 
@@ -82,11 +85,12 @@ public class TestLucky88AliveDaily {
         );
     }
 
+
     @WithTags({
             @WithTag("fbc1:mayman"),
     })
     @Test
-    public void LoginWithAccountHasBalanceCase2(){
+    public void AccessFunctionWithAccountHasBalance(){
         swagger.attemptsTo(Open.url(DOMAIN));
 
         LoginAccount loginAccount = new LoginAccount();
@@ -99,11 +103,12 @@ public class TestLucky88AliveDaily {
         );
     }
 
+
     @WithTags({
             @WithTag("fbc1:mayman"),
     })
     @Test
-    public void LoginWithAccountNonBalanceCase2(){
+    public void AccessFunctionWithAccountNonBalance(){
         swagger.attemptsTo(Open.url(DOMAIN));
 
         LoginAccount loginAccount = new LoginAccount();
@@ -133,19 +138,20 @@ public class TestLucky88AliveDaily {
         );
     }
 
-//    @WithTags({
-//            @WithTag("fbc1:mayman"),
-//    })
-//    @Test
-//    public void LogOut(){
-//        swagger.attemptsTo(Open.url(DOMAIN));
-//        LoginAccount loginAccount = new LoginAccount();
-//
-//        when(swagger).attemptsTo(
-//                Login.theAccountNonBalance(loginAccount),
-//                Click.on(AVATAR_USER),
-//                Click.on(LOGOUT_BTN),
-//                Ensure.that(LOGIN_USERNAME).isDisplayed()
-//        );
-//    }
+
+    @WithTags({
+            @WithTag("fbc1:mayman"),
+    })
+    @Test
+    public void LogOut(){
+        swagger.attemptsTo(Open.url(DOMAIN));
+        LoginAccount loginAccount = new LoginAccount();
+
+        when(swagger).attemptsTo(
+                Login.theAccountNonBalance(loginAccount),
+                Click.on(AVATAR_USER),
+                Click.on(LOGOUT_BTN),
+                Ensure.that(LOGIN_USERNAME).isDisplayed()
+        );
+    }
 }
