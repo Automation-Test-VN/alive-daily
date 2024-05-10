@@ -54,4 +54,7 @@ public class Lucky88Elements {
 
     public static final Target FIRST_HOMEPAGE_CASINO=Target.the("first homepage casino").locatedBy("//div[@class='game-provider']/div[1]");
     public static final String CONTAINS_EZUGI_CASINO="play.livetables.io";
+
+    public static final Target HOT_NEWS=Target.the("hot news").locatedBy("//div[@class='news-category__hot col-4']/a");
+    public static final String CONTAINS_NEWS="/news/detail";
 }
