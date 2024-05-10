@@ -14,6 +14,7 @@ import net.serenitybdd.screenplay.actions.*;
 
 
 import net.serenitybdd.screenplay.ensure.Ensure;
+import net.thucydides.model.reports.adaptors.xunit.model.Skip;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -38,11 +39,7 @@ public class TestLucky88AliveDaily {
         swagger.can(BrowseTheWeb.with(mightyBrowser));
     }
 
-
-    @WithTags({
-            @WithTag("fbc1:mayman"),
-    })
-    @Test
+    @Test()
     public void RegisterNewAccount() {
         swagger.attemptsTo(Open.url(DOMAIN));
 
@@ -55,9 +52,6 @@ public class TestLucky88AliveDaily {
     }
 
 
-    @WithTags({
-            @WithTag("fbc1:mayman"),
-    })
     @Test
     public void LoginWithAccountHasBalance(){
         swagger.attemptsTo(Open.url(DOMAIN));
@@ -71,9 +65,6 @@ public class TestLucky88AliveDaily {
     }
 
 
-    @WithTags({
-            @WithTag("fbc1:mayman"),
-    })
     @Test
     public void LoginWithAccountNonBalance(){
         swagger.attemptsTo(Open.url(DOMAIN));
@@ -86,9 +77,6 @@ public class TestLucky88AliveDaily {
     }
 
 
-    @WithTags({
-            @WithTag("fbc1:mayman"),
-    })
     @Test
     public void AccessFunctionWithAccountHasBalance(){
         swagger.attemptsTo(Open.url(DOMAIN));
@@ -104,9 +92,6 @@ public class TestLucky88AliveDaily {
     }
 
 
-    @WithTags({
-            @WithTag("fbc1:mayman"),
-    })
     @Test
     public void AccessFunctionWithAccountNonBalance(){
         swagger.attemptsTo(Open.url(DOMAIN));
@@ -122,10 +107,6 @@ public class TestLucky88AliveDaily {
         );
     }
 
-
-    @WithTags({
-            @WithTag("fbc1:mayman"),
-    })
     @Test
     public void ForgetPassword(){
         swagger.attemptsTo(Open.url(DOMAIN));
@@ -138,10 +119,6 @@ public class TestLucky88AliveDaily {
         );
     }
 
-
-    @WithTags({
-            @WithTag("fbc1:mayman"),
-    })
     @Test
     public void LogOut(){
         swagger.attemptsTo(Open.url(DOMAIN));
@@ -152,6 +129,16 @@ public class TestLucky88AliveDaily {
                 Click.on(AVATAR_USER),
                 Click.on(LOGOUT_BTN),
                 Ensure.that(LOGIN_USERNAME).isDisplayed()
+        );
+    }
+
+    @Test
+    public void HomepageHeroBanner(){
+        swagger.attemptsTo(Open.url(DOMAIN));
+        when(swagger).attemptsTo(
+                Click.on(FIRST_SWIPER_PAGINATION),
+                Click.on(FIRST_HERO_BANNER),
+                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_HERO_BANNER)
         );
     }
 }
