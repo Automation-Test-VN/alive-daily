@@ -57,4 +57,6 @@ public class Lucky88Elements {
 
     public static final Target HOT_NEWS=Target.the("hot news").locatedBy("//div[@class='news-category__hot col-4']/a");
     public static final String CONTAINS_NEWS="/news/detail";
+    public static final Target ABOUT_US = Target.the("about us").locatedBy("//a[contains(.,'Giới thiệu')]");
+    public static final String CONTAINS_ABOUT_US="/about-us";
 }

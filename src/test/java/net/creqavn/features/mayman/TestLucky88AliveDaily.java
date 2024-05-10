@@ -176,7 +176,6 @@ public class TestLucky88AliveDaily {
     public void HomepageNewsDetail() throws InterruptedException {
         swagger.attemptsTo(
                 Open.url(DOMAIN),
-                Open.url(DOMAIN),
                 Scroll.to(HOT_NEWS),
                 Click.on(HOT_NEWS)
         );
@@ -185,4 +184,19 @@ public class TestLucky88AliveDaily {
                 Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_NEWS)
         );
     }
+
+//    @Test
+//    public void HomepageAboutUs() throws InterruptedException {
+//        JScrollBar
+//        swagger.attemptsTo(
+//                Open.url(DOMAIN),
+//                Scroll.to(ABOUT_US),
+//                Click.on(ABOUT_US)
+//
+//        );
+//        sleep(3000);
+//        swagger.attemptsTo(
+//                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_ABOUT_US)
+//        );
+//    }
 }
