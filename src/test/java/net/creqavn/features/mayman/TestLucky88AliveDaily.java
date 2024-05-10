@@ -4,9 +4,8 @@ import net.creqavn.models.LoginAccount;
 import net.creqavn.models.RegisterAccount;
 import net.creqavn.tasks.Login;
 import net.creqavn.tasks.Register;
+import net.creqavn.tasks.Switcher;
 import net.serenitybdd.annotations.Managed;
-import net.serenitybdd.annotations.WithTag;
-import net.serenitybdd.annotations.WithTags;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
@@ -14,7 +13,6 @@ import net.serenitybdd.screenplay.actions.*;
 
 
 import net.serenitybdd.screenplay.ensure.Ensure;
-import net.thucydides.model.reports.adaptors.xunit.model.Skip;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -22,7 +20,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
-
+import static java.lang.Thread.sleep;
 import static net.creqavn.ui.mayman.Lucky88Elements.*;
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
 
@@ -35,7 +33,7 @@ public class TestLucky88AliveDaily {
     public static WebDriver mightyBrowser;
 
     @BeforeClass
-    public static void init(){
+    public static void init() {
         swagger.can(BrowseTheWeb.with(mightyBrowser));
     }
 
@@ -53,7 +51,7 @@ public class TestLucky88AliveDaily {
 
 
     @Test
-    public void LoginWithAccountHasBalance(){
+    public void LoginWithAccountHasBalance() {
         swagger.attemptsTo(Open.url(DOMAIN));
 
         LoginAccount loginAccount = new LoginAccount();
@@ -66,7 +64,7 @@ public class TestLucky88AliveDaily {
 
 
     @Test
-    public void LoginWithAccountNonBalance(){
+    public void LoginWithAccountNonBalance() {
         swagger.attemptsTo(Open.url(DOMAIN));
         LoginAccount loginAccount = new LoginAccount();
 
@@ -78,7 +76,7 @@ public class TestLucky88AliveDaily {
 
 
     @Test
-    public void AccessFunctionWithAccountHasBalance(){
+    public void AccessFunctionWithAccountHasBalance() {
         swagger.attemptsTo(Open.url(DOMAIN));
 
         LoginAccount loginAccount = new LoginAccount();
@@ -93,7 +91,7 @@ public class TestLucky88AliveDaily {
 
 
     @Test
-    public void AccessFunctionWithAccountNonBalance(){
+    public void AccessFunctionWithAccountNonBalance() {
         swagger.attemptsTo(Open.url(DOMAIN));
 
         LoginAccount loginAccount = new LoginAccount();
@@ -108,7 +106,7 @@ public class TestLucky88AliveDaily {
     }
 
     @Test
-    public void ForgetPassword(){
+    public void ForgetPassword() {
         swagger.attemptsTo(Open.url(DOMAIN));
 
         when(swagger).attemptsTo(
@@ -120,7 +118,7 @@ public class TestLucky88AliveDaily {
     }
 
     @Test
-    public void LogOut(){
+    public void LogOut() {
         swagger.attemptsTo(Open.url(DOMAIN));
         LoginAccount loginAccount = new LoginAccount();
 
@@ -133,12 +131,44 @@ public class TestLucky88AliveDaily {
     }
 
     @Test
-    public void HomepageHeroBanner(){
+    public void HomepageHeroBanner() {
         swagger.attemptsTo(Open.url(DOMAIN));
         when(swagger).attemptsTo(
                 Click.on(FIRST_SWIPER_PAGINATION),
                 Click.on(FIRST_HERO_BANNER),
                 Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_HERO_BANNER)
+        );
+    }
+
+    /*
+    @Test
+    public void HomepageCashBlack(){
+        swagger.attemptsTo(Open.url(DOMAIN));
+        LoginAccount loginAccount = new LoginAccount();
+
+        when(swagger).attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Ensure.that(BALANCE_NUMBER).text().isEqualTo("200")
+        );
+    }
+     */
+
+    @Test
+    public void HomepageLiveCasino() throws InterruptedException {
+        swagger.attemptsTo(Open.url(DOMAIN));
+
+        LoginAccount loginAccount = new LoginAccount();
+
+        when(swagger).attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Scroll.to(FIRST_HOMEPAGE_CASINO),
+                Click.on(FIRST_HOMEPAGE_CASINO),
+                Switcher.toNewWindow()
+        );
+        sleep(5000);
+        when(swagger).attemptsTo(
+                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_EZUGI_CASINO),
+                Switcher.closeCurrentWindowsAndSwitchBackToRemainingWindows()
         );
     }
 }
