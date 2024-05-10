@@ -46,4 +46,8 @@ public class Lucky88Elements {
     public static final Target EMAIL_RESTORE_BTN=Target.the("email restore button").locatedBy("//form[@class='form-forgot-password user-not-login__form']//button");
     public static final String VERIFIED_EMAIL="titss222@yopmail.com";
     public static final Target RESTORE_NOTIFY=Target.the("restore notify").locatedBy("//div[@class='swal2-html-container']");
+
+    public static final Target FIRST_SWIPER_PAGINATION = Target.the("first swiper pagination").locatedBy(".swiper-pagination > span:nth-of-type(1)");
+    public static final Target FIRST_HERO_BANNER = Target.the("first hero banner").locatedBy("//img[@alt='Thuong 30']");
+    public static final String CONTAINS_HERO_BANNER="saleoff/detail/saleoff-30";
 }
