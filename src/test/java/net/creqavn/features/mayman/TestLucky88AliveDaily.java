@@ -5,7 +5,7 @@ import net.creqavn.models.RegisterAccount;
 import net.creqavn.tasks.Login;
 import net.creqavn.tasks.Register;
 import net.creqavn.tasks.SwipeTo;
-import net.creqavn.tasks.Switcher;
+import net.creqavn.tasks.Switch;
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
@@ -168,12 +168,12 @@ public class TestLucky88AliveDaily {
                 Login.theAccountHasBalance(loginAccount),
                 Scroll.to(FIRST_HOMEPAGE_CASINO),
                 Click.on(FIRST_HOMEPAGE_CASINO),
-                Switcher.toNewWindow()
+                Switch.toNewWindow()
         );
         sleep(5000);
         when(swagger).attemptsTo(
                 Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_EZUGI_CASINO),
-                Switcher.closeCurrentWindowsAndSwitchBackToRemainingWindows()
+                Switch.closeCurrentWindowsAndSwitchBackToRemainingWindows()
         );
     }
 
@@ -304,6 +304,34 @@ public class TestLucky88AliveDaily {
         sleep(3000);
         swagger.attemptsTo(
                 Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_CONTACT)
+        );
+    }
+
+
+    @Test
+    public void HomepageJackpot() throws InterruptedException {
+        LoginAccount loginAccount = new LoginAccount();
+        swagger.attemptsTo(
+                Open.url(DOMAIN),
+                Login.theAccountHasBalance(loginAccount),
+                Scroll.to(JACKPOT_FORM)
+        );
+        sleep(15000);
+        swagger.attemptsTo(
+                Click.on(JACKPOT_FIRST_GAME),
+                Switch.toNewWindow()
+        );
+        sleep(5000);
+        swagger.attemptsTo(
+                Ensure.thatTheCurrentPage().currentUrl().contains("https://games.mt-sta.com/kts"),
+                Switch.closeCurrentWindowsAndSwitchBackToRemainingWindows()
+        );
+        sleep(20000);
+        swagger.attemptsTo(
+                Ensure.that(JACKPOT_RECENT).text().isNotEqualTo("0"),
+                Ensure.that(JACKPOT_MONTH).text().isNotEqualTo("0"),
+                Ensure.that(JACKPOT_FISH).text().isNotEqualTo("0"),
+                Ensure.that(JACKPOT_NUMBER).text().isNotEqualTo("0")
         );
     }
 }
