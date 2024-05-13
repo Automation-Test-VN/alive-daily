@@ -1,6 +1,7 @@
 package net.creqavn.ui.mayman;
 
 import net.serenitybdd.screenplay.targets.Target;
+import org.checkerframework.checker.index.qual.PolyUpperBound;
 
 
 public class Lucky88Elements {
@@ -83,4 +84,11 @@ public class Lucky88Elements {
 
     public static final Target CONTACT_BTN=Target.the("contact button").locatedBy("//a[contains(.,'Liên hệ')]");
     public static final String CONTAINS_CONTACT="/contact-us";
+
+    public static final Target JACKPOT_FORM=Target.the("jackpot form").locatedBy("//section[@class='jackpot-home']/div[@class='container-custom']");
+    public static final Target JACKPOT_NUMBER = Target.the("jackpot number").locatedBy(".jackpot-home__left--amount > .animation-number");
+    public static final Target JACKPOT_RECENT = Target.the("jackpot recent").locatedBy(".jackpot-home__center--recent > .value");
+    public static final Target JACKPOT_MONTH=Target.the("jackpot month").locatedBy(".jackpot-home__center--month > .value");
+    public static final Target JACKPOT_FISH=Target.the("jackpot fish").locatedBy(".jackpot-home__center--top-hu > .label");
+    public static final Target JACKPOT_FIRST_GAME=Target.the("jackpot first game").locatedBy("//div[@class='game-item swiper-slide swiper-slide-active']");
 }
