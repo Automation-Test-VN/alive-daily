@@ -107,6 +107,7 @@ public class TestLucky88AliveDaily {
         );
     }
 
+
     @Test
     public void ForgetPassword() {
         swagger.attemptsTo(Open.url(DOMAIN));
@@ -118,6 +119,7 @@ public class TestLucky88AliveDaily {
                 Ensure.that(RESTORE_NOTIFY).isDisplayed()
         );
     }
+
 
     @Test
     public void LogOut() {
@@ -131,6 +133,7 @@ public class TestLucky88AliveDaily {
                 Ensure.that(LOGIN_USERNAME).isDisplayed()
         );
     }
+
 
     @Test
     public void HomepageHeroBanner() {
@@ -155,6 +158,7 @@ public class TestLucky88AliveDaily {
     }
      */
 
+
     @Test
     public void HomepageLiveCasino() throws InterruptedException {
         swagger.attemptsTo(Open.url(DOMAIN));
@@ -174,6 +178,7 @@ public class TestLucky88AliveDaily {
         );
     }
 
+
     @Test
     public void HomepageSieuPhamHoiTu() throws InterruptedException {
         swagger.attemptsTo(
@@ -186,6 +191,7 @@ public class TestLucky88AliveDaily {
                 Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_SIEU_PHAM_HOI_TU)
         );
     }
+
 
     @Test
     public void HomepageNewsDetail() throws InterruptedException {
@@ -200,6 +206,7 @@ public class TestLucky88AliveDaily {
         );
     }
 
+
     @Test
     public void HomepageAboutUs() throws InterruptedException {
 
@@ -210,9 +217,10 @@ public class TestLucky88AliveDaily {
         );
         sleep(3000);
         swagger.attemptsTo(
-            Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_ABOUT_US)
+                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_ABOUT_US)
         );
     }
+
 
     @Test
     public void HomepageTyLeKeo() throws InterruptedException {
@@ -224,7 +232,21 @@ public class TestLucky88AliveDaily {
         );
         sleep(3000);
         swagger.attemptsTo(
-            Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_TY_LE_KEO)
+                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_TY_LE_KEO)
+        );
+    }
+
+
+    @Test
+    public void HomepageDieuKhoan() throws InterruptedException {
+        swagger.attemptsTo(
+                Open.url(DOMAIN),
+                SwipeTo.theBottom(),
+                Click.on(DIEU_KHOAN_BTN)
+        );
+        sleep(3000);
+        swagger.attemptsTo(
+                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_DIEU_KHOAN)
         );
     }
 }
