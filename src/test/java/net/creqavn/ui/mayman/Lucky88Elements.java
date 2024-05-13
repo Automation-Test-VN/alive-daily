@@ -80,4 +80,7 @@ public class Lucky88Elements {
 
     public static final Target PROMOTION_INFOR_BTN=Target.the("promotion infor button").locatedBy("//a[contains(.,'Tin Khuyến mãi')]");
     public static final String CONTAINS_PROMOTION_INFO="/saleoff";
+
+    public static final Target CONTACT_BTN=Target.the("contact button").locatedBy("//a[contains(.,'Liên hệ')]");
+    public static final String CONTAINS_CONTACT="/contact-us";
 }

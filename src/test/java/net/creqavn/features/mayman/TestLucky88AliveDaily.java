@@ -293,4 +293,18 @@ public class TestLucky88AliveDaily {
                 Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_PROMOTION_INFO)
         );
     }
+
+
+    @Test
+    public void HomepageContact() throws InterruptedException {
+        swagger.attemptsTo(
+                Open.url(DOMAIN),
+                SwipeTo.theBottom(),
+                Click.on(CONTACT_BTN)
+        );
+        sleep(3000);
+        swagger.attemptsTo(
+                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_CONTACT)
+        );
+    }
 }
