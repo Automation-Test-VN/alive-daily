@@ -263,4 +263,20 @@ public class TestLucky88AliveDaily {
                 Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_PRIVACY_POLICY)
         );
     }
+
+
+    @Test
+    public void HomepageQuestion() throws InterruptedException {
+        swagger.attemptsTo(
+                Open.url(DOMAIN),
+                SwipeTo.theBottom(),
+                Click.on(QUESTION_BTN)
+        );
+        sleep(3000);
+        swagger.attemptsTo(
+                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_QUESTION),
+                Click.on(FIRST_QUESTION),
+                Ensure.that(FIRST_ANSWER).isDisplayed()
+        );
+    }
 }

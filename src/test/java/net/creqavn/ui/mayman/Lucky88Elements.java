@@ -72,4 +72,10 @@ public class Lucky88Elements {
 
     public static final Target PRIVACY_POLICY_BTN=Target.the("privacy policy button").locatedBy("//a[contains(.,'Chính sách bảo  mật')]");
     public static final String CONTAINS_PRIVACY_POLICY="/privacy-policy";
+
+    public static final Target QUESTION_BTN=Target.the("target button").locatedBy("//div[@class='top']/a[contains(.,'Câu hỏi thường gặp')]");
+    public static final String CONTAINS_QUESTION="/help/question";
+    public static final Target FIRST_QUESTION=Target.the("first question").locatedBy("[aria-controls='question-1'] span:nth-of-type(1)");
+    public static final Target FIRST_ANSWER=Target.the("first answer").locatedBy(".show.popular-question__description > .popular-question__description--content");
+
 }
