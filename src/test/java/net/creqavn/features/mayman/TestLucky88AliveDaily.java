@@ -145,9 +145,9 @@ public class TestLucky88AliveDaily {
         );
     }
 
-    /*
+
     @Test
-    public void HomepageCashBlack(){
+    public void HomepageCashBack(){
         swagger.attemptsTo(Open.url(DOMAIN));
         LoginAccount loginAccount = new LoginAccount();
 
@@ -156,7 +156,6 @@ public class TestLucky88AliveDaily {
                 Ensure.that(BALANCE_NUMBER).text().isEqualTo("200")
         );
     }
-     */
 
 
     @Test
