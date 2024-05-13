@@ -50,7 +50,7 @@ public class Lucky88Elements {
     public static final Target FIRST_SWIPER_PAGINATION = Target.the("first swiper pagination").locatedBy(".swiper-pagination > span:nth-of-type(1)");
     public static final Target FIRST_HERO_BANNER = Target.the("first hero banner").locatedBy("//img[@alt='Thuong 30']");
     public static final String CONTAINS_HERO_BANNER="saleoff/detail/saleoff-30";
-//    public static final Target BALANCE_NUMBER=Target.the("balance number").locatedBy("//span[@class='total-balance__number']");
+    public static final Target BALANCE_NUMBER=Target.the("balance number").locatedBy("//span[@class='total-balance__number']");
 
     public static final Target FIRST_HOMEPAGE_CASINO=Target.the("first homepage casino").locatedBy("//div[@class='game-provider']/div[1]");
     public static final String CONTAINS_EZUGI_CASINO="play.livetables.io";
