@@ -14,6 +14,7 @@ import net.serenitybdd.screenplay.actions.*;
 
 
 import net.serenitybdd.screenplay.ensure.Ensure;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -39,10 +40,13 @@ public class TestLucky88AliveDaily {
         swagger.can(BrowseTheWeb.with(mightyBrowser));
     }
 
+    @Before
+    public void setUp(){
+        swagger.attemptsTo(Open.url(DOMAIN));
+    }
+
     @Test()
     public void RegisterNewAccount() {
-        swagger.attemptsTo(Open.url(DOMAIN));
-
         RegisterAccount registerAccount = new RegisterAccount();
 
         when(swagger).attemptsTo(
@@ -54,8 +58,6 @@ public class TestLucky88AliveDaily {
 
     @Test
     public void LoginWithAccountHasBalance() {
-        swagger.attemptsTo(Open.url(DOMAIN));
-
         LoginAccount loginAccount = new LoginAccount();
 
         when(swagger).attemptsTo(
@@ -67,7 +69,6 @@ public class TestLucky88AliveDaily {
 
     @Test
     public void LoginWithAccountNonBalance() {
-        swagger.attemptsTo(Open.url(DOMAIN));
         LoginAccount loginAccount = new LoginAccount();
 
         when(swagger).attemptsTo(
@@ -79,8 +80,6 @@ public class TestLucky88AliveDaily {
 
     @Test
     public void AccessFunctionWithAccountHasBalance() {
-        swagger.attemptsTo(Open.url(DOMAIN));
-
         LoginAccount loginAccount = new LoginAccount();
 
         when(swagger).attemptsTo(
@@ -94,8 +93,6 @@ public class TestLucky88AliveDaily {
 
     @Test
     public void AccessFunctionWithAccountNonBalance() {
-        swagger.attemptsTo(Open.url(DOMAIN));
-
         LoginAccount loginAccount = new LoginAccount();
 
         when(swagger).attemptsTo(
@@ -110,8 +107,6 @@ public class TestLucky88AliveDaily {
 
     @Test
     public void ForgetPassword() {
-        swagger.attemptsTo(Open.url(DOMAIN));
-
         when(swagger).attemptsTo(
                 Click.on(FORGET_PWD_BTN),
                 Enter.keyValues(VERIFIED_EMAIL).into(EMAIL_RESTORE_FIELD),
@@ -123,7 +118,6 @@ public class TestLucky88AliveDaily {
 
     @Test
     public void LogOut() {
-        swagger.attemptsTo(Open.url(DOMAIN));
         LoginAccount loginAccount = new LoginAccount();
 
         when(swagger).attemptsTo(
@@ -137,7 +131,6 @@ public class TestLucky88AliveDaily {
 
     @Test
     public void HomepageHeroBanner() {
-        swagger.attemptsTo(Open.url(DOMAIN));
         when(swagger).attemptsTo(
                 Click.on(FIRST_SWIPER_PAGINATION),
                 Click.on(FIRST_HERO_BANNER),
@@ -147,8 +140,7 @@ public class TestLucky88AliveDaily {
 
 
     @Test
-    public void HomepageCashBack(){
-        swagger.attemptsTo(Open.url(DOMAIN));
+    public void HomepageCashBack() {
         LoginAccount loginAccount = new LoginAccount();
 
         when(swagger).attemptsTo(
@@ -160,8 +152,6 @@ public class TestLucky88AliveDaily {
 
     @Test
     public void HomepageLiveCasino() throws InterruptedException {
-        swagger.attemptsTo(Open.url(DOMAIN));
-
         LoginAccount loginAccount = new LoginAccount();
 
         when(swagger).attemptsTo(
@@ -170,7 +160,7 @@ public class TestLucky88AliveDaily {
                 Click.on(FIRST_HOMEPAGE_CASINO),
                 Switch.toNewWindow()
         );
-        sleep(5000);
+        sleep(10000);
         when(swagger).attemptsTo(
                 Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_EZUGI_CASINO),
                 Switch.closeCurrentWindowsAndSwitchBackToRemainingWindows()
@@ -181,7 +171,6 @@ public class TestLucky88AliveDaily {
     @Test
     public void HomepageSieuPhamHoiTu() throws InterruptedException {
         swagger.attemptsTo(
-                Open.url(DOMAIN),
                 HoverOverElement.over(SU_KIEN_HOT_BTN),
                 Click.on(SIEU_PHAM_HOI_TU_BTN)
         );
@@ -195,7 +184,6 @@ public class TestLucky88AliveDaily {
     @Test
     public void HomepageNewsDetail() throws InterruptedException {
         swagger.attemptsTo(
-                Open.url(DOMAIN),
                 SwipeTo.theBottom(),
                 Click.on(HOT_NEWS)
         );
@@ -208,9 +196,7 @@ public class TestLucky88AliveDaily {
 
     @Test
     public void HomepageAboutUs() throws InterruptedException {
-
         swagger.attemptsTo(
-                Open.url(DOMAIN),
                 SwipeTo.theBottom(),
                 Click.on(ABOUT_US)
         );
@@ -223,9 +209,7 @@ public class TestLucky88AliveDaily {
 
     @Test
     public void HomepageTyLeKeo() throws InterruptedException {
-
         swagger.attemptsTo(
-                Open.url(DOMAIN),
                 SwipeTo.theBottom(),
                 Click.on(TY_LE_KEO_BTN)
         );
@@ -239,7 +223,6 @@ public class TestLucky88AliveDaily {
     @Test
     public void HomepageTerms() throws InterruptedException {
         swagger.attemptsTo(
-                Open.url(DOMAIN),
                 SwipeTo.theBottom(),
                 Click.on(TERMS_BTN)
         );
@@ -253,7 +236,6 @@ public class TestLucky88AliveDaily {
     @Test
     public void HomepagePrivacyPolicy() throws InterruptedException {
         swagger.attemptsTo(
-                Open.url(DOMAIN),
                 SwipeTo.theBottom(),
                 Click.on(PRIVACY_POLICY_BTN)
         );
@@ -267,7 +249,6 @@ public class TestLucky88AliveDaily {
     @Test
     public void HomepageQuestion() throws InterruptedException {
         swagger.attemptsTo(
-                Open.url(DOMAIN),
                 SwipeTo.theBottom(),
                 Click.on(QUESTION_BTN)
         );
@@ -283,7 +264,6 @@ public class TestLucky88AliveDaily {
     @Test
     public void HomepagePromotionInfomation() throws InterruptedException {
         swagger.attemptsTo(
-                Open.url(DOMAIN),
                 SwipeTo.theBottom(),
                 Click.on(PROMOTION_INFOR_BTN)
         );
@@ -297,7 +277,6 @@ public class TestLucky88AliveDaily {
     @Test
     public void HomepageContact() throws InterruptedException {
         swagger.attemptsTo(
-                Open.url(DOMAIN),
                 SwipeTo.theBottom(),
                 Click.on(CONTACT_BTN)
         );
@@ -312,7 +291,6 @@ public class TestLucky88AliveDaily {
     public void HomepageJackpot() throws InterruptedException {
         LoginAccount loginAccount = new LoginAccount();
         swagger.attemptsTo(
-                Open.url(DOMAIN),
                 Login.theAccountHasBalance(loginAccount),
                 Scroll.to(JACKPOT_FORM)
         );
