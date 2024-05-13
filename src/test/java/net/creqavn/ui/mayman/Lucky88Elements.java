@@ -1,7 +1,6 @@
 package net.creqavn.ui.mayman;
 
 import net.serenitybdd.screenplay.targets.Target;
-import org.checkerframework.checker.index.qual.PolyUpperBound;
 
 
 public class Lucky88Elements {
