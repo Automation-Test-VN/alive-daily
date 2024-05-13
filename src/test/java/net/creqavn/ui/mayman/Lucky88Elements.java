@@ -59,4 +59,9 @@ public class Lucky88Elements {
     public static final String CONTAINS_NEWS="/news/detail";
     public static final Target ABOUT_US = Target.the("about us").locatedBy("//a[contains(.,'Giới thiệu')]");
     public static final String CONTAINS_ABOUT_US="/about-us";
+
+    public static final Target SU_KIEN_HOT_BTN = Target.the("su kien hot button").locatedBy("//p[@class='text']");
+    public static final Target SIEU_PHAM_HOI_TU_BTN = Target.the("sieu pham hoi tu").locatedBy("//p[.='Siêu phẩm hội tụ']");
+    public static final String CONTAINS_SIEU_PHAM_HOI_TU = "/event-puzzle";
+
 }
