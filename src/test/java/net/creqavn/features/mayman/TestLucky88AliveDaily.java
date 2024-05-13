@@ -326,4 +326,19 @@ public class TestLucky88AliveDaily {
                 Ensure.that(PROFILE_DISPLAY_NAME_INFO).isDisplayed()
         );
     }
+
+
+    @Test
+    public void AccountChangePassword() {
+        LoginAccount loginAccount = new LoginAccount();
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Click.on(AVATAR_USER),
+                Click.on(CHANGE_PWD_BTN),
+                Ensure.that(CURRENT_PWD_FIELD).isDisplayed(),
+                Ensure.that(NEW_PWD_FIELD).isDisplayed(),
+                Ensure.that(CONFIRM_NEW_PWD_FIELD).isDisplayed(),
+                Ensure.that(CHANGE_PWD_SUBMIT_BTN).isDisplayed()
+        );
+    }
 }
