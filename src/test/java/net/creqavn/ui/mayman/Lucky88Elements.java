@@ -64,4 +64,6 @@ public class Lucky88Elements {
     public static final Target SIEU_PHAM_HOI_TU_BTN = Target.the("sieu pham hoi tu").locatedBy("//p[.='Siêu phẩm hội tụ']");
     public static final String CONTAINS_SIEU_PHAM_HOI_TU = "/event-puzzle";
 
+    public static final Target TY_LE_KEO_BTN=Target.the("ty le keo button").locatedBy("//a[contains(.,'Tỷ lệ kèo')]");
+    public static final String CONTAINS_TY_LE_KEO="/ty-le-keo";
 }

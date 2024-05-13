@@ -214,4 +214,17 @@ public class TestLucky88AliveDaily {
         );
     }
 
+    @Test
+    public void HomepageTyLeKeo() throws InterruptedException {
+
+        swagger.attemptsTo(
+                Open.url(DOMAIN),
+                SwipeTo.theBottom(),
+                Click.on(TY_LE_KEO_BTN)
+        );
+        sleep(3000);
+        swagger.attemptsTo(
+            Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_TY_LE_KEO)
+        );
+    }
 }
