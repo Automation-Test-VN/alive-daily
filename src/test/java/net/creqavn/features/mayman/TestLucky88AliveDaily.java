@@ -175,6 +175,19 @@ public class TestLucky88AliveDaily {
     }
 
     @Test
+    public void HomepageSieuPhamHoiTu() throws InterruptedException {
+        swagger.attemptsTo(
+                Open.url(DOMAIN),
+                HoverOverElement.over(SU_KIEN_HOT_BTN),
+                Click.on(SIEU_PHAM_HOI_TU_BTN)
+        );
+        sleep(3000);
+        swagger.attemptsTo(
+                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_SIEU_PHAM_HOI_TU)
+        );
+    }
+
+    @Test
     public void HomepageNewsDetail() throws InterruptedException {
         swagger.attemptsTo(
                 Open.url(DOMAIN),
