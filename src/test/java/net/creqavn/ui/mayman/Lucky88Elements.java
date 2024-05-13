@@ -88,6 +88,13 @@ public class Lucky88Elements {
     public static final Target JACKPOT_NUMBER = Target.the("jackpot number").locatedBy(".jackpot-home__left--amount > .animation-number");
     public static final Target JACKPOT_RECENT = Target.the("jackpot recent").locatedBy(".jackpot-home__center--recent > .value");
     public static final Target JACKPOT_MONTH=Target.the("jackpot month").locatedBy(".jackpot-home__center--month > .value");
-    public static final Target JACKPOT_FISH=Target.the("jackpot fish").locatedBy(".jackpot-home__center--top-hu > .label");
+    public static final Target JACKPOT_FISH=Target.the("jackpot fish").locatedBy(".jackpot-home__center--top-hu > .value");
     public static final Target JACKPOT_FIRST_GAME=Target.the("jackpot first game").locatedBy("//div[@class='game-item swiper-slide swiper-slide-active']");
+
+    public static final Target FORM_PROFILE_INFO=Target.the("field {0}").locatedBy("//div[@class='info-form']/div[{0}]//input[1]");
+    public static final Target PROFILE_USERNAME_INFO=FORM_PROFILE_INFO.of("1");
+    public static final Target PROFILE_PWD_INFO=FORM_PROFILE_INFO.of("2");
+    public static final Target PROFILE_DISPLAY_NAME_INFO=FORM_PROFILE_INFO.of("3");
+    public static final String CONTAINS_PROFILE="/account/user/profile";
+
 }

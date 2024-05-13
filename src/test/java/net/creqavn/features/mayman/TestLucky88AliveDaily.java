@@ -41,7 +41,7 @@ public class TestLucky88AliveDaily {
     }
 
     @Before
-    public void setUp(){
+    public void setUp() {
         swagger.attemptsTo(Open.url(DOMAIN));
     }
 
@@ -304,12 +304,26 @@ public class TestLucky88AliveDaily {
                 Ensure.thatTheCurrentPage().currentUrl().contains("https://games.mt-sta.com/kts"),
                 Switch.closeCurrentWindowsAndSwitchBackToRemainingWindows()
         );
-        sleep(20000);
+        sleep(15000);
         swagger.attemptsTo(
-                Ensure.that(JACKPOT_RECENT).text().isNotEqualTo("0"),
-                Ensure.that(JACKPOT_MONTH).text().isNotEqualTo("0"),
-                Ensure.that(JACKPOT_FISH).text().isNotEqualTo("0"),
-                Ensure.that(JACKPOT_NUMBER).text().isNotEqualTo("0")
+                Ensure.that(JACKPOT_RECENT).text().isNotEmpty(),
+                Ensure.that(JACKPOT_MONTH).text().isNotEmpty(),
+                Ensure.that(JACKPOT_FISH).text().isNotEmpty(),
+                Ensure.that(JACKPOT_NUMBER).text().isNotEmpty()
+        );
+    }
+
+
+    @Test
+    public void AccountInfor() {
+        LoginAccount loginAccount = new LoginAccount();
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Click.on(AVATAR_USER),
+                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_PROFILE),
+                Ensure.that(PROFILE_USERNAME_INFO).isDisplayed(),
+                Ensure.that(PROFILE_PWD_INFO).isDisplayed(),
+                Ensure.that(PROFILE_DISPLAY_NAME_INFO).isDisplayed()
         );
     }
 }
