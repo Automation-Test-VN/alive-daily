@@ -45,6 +45,7 @@ public class TestLucky88AliveDaily {
         swagger.attemptsTo(Open.url(DOMAIN));
     }
 
+
     @Test()
     public void RegisterNewAccount() {
         RegisterAccount registerAccount = new RegisterAccount();
@@ -339,6 +340,18 @@ public class TestLucky88AliveDaily {
                 Ensure.that(NEW_PWD_FIELD).isDisplayed(),
                 Ensure.that(CONFIRM_NEW_PWD_FIELD).isDisplayed(),
                 Ensure.that(CHANGE_PWD_SUBMIT_BTN).isDisplayed()
+        );
+    }
+
+
+    @Test
+    public void AccountVerifyPhoneNumber(){
+        LoginAccount loginAccount = new LoginAccount();
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Click.on(AVATAR_USER),
+                Click.on(VERIFY_PHONE_NUMBER_BTN),
+                Ensure.that(VERIFY_PHONE_NUMBER_NOW_BTN).isDisplayed()
         );
     }
 }
