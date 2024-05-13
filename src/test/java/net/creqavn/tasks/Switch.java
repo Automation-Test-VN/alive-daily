@@ -2,20 +2,18 @@ package net.creqavn.tasks;
 
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Tasks;
-import net.serenitybdd.screenplay.actions.AlertAction;
 import net.serenitybdd.screenplay.actions.DriverTask;
 import net.serenitybdd.screenplay.actions.SwitchToNewWindow;
-import net.serenitybdd.screenplay.actions.SwitchToWindowTitle;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.WindowType;
 
 import java.util.Set;
 
-public class Switcher {
-    public Switcher() {
+import static java.lang.Thread.sleep;
+
+public class Switch {
+    public Switch() {
     }
-    public static Performable toNewWindow() {
-        return Tasks.instrumented(SwitchToNewWindow.class, new Object[0]);
+    public static Performable toNewWindow() throws InterruptedException {
+        return Tasks.instrumented(SwitchToNewWindow.class);
     }
 
     public static Performable closeCurrentWindowsAndSwitchBackToRemainingWindows() {
