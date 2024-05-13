@@ -104,4 +104,6 @@ public class Lucky88Elements {
     public static final Target CONFIRM_NEW_PWD_FIELD = FORM_CHANGE_PWD.of("Xác nhận mật khẩu mới");
     public static final Target CHANGE_PWD_SUBMIT_BTN = Target.the("change password submit butotn").locatedBy("//button[@class='base-button btn base-button base-button-custom base-button--full']");
 
+    public static final Target VERIFY_PHONE_NUMBER_BTN = Target.the("verify phone number button").locatedBy("//span[.='Xác thực']");
+    public static final Target VERIFY_PHONE_NUMBER_NOW_BTN=Target.the("verify phone number now button").locatedBy("//div[@class='StepProgress-item__button']");
 }
