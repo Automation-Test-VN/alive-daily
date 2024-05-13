@@ -279,4 +279,18 @@ public class TestLucky88AliveDaily {
                 Ensure.that(FIRST_ANSWER).isDisplayed()
         );
     }
+
+
+    @Test
+    public void HomepagePromotionInfomation() throws InterruptedException {
+        swagger.attemptsTo(
+                Open.url(DOMAIN),
+                SwipeTo.theBottom(),
+                Click.on(PROMOTION_INFOR_BTN)
+        );
+        sleep(3000);
+        swagger.attemptsTo(
+                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_PROMOTION_INFO)
+        );
+    }
 }

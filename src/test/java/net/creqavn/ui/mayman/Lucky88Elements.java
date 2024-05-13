@@ -78,4 +78,6 @@ public class Lucky88Elements {
     public static final Target FIRST_QUESTION=Target.the("first question").locatedBy("[aria-controls='question-1'] span:nth-of-type(1)");
     public static final Target FIRST_ANSWER=Target.the("first answer").locatedBy(".show.popular-question__description > .popular-question__description--content");
 
+    public static final Target PROMOTION_INFOR_BTN=Target.the("promotion infor button").locatedBy("//a[contains(.,'Tin Khuyến mãi')]");
+    public static final String CONTAINS_PROMOTION_INFO="/saleoff";
 }
