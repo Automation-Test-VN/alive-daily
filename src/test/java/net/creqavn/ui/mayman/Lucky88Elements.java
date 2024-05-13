@@ -67,6 +67,9 @@ public class Lucky88Elements {
     public static final Target TY_LE_KEO_BTN=Target.the("ty le keo button").locatedBy("//a[contains(.,'Tỷ lệ kèo')]");
     public static final String CONTAINS_TY_LE_KEO="/ty-le-keo";
 
-    public static final Target DIEU_KHOAN_BTN=Target.the("dieu khoan button").locatedBy("//a[contains(.,'Điều khoản & Điều kiện')]");
-    public static final String CONTAINS_DIEU_KHOAN="/terms-conditions";
+    public static final Target TERMS_BTN=Target.the("terms button").locatedBy("//a[contains(.,'Điều khoản & Điều kiện')]");
+    public static final String CONTAINS_TERMS="/terms-conditions";
+
+    public static final Target PRIVACY_POLICY_BTN=Target.the("privacy policy button").locatedBy("//a[contains(.,'Chính sách bảo  mật')]");
+    public static final String CONTAINS_PRIVACY_POLICY="/privacy-policy";
 }
