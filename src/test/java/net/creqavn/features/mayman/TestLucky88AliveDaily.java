@@ -238,15 +238,29 @@ public class TestLucky88AliveDaily {
 
 
     @Test
-    public void HomepageDieuKhoan() throws InterruptedException {
+    public void HomepageTerms() throws InterruptedException {
         swagger.attemptsTo(
                 Open.url(DOMAIN),
                 SwipeTo.theBottom(),
-                Click.on(DIEU_KHOAN_BTN)
+                Click.on(TERMS_BTN)
         );
         sleep(3000);
         swagger.attemptsTo(
-                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_DIEU_KHOAN)
+                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_TERMS)
+        );
+    }
+
+
+    @Test
+    public void HomepagePrivacyPolicy() throws InterruptedException {
+        swagger.attemptsTo(
+                Open.url(DOMAIN),
+                SwipeTo.theBottom(),
+                Click.on(PRIVACY_POLICY_BTN)
+        );
+        sleep(3000);
+        swagger.attemptsTo(
+                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_PRIVACY_POLICY)
         );
     }
 }
