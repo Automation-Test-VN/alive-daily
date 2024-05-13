@@ -6,6 +6,7 @@ import net.creqavn.tasks.Login;
 import net.creqavn.tasks.Register;
 import net.creqavn.tasks.Switcher;
 import net.serenitybdd.annotations.Managed;
+import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
@@ -13,12 +14,17 @@ import net.serenitybdd.screenplay.actions.*;
 
 
 import net.serenitybdd.screenplay.ensure.Ensure;
+import net.serenitybdd.screenplay.ensure.web.PageObjectEnsure;
+import net.thucydides.core.webdriver.javascript.JavascriptExecutorFacade;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+
+import java.awt.*;
 
 import static java.lang.Thread.sleep;
 import static net.creqavn.ui.mayman.Lucky88Elements.*;
@@ -176,13 +182,25 @@ public class TestLucky88AliveDaily {
     public void HomepageNewsDetail() throws InterruptedException {
         swagger.attemptsTo(
                 Open.url(DOMAIN),
-                Open.url(DOMAIN),
                 Scroll.to(HOT_NEWS),
                 Click.on(HOT_NEWS)
         );
         sleep(3000);
         swagger.attemptsTo(
                 Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_NEWS)
+        );
+    }
+
+    @Test
+    public void HomepageAboutUs() throws InterruptedException {
+        swagger.attemptsTo(
+                Open.url(DOMAIN),
+                Scroll.to(HOT_NEWS),
+                Click.on(ABOUT_US)
+        );
+        sleep(3000);
+        swagger.attemptsTo(
+            Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_ABOUT_US)
         );
     }
 }
