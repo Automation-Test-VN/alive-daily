@@ -30,7 +30,7 @@ import static net.serenitybdd.screenplay.GivenWhenThen.when;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestLucky88AliveDaily {
     static Actor swagger = Actor.named("Swagger");
-    public final String registerUserName = GenerateRandomValue.generateUserName(10);
+
 
     @Managed(uniqueSession = true)
     public static WebDriver mightyBrowser;
@@ -48,8 +48,7 @@ public class TestLucky88AliveDaily {
 
     @Test
     public void RegisterNewAccount() {
-        RegisterAccount registerAccount = new RegisterAccount(registerUserName);
-
+        RegisterAccount registerAccount = new RegisterAccount();
         when(swagger).attemptsTo(
                 Register.theUser(registerAccount),
                 Ensure.that(WELCOME_POPUP).isEnabled()
@@ -347,7 +346,7 @@ public class TestLucky88AliveDaily {
 /*
     @Test
     public void zAccountVerifyEmail() {
-        LoginAccount loginAccount = new LoginAccount(registerUserName);
+        LoginAccount loginAccount = new LoginAccount();
         swagger.attemptsTo(
                 Login.theAccountJustRegistered(loginAccount),
                 Click.on(AVATAR_USER),
@@ -390,12 +389,78 @@ public class TestLucky88AliveDaily {
         String rightTeam = swagger.asksFor(TheFootball.name(RIGHT_FOOTBAL_TEAM));
         swagger.attemptsTo(
                 Click.on(HOT_MATCH_BET_BTN)
+
         );
         swagger.attemptsTo(
-                WaitForLoad.thePage(HOT_MATCH_IFRAME),
-                Switch.toFrame(HOT_MATCH_IFRAME),
+                Switch.toFrame(FIRST_IFRAME),
                 Ensure.that(HOT_MATCH_LEFT_TEAM).text().isEqualTo(leftTeam),
                 Ensure.that(HOT_MATCH_RIGHT_TEAM).text().isEqualTo(rightTeam)
         );
     }
+
+
+    @Test
+    public void SportK(){
+        LoginAccount loginAccount = new LoginAccount();
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Click.on(SPORT_BTN),
+                Browser.refreshPage(),
+                Click.on(SPORT_K_BTN),
+                Switch.toFrame(FIRST_IFRAME),
+                Ensure.that(SPORT_K_VERIFY).isDisplayed()
+        );
+    }
+
+
+//    @Test
+//    public void SportI(){
+//        LoginAccount loginAccount = new LoginAccount();
+//        swagger.attemptsTo(
+//                Login.theAccountHasBalance(loginAccount),
+//                Click.on(SPORT_BTN),
+//                Click.on(SPORT_I_BTN),
+//                Switch.toFrame(FIRST_IFRAME),
+//                Ensure.that(SPORT_I_VERIFY).isDisplayed()
+//        );
+//    }
+
+
+//    @Test
+//    public void SportA(){
+//        LoginAccount loginAccount = new LoginAccount();
+//        swagger.attemptsTo(
+//                Login.theAccountHasBalance(loginAccount),
+//                Click.on(SPORT_BTN),
+//                Click.on(SPORT_A_BTN),
+//                Switch.toFrame(FIRST_IFRAME),
+//                Ensure.that(SPORT_A_VERIFY).isDisplayed()
+//        );
+//    }
+
+
+//    @Test
+//    public void SportC(){
+//        LoginAccount loginAccount = new LoginAccount();
+//        swagger.attemptsTo(
+//                Login.theAccountHasBalance(loginAccount),
+//                Click.on(SPORT_BTN),
+//                Click.on(SPORT_C_BTN),
+//                Switch.toFrame(FIRST_IFRAME),
+//                Ensure.that(SPORT_C_VERIFY).isDisplayed()
+//        );
+//    }
+
+
+//    @Test
+//    public void SportM(){
+//        LoginAccount loginAccount = new LoginAccount();
+//        swagger.attemptsTo(
+//                Login.theAccountHasBalance(loginAccount),
+//                Click.on(SPORT_BTN),
+//                Click.on(SPORT_M_BTN),
+//                Switch.toFrame(FIRST_IFRAME),
+//                Ensure.that(SPORT_M_VERIFY).isDisplayed()
+//        );
+//    }
 }

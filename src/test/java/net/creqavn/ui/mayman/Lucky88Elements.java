@@ -128,5 +128,20 @@ public class Lucky88Elements {
     public static final Target HOT_MATCH_BET_BTN=Target.the("hot match bet button").locatedBy(".swiper-slide-visible .btn-asport > span");
     public static final Target HOT_MATCH_LEFT_TEAM=Target.the("hot match left team").locatedBy("//*[@class=\"wrapper-match-component \"]/div[1]/div[2]/div[1]/div[1]/div/div/div[1]/div");
     public static final Target HOT_MATCH_RIGHT_TEAM=Target.the("hot match right team").locatedBy("//*[@class=\"wrapper-match-component \"]/div[1]/div[2]/div[1]/div[1]/div/div/div[2]/div");
-    public static final String HOT_MATCH_IFRAME="my-frame";
+    public static final String FIRST_IFRAME ="my-frame";
+    public static final String SPORT_IFRAME = "sportsFrame";
+
+    public static final Target SPORT_BTN=Target.the("sport button").locatedBy("//span[.='THỂ THAO']");
+    public static final Target SPORT_K_BTN=Target.the("sport k button").locatedBy("//img[@alt='thể thao ksport']");
+    public static final Target SPORT_K_VERIFY=Target.the("sport k verify").locatedBy(".wrapper-match-live > .handicap-match-header");
+    public static final Target SPORT_I_BTN=Target.the("sport i button").locatedBy("//img[@alt='thể thao i-sports']");
+    public static final Target SPORT_I_VERIFY=Target.the("sport i verify").locatedBy("//*[@id=\"rc_streamer_frame\"]");
+    public static final Target SPORT_A_BTN=Target.the("sport a button").locatedBy("//img[@alt='thể thao asports']");
+    public static final Target SPORT_A_VERIFY=Target.the("sport a verify").locatedBy("//*[@id=\"mainArea\"]/div/div[2]/div[1]");
+    public static final Target SPORT_C_BTN=Target.the("sport c button").locatedBy("//img[@alt='thể thao csport']");
+    public static final Target SPORT_C_VERIFY=Target.the("sport c verify").locatedBy("//*[@id=\"isEventPage\"]/div[2]/section[1]/header");
+    public static final Target SPORT_M_BTN=Target.the("sport m button").locatedBy("//img[@alt='thể thao msport']");
+    public static final Target SPORT_M_VERIFY=Target.the("sport m verify").locatedBy("handicap-ou-component > [data-radium='true'] > div:nth-of-type(1) > div");
+
+
 }
