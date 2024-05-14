@@ -20,7 +20,7 @@ public class LoginAccount {
         this.pwd = pwd;
     }
 
-    public LoginAccount(String userName, String pwd) {
+    public LoginAccount(String userName) {
         this.userName=userName;
         this.pwd="Creq@123321";
     }
