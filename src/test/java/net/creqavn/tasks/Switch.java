@@ -7,12 +7,10 @@ import net.serenitybdd.screenplay.actions.SwitchToNewWindow;
 
 import java.util.Set;
 
-import static java.lang.Thread.sleep;
-
 public class Switch {
     public Switch() {
     }
-    public static Performable toNewWindow() throws InterruptedException {
+    public static Performable toNewWindow() {
         return Tasks.instrumented(SwitchToNewWindow.class);
     }
 
@@ -28,6 +26,12 @@ public class Switch {
                 driver.close();
                 driver.switchTo().window(remainingWindow);
             }
+        });
+    }
+
+    public static Performable toFrame(String frameName) {
+        return new DriverTask((driver) -> {
+            driver.switchTo().frame(frameName);
         });
     }
 }
