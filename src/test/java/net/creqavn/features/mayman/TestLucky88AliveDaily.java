@@ -5,6 +5,8 @@ import net.creqavn.models.RegisterAccount;
 import net.creqavn.tasks.*;
 import net.creqavn.tasks.Switch;
 import net.serenitybdd.annotations.Managed;
+import net.serenitybdd.annotations.WithTag;
+import net.serenitybdd.annotations.WithTags;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
@@ -378,6 +380,18 @@ public class TestLucky88AliveDaily {
                 Click.on(BANK_BTN),
                 Click.on(ADD_BANK_ACCOUNT_BTN),
                 Ensure.that(FORM_BANK_ACCOUNT).isDisplayed()
+        );
+    }
+
+
+    @Test
+    public void AccountBonus(){
+        LoginAccount loginAccount = new LoginAccount();
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Click.on(AVATAR_USER),
+                Click.on(BONUS_BTN),
+                Ensure.that(BONUS_INFO).isDisplayed()
         );
     }
 }

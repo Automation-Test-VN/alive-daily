@@ -11,10 +11,12 @@ public class Lucky88Elements {
     public static final Target LOGOUT_BTN = Target.the("logout button").locatedBy("//span[.='Đăng xuất']");
 
     //BANK ACCOUNT
-    public static final Target BANK_BTN =Target.the("bank account").locatedBy("//span[.='ngân hàng']");
-    public static final Target ADD_BANK_ACCOUNT_BTN=Target.the("add bank account button").locatedBy("//div[@class='button-wrapper']");
-    public static final Target FORM_BANK_ACCOUNT=Target.the("form bank account").locatedBy("//p[.='Thông tin ngân hàng']");
+    public static final Target BANK_BTN = Target.the("bank account").locatedBy("//span[.='ngân hàng']");
+    public static final Target ADD_BANK_ACCOUNT_BTN = Target.the("add bank account button").locatedBy("//div[@class='button-wrapper']");
+    public static final Target FORM_BANK_ACCOUNT = Target.the("form bank account").locatedBy("//p[.='Thông tin ngân hàng']");
 
+    public static final Target BONUS_BTN=Target.the("bonus button").locatedBy("//span[.='Thưởng']");
+    public static final Target BONUS_INFO=Target.the("bonus info").locatedBy("//div[@class='information__center']");
 
     // REGISTER FORM
     public static final Target REGISTER_FORM = Target.the("{0} field").locatedBy(" //form[@class='form-register register__form']//input[@placeholder='{0}']");
@@ -104,10 +106,10 @@ public class Lucky88Elements {
     public static final Target PROFILE_USERNAME = FORM_PROFILE_INFO.of("1");
     public static final Target PROFILE_PWD = FORM_PROFILE_INFO.of("2");
     public static final Target PROFILE_DISPLAY_NAME = FORM_PROFILE_INFO.of("3");
-    public static final Target PROFILE_EMAIL=FORM_PROFILE_INFO.of("5");
-    public static final Target VERIFY_EMAIL_BTN=Target.the("verify email button").locatedBy("//div[@class='info-form']/div[5]//span[.='Xác thực']");
+    public static final Target PROFILE_EMAIL = FORM_PROFILE_INFO.of("5");
+    public static final Target VERIFY_EMAIL_BTN = Target.the("verify email button").locatedBy("//div[@class='info-form']/div[5]//span[.='Xác thực']");
     public static final String CONTAINS_PROFILE = "/account/user/profile";
-    public static final Target EMAIL_CONFIRM_NOTIFICATION=Target.the("email confirm notification").locatedBy("//div[@class='swal2-html-container']");
+    public static final Target EMAIL_CONFIRM_NOTIFICATION = Target.the("email confirm notification").locatedBy("//div[@class='swal2-html-container']");
 
     //CHANGE PWD FORM
     public static final Target CHANGE_PWD_BTN = Target.the("change password button").locatedBy("//span[.='Thay đổi']");
@@ -118,5 +120,5 @@ public class Lucky88Elements {
     public static final Target CHANGE_PWD_SUBMIT_BTN = Target.the("change password submit butotn").locatedBy("//button[@class='base-button btn base-button base-button-custom base-button--full']");
 
     public static final Target VERIFY_PHONE_NUMBER_BTN = Target.the("verify phone number button").locatedBy("//span[.='Xác thực']");
-    public static final Target VERIFY_PHONE_NUMBER_NOW_BTN=Target.the("verify phone number now button").locatedBy("//div[@class='StepProgress-item__button']");
+    public static final Target VERIFY_PHONE_NUMBER_NOW_BTN = Target.the("verify phone number now button").locatedBy("//div[@class='StepProgress-item__button']");
 }
