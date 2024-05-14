@@ -6,6 +6,8 @@ import net.creqavn.questions.TheFootball;
 import net.creqavn.tasks.*;
 import net.creqavn.tasks.Switch;
 import net.serenitybdd.annotations.Managed;
+import net.serenitybdd.annotations.WithTag;
+import net.serenitybdd.annotations.WithTags;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
@@ -53,6 +55,7 @@ public class TestLucky88AliveDaily {
                 Register.theUser(registerAccount),
                 Ensure.that(WELCOME_POPUP).isEnabled()
         );
+        swagger.remember("register", registerAccount);
     }
 
 
@@ -343,10 +346,12 @@ public class TestLucky88AliveDaily {
         );
     }
 
-/*
+
     @Test
     public void zAccountVerifyEmail() {
-        LoginAccount loginAccount = new LoginAccount();
+        RegisterAccount registerAccount = swagger.recall("register");
+
+        LoginAccount loginAccount = new LoginAccount(registerAccount.getUserName());
         swagger.attemptsTo(
                 Login.theAccountJustRegistered(loginAccount),
                 Click.on(AVATAR_USER),
@@ -355,7 +360,6 @@ public class TestLucky88AliveDaily {
                 Ensure.that(EMAIL_CONFIRM_NOTIFICATION).isDisplayed()
         );
     }
-*/
 
     @Test
     public void AccountBankAccount() {
