@@ -5,8 +5,6 @@ import net.creqavn.models.RegisterAccount;
 import net.creqavn.tasks.*;
 import net.creqavn.tasks.Switch;
 import net.serenitybdd.annotations.Managed;
-import net.serenitybdd.annotations.WithTag;
-import net.serenitybdd.annotations.WithTags;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
@@ -31,7 +29,7 @@ import static net.serenitybdd.screenplay.GivenWhenThen.when;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestLucky88AliveDaily {
     static Actor swagger = Actor.named("Swagger");
-    public String RegisterUserName= GenerateRandomValue.generateUserName(10);
+    public String RegisterUserName = GenerateRandomValue.generateUserName(10);
 
     @Managed(uniqueSession = true)
     public static WebDriver mightyBrowser;
@@ -101,6 +99,7 @@ public class TestLucky88AliveDaily {
                 Click.on(GAME_BAI_BTN),
                 Click.on(GAME_BAI_TLMN),
                 Login.theAccountNonBalanceOnPopup(loginAccount),
+                Click.on(GAME_BAI_TLMN),
                 Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_GAME_BAI),
                 Ensure.that(POPUP_DEPOSIT).isDisplayed()
         );
@@ -346,7 +345,7 @@ public class TestLucky88AliveDaily {
 
 
     @Test
-    public void AccountVerifyPhoneNumber(){
+    public void AccountVerifyPhoneNumber() {
         LoginAccount loginAccount = new LoginAccount();
         swagger.attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
@@ -358,13 +357,27 @@ public class TestLucky88AliveDaily {
 
 
     @Test
-    public void zAccountVerifyEmail(){
+    public void zAccountVerifyEmail() {
         LoginAccount loginAccount = new LoginAccount(RegisterUserName);
         swagger.attemptsTo(
                 Login.theAccountJustRegistered(loginAccount),
+                Click.on(AVATAR_USER),
                 Enter.keyValues(GenerateRandomValue.generateEmail()).into(PROFILE_EMAIL),
                 Click.on(VERIFY_EMAIL_BTN),
                 Ensure.that(EMAIL_CONFIRM_NOTIFICATION).isDisplayed()
+        );
+    }
+
+
+    @Test
+    public void AccountBankAccount() {
+        LoginAccount loginAccount = new LoginAccount();
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Click.on(AVATAR_USER),
+                Click.on(BANK_BTN),
+                Click.on(ADD_BANK_ACCOUNT_BTN),
+                Ensure.that(FORM_BANK_ACCOUNT).isDisplayed()
         );
     }
 }

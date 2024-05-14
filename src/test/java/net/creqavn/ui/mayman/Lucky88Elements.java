@@ -10,6 +10,12 @@ public class Lucky88Elements {
     public static final Target AVATAR_USER = Target.the("avatar user").locatedBy("//div[@class='avatar user-login-information__avatar']");
     public static final Target LOGOUT_BTN = Target.the("logout button").locatedBy("//span[.='Đăng xuất']");
 
+    //BANK ACCOUNT
+    public static final Target BANK_BTN =Target.the("bank account").locatedBy("//span[.='ngân hàng']");
+    public static final Target ADD_BANK_ACCOUNT_BTN=Target.the("add bank account button").locatedBy("//div[@class='button-wrapper']");
+    public static final Target FORM_BANK_ACCOUNT=Target.the("form bank account").locatedBy("//p[.='Thông tin ngân hàng']");
+
+
     // REGISTER FORM
     public static final Target REGISTER_FORM = Target.the("{0} field").locatedBy(" //form[@class='form-register register__form']//input[@placeholder='{0}']");
     public static final Target REGISTER_USERNAME = REGISTER_FORM.of("Nhập tên đăng nhập");
@@ -41,6 +47,7 @@ public class Lucky88Elements {
     public static final Target FORM_LOGIN_SUBMIT_BTN = Target.the("form login submit button").locatedBy(".form-login__btn");
     public static final Target POPUP_DEPOSIT = Target.the("popup deposit").locatedBy("//div[@class='modal-deposit']");
 
+    //FORGET PWD
     public static final Target FORGET_PWD_BTN = Target.the("forget password button").locatedBy("//img[@class='user-not-login__forgot-password']");
     public static final Target EMAIL_RESTORE_FIELD = Target.the("email restore field").locatedBy("//input[@name='email']");
     public static final Target EMAIL_RESTORE_BTN = Target.the("email restore button").locatedBy("//form[@class='form-forgot-password user-not-login__form']//button");
@@ -84,6 +91,7 @@ public class Lucky88Elements {
     public static final Target CONTACT_BTN = Target.the("contact button").locatedBy("//a[contains(.,'Liên hệ')]");
     public static final String CONTAINS_CONTACT = "/contact-us";
 
+    //JACKPOT FORM
     public static final Target JACKPOT_FORM = Target.the("jackpot form").locatedBy("//section[@class='jackpot-home']/div[@class='container-custom']");
     public static final Target JACKPOT_NUMBER = Target.the("jackpot number").locatedBy(".jackpot-home__left--amount > .animation-number");
     public static final Target JACKPOT_RECENT = Target.the("jackpot recent").locatedBy(".jackpot-home__center--recent > .value");
@@ -91,6 +99,7 @@ public class Lucky88Elements {
     public static final Target JACKPOT_FISH = Target.the("jackpot fish").locatedBy(".jackpot-home__center--top-hu > .value");
     public static final Target JACKPOT_FIRST_GAME = Target.the("jackpot first game").locatedBy("//div[@class='game-item swiper-slide swiper-slide-active']");
 
+    //PROFILE FORM
     public static final Target FORM_PROFILE_INFO = Target.the("field {0}").locatedBy("//div[@class='info-form']/div[{0}]//input[1]");
     public static final Target PROFILE_USERNAME = FORM_PROFILE_INFO.of("1");
     public static final Target PROFILE_PWD = FORM_PROFILE_INFO.of("2");
@@ -100,6 +109,7 @@ public class Lucky88Elements {
     public static final String CONTAINS_PROFILE = "/account/user/profile";
     public static final Target EMAIL_CONFIRM_NOTIFICATION=Target.the("email confirm notification").locatedBy("//div[@class='swal2-html-container']");
 
+    //CHANGE PWD FORM
     public static final Target CHANGE_PWD_BTN = Target.the("change password button").locatedBy("//span[.='Thay đổi']");
     public static final Target FORM_CHANGE_PWD = Target.the("field {0}").locatedBy("[placeholder='{0}']");
     public static final Target CURRENT_PWD_FIELD = FORM_CHANGE_PWD.of("Nhập mật khẩu hiện tại");
