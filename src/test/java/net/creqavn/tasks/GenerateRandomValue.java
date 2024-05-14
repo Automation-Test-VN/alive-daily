@@ -6,16 +6,17 @@ public class GenerateRandomValue {
     private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     private static final String NUMBERS = "0123456789";
 
-    public static String generateRandomString(int length) {
-        StringBuilder sb = new StringBuilder(length);
+    public static String generateEmail() {
+        StringBuilder sb = new StringBuilder(10);
         Random random = new Random();
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < 10; i++) {
             sb.append(CHARACTERS.charAt(random.nextInt(CHARACTERS.length())));
+            sb.append("@yoopmail.com");
         }
         return sb.toString();
     }
 
-    public static String generateRandomNumericString(int length) {
+    public static String generateUserName(int length) {
         StringBuilder sb = new StringBuilder(length);
         Random random = new Random();
         String combinedChars = CHARACTERS + NUMBERS; // Kết hợp ký tự và số
@@ -25,7 +26,7 @@ public class GenerateRandomValue {
         return sb.toString();
     }
 
-    public static String generateRandomPhoneNumber() {
+    public static String generatePhoneNumber() {
         StringBuilder sb = new StringBuilder();
         sb.append("09");
         Random random = new Random();

@@ -2,11 +2,11 @@ package net.creqavn.features.mayman;
 
 import net.creqavn.models.LoginAccount;
 import net.creqavn.models.RegisterAccount;
-import net.creqavn.tasks.Login;
-import net.creqavn.tasks.Register;
-import net.creqavn.tasks.SwipeTo;
+import net.creqavn.tasks.*;
 import net.creqavn.tasks.Switch;
 import net.serenitybdd.annotations.Managed;
+import net.serenitybdd.annotations.WithTag;
+import net.serenitybdd.annotations.WithTags;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
@@ -31,6 +31,7 @@ import static net.serenitybdd.screenplay.GivenWhenThen.when;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestLucky88AliveDaily {
     static Actor swagger = Actor.named("Swagger");
+    public String RegisterUserName= GenerateRandomValue.generateUserName(10);
 
     @Managed(uniqueSession = true)
     public static WebDriver mightyBrowser;
@@ -46,9 +47,9 @@ public class TestLucky88AliveDaily {
     }
 
 
-    @Test()
+    @Test
     public void RegisterNewAccount() {
-        RegisterAccount registerAccount = new RegisterAccount();
+        RegisterAccount registerAccount = new RegisterAccount(RegisterUserName);
 
         when(swagger).attemptsTo(
                 Register.theUser(registerAccount),
@@ -63,7 +64,7 @@ public class TestLucky88AliveDaily {
 
         when(swagger).attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
-                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_NOHU)
+                Ensure.thatTheCurrentPage().currentUrl().contains(DOMAIN)
         );
     }
 
@@ -322,9 +323,9 @@ public class TestLucky88AliveDaily {
                 Login.theAccountHasBalance(loginAccount),
                 Click.on(AVATAR_USER),
                 Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_PROFILE),
-                Ensure.that(PROFILE_USERNAME_INFO).isDisplayed(),
-                Ensure.that(PROFILE_PWD_INFO).isDisplayed(),
-                Ensure.that(PROFILE_DISPLAY_NAME_INFO).isDisplayed()
+                Ensure.that(PROFILE_USERNAME).isDisplayed(),
+                Ensure.that(PROFILE_PWD).isDisplayed(),
+                Ensure.that(PROFILE_DISPLAY_NAME).isDisplayed()
         );
     }
 
@@ -352,6 +353,18 @@ public class TestLucky88AliveDaily {
                 Click.on(AVATAR_USER),
                 Click.on(VERIFY_PHONE_NUMBER_BTN),
                 Ensure.that(VERIFY_PHONE_NUMBER_NOW_BTN).isDisplayed()
+        );
+    }
+
+
+    @Test
+    public void zAccountVerifyEmail(){
+        LoginAccount loginAccount = new LoginAccount(RegisterUserName);
+        swagger.attemptsTo(
+                Login.theAccountJustRegistered(loginAccount),
+                Enter.keyValues(GenerateRandomValue.generateEmail()).into(PROFILE_EMAIL),
+                Click.on(VERIFY_EMAIL_BTN),
+                Ensure.that(EMAIL_CONFIRM_NOTIFICATION).isDisplayed()
         );
     }
 }

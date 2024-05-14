@@ -92,10 +92,13 @@ public class Lucky88Elements {
     public static final Target JACKPOT_FIRST_GAME = Target.the("jackpot first game").locatedBy("//div[@class='game-item swiper-slide swiper-slide-active']");
 
     public static final Target FORM_PROFILE_INFO = Target.the("field {0}").locatedBy("//div[@class='info-form']/div[{0}]//input[1]");
-    public static final Target PROFILE_USERNAME_INFO = FORM_PROFILE_INFO.of("1");
-    public static final Target PROFILE_PWD_INFO = FORM_PROFILE_INFO.of("2");
-    public static final Target PROFILE_DISPLAY_NAME_INFO = FORM_PROFILE_INFO.of("3");
+    public static final Target PROFILE_USERNAME = FORM_PROFILE_INFO.of("1");
+    public static final Target PROFILE_PWD = FORM_PROFILE_INFO.of("2");
+    public static final Target PROFILE_DISPLAY_NAME = FORM_PROFILE_INFO.of("3");
+    public static final Target PROFILE_EMAIL=FORM_PROFILE_INFO.of("5");
+    public static final Target VERIFY_EMAIL_BTN=Target.the("verify email button").locatedBy("//div[@class='info-form']/div[5]//span[.='Xác thực']");
     public static final String CONTAINS_PROFILE = "/account/user/profile";
+    public static final Target EMAIL_CONFIRM_NOTIFICATION=Target.the("email confirm notification").locatedBy("//div[@class='swal2-html-container']");
 
     public static final Target CHANGE_PWD_BTN = Target.the("change password button").locatedBy("//span[.='Thay đổi']");
     public static final Target FORM_CHANGE_PWD = Target.the("field {0}").locatedBy("[placeholder='{0}']");

@@ -29,6 +29,16 @@ public class Login {
         });
     }
 
+    public static Performable theAccountJustRegistered(LoginAccount loginAccount) {
+        return Task.where("{0} login the account", actor -> {
+            actor.attemptsTo(
+                    Enter.keyValues(loginAccount.getUserName()).into(LOGIN_USERNAME),
+                    Enter.keyValues(loginAccount.getPwd()).into(LOGIN_PWD),
+                    Click.on(LOGIN_SUBMIT)
+            );
+        });
+    }
+
     public static Performable theAccountHasBalanceOnPopup(LoginAccount loginAccount) {
         return Task.where("{0} login the account", actor -> {
             actor.attemptsTo(

@@ -5,17 +5,17 @@ import net.creqavn.tasks.GenerateRandomValue;
 public class RegisterAccount {
     private String userName;
     private String phoneNumber;
-    private  String pwd;
+    private String pwd;
 
-    public RegisterAccount(String userName, String phoneNumber, String pwd) {
+    public RegisterAccount(String userName) {
         this.userName = userName;
-        this.phoneNumber = phoneNumber;
-        this.pwd = pwd;
+        this.phoneNumber = GenerateRandomValue.generatePhoneNumber();
+        this.pwd = "Creq@123321";
     }
 
     public RegisterAccount() {
-        this.userName = GenerateRandomValue.generateRandomNumericString(10);;
-        this.phoneNumber = GenerateRandomValue.generateRandomPhoneNumber();;
+        this.userName = GenerateRandomValue.generateUserName(10);
+        this.phoneNumber = GenerateRandomValue.generatePhoneNumber();
         this.pwd = "Creq@123321";
     }
 
@@ -23,11 +23,23 @@ public class RegisterAccount {
         return userName;
     }
 
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public String getPwd() {
         return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
     }
 }
