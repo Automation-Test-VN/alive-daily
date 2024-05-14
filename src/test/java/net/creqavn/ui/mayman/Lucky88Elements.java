@@ -100,6 +100,7 @@ public class Lucky88Elements {
     public static final Target JACKPOT_MONTH = Target.the("jackpot month").locatedBy(".jackpot-home__center--month > .value");
     public static final Target JACKPOT_FISH = Target.the("jackpot fish").locatedBy(".jackpot-home__center--top-hu > .value");
     public static final Target JACKPOT_FIRST_GAME = Target.the("jackpot first game").locatedBy("//div[@class='game-item swiper-slide swiper-slide-active']");
+    public static final Target JACKPOT_FIRST_GAME_MONEY=Target.the("jackpot first game money").locatedBy(".swiper-wrapper[data-v-56b38ace] > div:nth-of-type(1) .animation-number");
 
     //PROFILE FORM
     public static final Target FORM_PROFILE_INFO = Target.the("field {0}").locatedBy("//div[@class='info-form']/div[{0}]//input[1]");
@@ -121,4 +122,11 @@ public class Lucky88Elements {
 
     public static final Target VERIFY_PHONE_NUMBER_BTN = Target.the("verify phone number button").locatedBy("//span[.='Xác thực']");
     public static final Target VERIFY_PHONE_NUMBER_NOW_BTN = Target.the("verify phone number now button").locatedBy("//div[@class='StepProgress-item__button']");
+
+    public static final Target LEFT_FOOTBALL_TEAM=Target.the("left football team").locatedBy(".swiper-slide-visible .hot-match-item__left > .hot-match-item__name");
+    public static final Target RIGHT_FOOTBAL_TEAM=Target.the("right football team").locatedBy(".swiper-slide-visible .hot-match-item__right > .hot-match-item__name");
+    public static final Target HOT_MATCH_BET_BTN=Target.the("hot match bet button").locatedBy(".swiper-slide-visible .btn-asport > span");
+    public static final Target HOT_MATCH_LEFT_TEAM=Target.the("hot match left team").locatedBy("//*[@class=\"wrapper-match-component \"]/div[1]/div[2]/div[1]/div[1]/div/div/div[1]/div");
+    public static final Target HOT_MATCH_RIGHT_TEAM=Target.the("hot match right team").locatedBy("//*[@class=\"wrapper-match-component \"]/div[1]/div[2]/div[1]/div[1]/div/div/div[2]/div");
+    public static final String HOT_MATCH_IFRAME="my-frame";
 }
