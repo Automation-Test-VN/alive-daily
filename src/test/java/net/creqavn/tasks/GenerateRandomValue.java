@@ -11,8 +11,8 @@ public class GenerateRandomValue {
         Random random = new Random();
         for (int i = 0; i < 10; i++) {
             sb.append(CHARACTERS.charAt(random.nextInt(CHARACTERS.length())));
-            sb.append("@yoopmail.com");
         }
+        sb.append("@yoopmail.com");
         return sb.toString();
     }
 
