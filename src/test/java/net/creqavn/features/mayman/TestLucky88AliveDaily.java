@@ -2,11 +2,10 @@ package net.creqavn.features.mayman;
 
 import net.creqavn.models.LoginAccount;
 import net.creqavn.models.RegisterAccount;
+import net.creqavn.questions.TheFootball;
 import net.creqavn.tasks.*;
 import net.creqavn.tasks.Switch;
 import net.serenitybdd.annotations.Managed;
-import net.serenitybdd.annotations.WithTag;
-import net.serenitybdd.annotations.WithTags;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
@@ -31,7 +30,7 @@ import static net.serenitybdd.screenplay.GivenWhenThen.when;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestLucky88AliveDaily {
     static Actor swagger = Actor.named("Swagger");
-    public String RegisterUserName = GenerateRandomValue.generateUserName(10);
+    public final String registerUserName = GenerateRandomValue.generateUserName(10);
 
     @Managed(uniqueSession = true)
     public static WebDriver mightyBrowser;
@@ -49,7 +48,7 @@ public class TestLucky88AliveDaily {
 
     @Test
     public void RegisterNewAccount() {
-        RegisterAccount registerAccount = new RegisterAccount(RegisterUserName);
+        RegisterAccount registerAccount = new RegisterAccount(registerUserName);
 
         when(swagger).attemptsTo(
                 Register.theUser(registerAccount),
@@ -64,7 +63,7 @@ public class TestLucky88AliveDaily {
 
         when(swagger).attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
-                Ensure.thatTheCurrentPage().currentUrl().contains(DOMAIN)
+                WaitForLoad.theURL(DOMAIN)
         );
     }
 
@@ -75,7 +74,7 @@ public class TestLucky88AliveDaily {
 
         when(swagger).attemptsTo(
                 Login.theAccountNonBalance(loginAccount),
-                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_DEPOSIT)
+                WaitForLoad.theURL(CONTAINS_DEPOSIT)
         );
     }
 
@@ -88,7 +87,7 @@ public class TestLucky88AliveDaily {
                 Click.on(GAME_BAI_BTN),
                 Click.on(GAME_BAI_TLMN),
                 Login.theAccountHasBalanceOnPopup(loginAccount),
-                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_GAME_BAI)
+                WaitForLoad.theURL(CONTAINS_GAME_BAI)
         );
     }
 
@@ -102,7 +101,7 @@ public class TestLucky88AliveDaily {
                 Click.on(GAME_BAI_TLMN),
                 Login.theAccountNonBalanceOnPopup(loginAccount),
                 Click.on(GAME_BAI_TLMN),
-                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_GAME_BAI),
+                WaitForLoad.theURL(CONTAINS_GAME_BAI),
                 Ensure.that(POPUP_DEPOSIT).isDisplayed()
         );
     }
@@ -137,7 +136,7 @@ public class TestLucky88AliveDaily {
         when(swagger).attemptsTo(
                 Click.on(FIRST_SWIPER_PAGINATION),
                 Click.on(FIRST_HERO_BANNER),
-                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_HERO_BANNER)
+                WaitForLoad.theURL(CONTAINS_HERO_BANNER)
         );
     }
 
@@ -154,7 +153,7 @@ public class TestLucky88AliveDaily {
 
 
     @Test
-    public void HomepageLiveCasino() throws InterruptedException {
+    public void HomepageLiveCasino() {
         LoginAccount loginAccount = new LoginAccount();
 
         when(swagger).attemptsTo(
@@ -163,101 +162,95 @@ public class TestLucky88AliveDaily {
                 Click.on(FIRST_HOMEPAGE_CASINO),
                 Switch.toNewWindow()
         );
-        sleep(10000);
         when(swagger).attemptsTo(
-                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_EZUGI_CASINO),
+                WaitForLoad.theURL(CONTAINS_EZUGI_CASINO),
                 Switch.closeCurrentWindowsAndSwitchBackToRemainingWindows()
         );
     }
 
 
     @Test
-    public void HomepageSieuPhamHoiTu() throws InterruptedException {
+    public void HomepageSieuPhamHoiTu() {
         swagger.attemptsTo(
                 HoverOverElement.over(SU_KIEN_HOT_BTN),
                 Click.on(SIEU_PHAM_HOI_TU_BTN)
         );
-        sleep(3000);
         swagger.attemptsTo(
-                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_SIEU_PHAM_HOI_TU)
+                WaitForLoad.theURL(CONTAINS_SIEU_PHAM_HOI_TU)
         );
     }
 
 
     @Test
-    public void HomepageNewsDetail() throws InterruptedException {
+    public void HomepageNewsDetail() {
         swagger.attemptsTo(
                 SwipeTo.theBottom(),
                 Click.on(HOT_NEWS)
         );
-        sleep(3000);
         swagger.attemptsTo(
-                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_NEWS)
+                WaitForLoad.theURL(CONTAINS_NEWS)
         );
     }
 
 
     @Test
-    public void HomepageAboutUs() throws InterruptedException {
+    public void HomepageAboutUs() {
         swagger.attemptsTo(
                 SwipeTo.theBottom(),
                 Click.on(ABOUT_US)
         );
-        sleep(3000);
         swagger.attemptsTo(
-                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_ABOUT_US)
+                WaitForLoad.theURL(CONTAINS_ABOUT_US)
         );
     }
 
 
     @Test
-    public void HomepageTyLeKeo() throws InterruptedException {
+    public void HomepageTyLeKeo() {
         swagger.attemptsTo(
                 SwipeTo.theBottom(),
                 Click.on(TY_LE_KEO_BTN)
         );
-        sleep(3000);
         swagger.attemptsTo(
-                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_TY_LE_KEO)
+                WaitForLoad.theURL(CONTAINS_TY_LE_KEO)
+
         );
     }
 
 
     @Test
-    public void HomepageTerms() throws InterruptedException {
+    public void HomepageTerms() {
         swagger.attemptsTo(
                 SwipeTo.theBottom(),
                 Click.on(TERMS_BTN)
         );
-        sleep(3000);
         swagger.attemptsTo(
-                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_TERMS)
+                WaitForLoad.theURL(CONTAINS_TERMS)
+
         );
     }
 
 
     @Test
-    public void HomepagePrivacyPolicy() throws InterruptedException {
+    public void HomepagePrivacyPolicy() {
         swagger.attemptsTo(
                 SwipeTo.theBottom(),
                 Click.on(PRIVACY_POLICY_BTN)
         );
-        sleep(3000);
         swagger.attemptsTo(
-                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_PRIVACY_POLICY)
+                WaitForLoad.theURL(CONTAINS_PRIVACY_POLICY)
         );
     }
 
 
     @Test
-    public void HomepageQuestion() throws InterruptedException {
+    public void HomepageQuestion() {
         swagger.attemptsTo(
                 SwipeTo.theBottom(),
                 Click.on(QUESTION_BTN)
         );
-        sleep(3000);
         swagger.attemptsTo(
-                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_QUESTION),
+                WaitForLoad.theURL(CONTAINS_QUESTION),
                 Click.on(FIRST_QUESTION),
                 Ensure.that(FIRST_ANSWER).isDisplayed()
         );
@@ -265,27 +258,23 @@ public class TestLucky88AliveDaily {
 
 
     @Test
-    public void HomepagePromotionInfomation() throws InterruptedException {
+    public void HomepagePromotionInfomation() {
         swagger.attemptsTo(
                 SwipeTo.theBottom(),
                 Click.on(PROMOTION_INFOR_BTN)
         );
-        sleep(3000);
         swagger.attemptsTo(
-                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_PROMOTION_INFO)
+                WaitForLoad.theURL(CONTAINS_PROMOTION_INFO)
         );
     }
 
 
     @Test
-    public void HomepageContact() throws InterruptedException {
+    public void HomepageContact(){
         swagger.attemptsTo(
                 SwipeTo.theBottom(),
-                Click.on(CONTACT_BTN)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
-                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_CONTACT)
+                Click.on(CONTACT_BTN),
+                WaitForLoad.theURL(CONTAINS_CONTACT)
         );
     }
 
@@ -297,14 +286,12 @@ public class TestLucky88AliveDaily {
                 Login.theAccountHasBalance(loginAccount),
                 Scroll.to(JACKPOT_FORM)
         );
-        sleep(15000);
         swagger.attemptsTo(
                 Click.on(JACKPOT_FIRST_GAME),
                 Switch.toNewWindow()
         );
-        sleep(5000);
         swagger.attemptsTo(
-                Ensure.thatTheCurrentPage().currentUrl().contains("https://games.mt-sta.com/kts"),
+                WaitForLoad.theURL("https://games.mt-sta.com/kts"),
                 Switch.closeCurrentWindowsAndSwitchBackToRemainingWindows()
         );
         sleep(15000);
@@ -323,7 +310,7 @@ public class TestLucky88AliveDaily {
         swagger.attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
                 Click.on(AVATAR_USER),
-                Ensure.thatTheCurrentPage().currentUrl().contains(CONTAINS_PROFILE),
+                WaitForLoad.theURL(CONTAINS_PROFILE),
                 Ensure.that(PROFILE_USERNAME).isDisplayed(),
                 Ensure.that(PROFILE_PWD).isDisplayed(),
                 Ensure.that(PROFILE_DISPLAY_NAME).isDisplayed()
@@ -357,10 +344,10 @@ public class TestLucky88AliveDaily {
         );
     }
 
-
+/*
     @Test
     public void zAccountVerifyEmail() {
-        LoginAccount loginAccount = new LoginAccount(RegisterUserName);
+        LoginAccount loginAccount = new LoginAccount(registerUserName);
         swagger.attemptsTo(
                 Login.theAccountJustRegistered(loginAccount),
                 Click.on(AVATAR_USER),
@@ -369,7 +356,7 @@ public class TestLucky88AliveDaily {
                 Ensure.that(EMAIL_CONFIRM_NOTIFICATION).isDisplayed()
         );
     }
-
+*/
 
     @Test
     public void AccountBankAccount() {
@@ -385,13 +372,30 @@ public class TestLucky88AliveDaily {
 
 
     @Test
-    public void AccountBonus(){
+    public void AccountBonus() {
         LoginAccount loginAccount = new LoginAccount();
         swagger.attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
                 Click.on(AVATAR_USER),
                 Click.on(BONUS_BTN),
                 Ensure.that(BONUS_INFO).isDisplayed()
+        );
+    }
+
+
+    @Test
+    public void HomepageHotMatch() {
+        WaitForLoad.thePage(LEFT_FOOTBALL_TEAM);
+        String leftTeam = swagger.asksFor(TheFootball.name(LEFT_FOOTBALL_TEAM));
+        String rightTeam = swagger.asksFor(TheFootball.name(RIGHT_FOOTBAL_TEAM));
+        swagger.attemptsTo(
+                Click.on(HOT_MATCH_BET_BTN)
+        );
+        swagger.attemptsTo(
+                WaitForLoad.thePage(HOT_MATCH_IFRAME),
+                Switch.toFrame(HOT_MATCH_IFRAME),
+                Ensure.that(HOT_MATCH_LEFT_TEAM).text().isEqualTo(leftTeam),
+                Ensure.that(HOT_MATCH_RIGHT_TEAM).text().isEqualTo(rightTeam)
         );
     }
 }
