@@ -452,15 +452,15 @@ public class TestLucky88AliveDaily {
     }
 
 
-//    @Test
-//    public void SportM(){
-//        LoginAccount loginAccount = new LoginAccount();
-//        swagger.attemptsTo(
-//                Login.theAccountHasBalance(loginAccount),
-//                Click.on(SPORT_BTN),
-//                Click.on(SPORT_M_BTN),
-//                Switch.toFrame(FIRST_IFRAME),
-//                Ensure.that(SPORT_M_VERIFY).isDisplayed()
-//        );
-//    }
+    @Test
+    public void SportM(){
+        LoginAccount loginAccount = new LoginAccount();
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Click.on(SPORT_BTN),
+                Click.on(SPORT_M_BTN),
+                Switch.toFrame(FIRST_IFRAME),
+                Ensure.that(SPORT_M_VERIFY).isDisplayed()
+        );
+    }
 }
