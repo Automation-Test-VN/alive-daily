@@ -12,11 +12,14 @@ import static net.creqavn.ui.mayman.Lucky88Elements.*;
 public class Login {
     public static Performable theAccountHasBalance(LoginAccount loginAccount) {
         return Task.where("{0} login the account has balance", actor -> {
+                    boolean loginState = TheLoginState.isElementPresent(AVATAR_USER).answeredBy(actor);
+                    if (!loginState) {
                         actor.attemptsTo(
                                 Enter.keyValues(ACCOUNT_HAS_BALANCE).into(LOGIN_USERNAME),
                                 Enter.keyValues(loginAccount.getPwd()).into(LOGIN_PWD),
                                 Click.on(LOGIN_SUBMIT)
                         );
+                    }
                 }
         );
     }
