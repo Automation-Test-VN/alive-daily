@@ -1,5 +1,6 @@
 package net.creqavn.features.mayman;
 
+import groovy.util.logging.Log;
 import net.creqavn.models.LoginAccount;
 import net.creqavn.models.RegisterAccount;
 import net.creqavn.questions.TheFootball;
@@ -414,6 +415,18 @@ public class TestLucky88AliveDaily {
                 Click.on(SPORT_E_SPORT_BTN),
                 Switch.toNewWindow(),
                 Ensure.that(SPORT_E_SPORT_VERIFY).isDisplayed(),
+                Switch.toMainWindowAfterCloseCurrentWindow()
+        );
+    }
+
+    @Test
+    public void SportHorseRacing(){
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                HoverOverElement.over(SPORT_BTN),
+                Click.on(SPORT_HORSE_RACING_BTN),
+                Switch.toNewWindow(),
+                WaitForLoad.theURL(CONTAINS_HORSE_RACING),
                 Switch.toMainWindowAfterCloseCurrentWindow()
         );
     }

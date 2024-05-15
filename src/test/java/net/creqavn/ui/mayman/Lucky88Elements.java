@@ -148,5 +148,6 @@ public class Lucky88Elements {
     public static final Target SPORT_VIRTUAL_VERIFY = Target.the("sport virtual verify").locatedBy("//*[@id=\"mainArea\"]/div/div[2]/div[2]/div[2]/div/div[1]/div[1]");
     public static final Target SPORT_E_SPORT_BTN=Target.the("sport e-sport button").locatedBy("//span[contains(.,'Thể thao điện tử')]");
     public static final Target SPORT_E_SPORT_VERIFY=Target.the("sport e-sport verify").locatedBy("//div[@class='match match--parlay in-play ']");
-
+    public static final Target SPORT_HORSE_RACING_BTN=Target.the("sport horse racing button").locatedBy("//a[contains(.,'Đua Ngựa 3D')]");
+    public static final String CONTAINS_HORSE_RACING="https://games.mt-sta.com/kts6998";
 }
