@@ -3,7 +3,6 @@ package net.creqavn.features.mayman;
 import net.creqavn.models.LoginAccount;
 import net.creqavn.models.RegisterAccount;
 import net.creqavn.questions.TheFootball;
-import net.creqavn.questions.TheLoginState;
 import net.creqavn.tasks.*;
 import net.creqavn.tasks.Switch;
 import net.serenitybdd.annotations.Managed;
@@ -139,7 +138,7 @@ public class TestLucky88AliveDaily {
                 Click.on(FIRST_HOMEPAGE_CASINO),
                 Switch.toNewWindow(),
                 WaitForLoad.theURL(CONTAINS_EZUGI_CASINO),
-                Switch.closeCurrentWindowsAndSwitchBackToRemainingWindows()
+                Switch.toMainWindowAfterCloseCurrentWindow()
         );
     }
 
@@ -234,9 +233,9 @@ public class TestLucky88AliveDaily {
                 Click.on(JACKPOT_FIRST_GAME),
                 Switch.toNewWindow(),
                 WaitForLoad.theURL("https://games.mt-sta.com/kts"),
-                Switch.closeCurrentWindowsAndSwitchBackToRemainingWindows()
+                Switch.toMainWindowAfterCloseCurrentWindow()
         );
-        sleep(15000);
+        sleep(20000);
         swagger.attemptsTo(
                 Ensure.that(JACKPOT_RECENT).text().isNotEmpty(),
                 Ensure.that(JACKPOT_MONTH).text().isNotEmpty(),
@@ -330,7 +329,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void SportK() {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+//                Login.theAccountHasBalance(loginAccount),
                 Click.on(SPORT_BTN),
                 Browser.refreshPage(),
                 WaitForLoad.thePage(SPORT_K_BTN),
@@ -366,7 +365,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void SportC() {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+//                Login.theAccountHasBalance(loginAccount),
                 Click.on(SPORT_BTN),
                 Click.on(SPORT_C_BTN),
                 Switch.toFrame(FIRST_IFRAME),
@@ -391,6 +390,19 @@ public class TestLucky88AliveDaily {
                 HoverOverElement.over(SPORT_BTN),
                 Click.on(SPORT_HOT_DEAL_BTN),
                 Ensure.that(SPORT_HOT_DEAL_VERIFY).isDisplayed()
+        );
+    }
+
+    @Test
+    public void SportVirtual() {
+        swagger.attemptsTo(
+                HoverOverElement.over(SPORT_BTN),
+                Click.on(SPORT_VIRTUAL_BTN),
+                Switch.toNewWindow(),
+                WaitForLoad.thePage(SPORT_IFRAME),
+                Switch.toFrame(SPORT_IFRAME),
+                Ensure.that(SPORT_VIRTUAL_VERIFY).isDisplayed(),
+                Switch.toMainWindowAfterCloseCurrentWindow()
         );
     }
 }

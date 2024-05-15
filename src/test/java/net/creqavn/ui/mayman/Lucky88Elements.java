@@ -15,8 +15,8 @@ public class Lucky88Elements {
     public static final Target ADD_BANK_ACCOUNT_BTN = Target.the("add bank account button").locatedBy("//div[@class='button-wrapper']");
     public static final Target FORM_BANK_ACCOUNT = Target.the("form bank account").locatedBy("//p[.='Thông tin ngân hàng']");
 
-    public static final Target BONUS_BTN=Target.the("bonus button").locatedBy("//span[.='Thưởng']");
-    public static final Target BONUS_INFO=Target.the("bonus info").locatedBy("//div[@class='information__center']");
+    public static final Target BONUS_BTN = Target.the("bonus button").locatedBy("//span[.='Thưởng']");
+    public static final Target BONUS_INFO = Target.the("bonus info").locatedBy("//div[@class='information__center']");
 
     // REGISTER FORM
     public static final Target REGISTER_FORM = Target.the("{0} field").locatedBy(" //form[@class='form-register register__form']//input[@placeholder='{0}']");
@@ -100,7 +100,7 @@ public class Lucky88Elements {
     public static final Target JACKPOT_MONTH = Target.the("jackpot month").locatedBy(".jackpot-home__center--month > .value");
     public static final Target JACKPOT_FISH = Target.the("jackpot fish").locatedBy(".jackpot-home__center--top-hu > .value");
     public static final Target JACKPOT_FIRST_GAME = Target.the("jackpot first game").locatedBy("//div[@class='game-item swiper-slide swiper-slide-active']");
-    public static final Target JACKPOT_FIRST_GAME_MONEY=Target.the("jackpot first game money").locatedBy(".swiper-wrapper[data-v-56b38ace] > div:nth-of-type(1) .animation-number");
+    public static final Target JACKPOT_FIRST_GAME_MONEY = Target.the("jackpot first game money").locatedBy(".swiper-wrapper[data-v-56b38ace] > div:nth-of-type(1) .animation-number");
 
     //PROFILE FORM
     public static final Target FORM_PROFILE_INFO = Target.the("field {0}").locatedBy("//div[@class='info-form']/div[{0}]//input[1]");
@@ -123,25 +123,27 @@ public class Lucky88Elements {
     public static final Target VERIFY_PHONE_NUMBER_BTN = Target.the("verify phone number button").locatedBy("//span[.='Xác thực']");
     public static final Target VERIFY_PHONE_NUMBER_NOW_BTN = Target.the("verify phone number now button").locatedBy("//div[@class='StepProgress-item__button']");
 
-    public static final Target LEFT_FOOTBALL_TEAM=Target.the("left football team").locatedBy(".swiper-slide-visible .hot-match-item__left > .hot-match-item__name");
-    public static final Target RIGHT_FOOTBAL_TEAM=Target.the("right football team").locatedBy(".swiper-slide-visible .hot-match-item__right > .hot-match-item__name");
-    public static final Target HOT_MATCH_BET_BTN=Target.the("hot match bet button").locatedBy(".swiper-slide-visible .btn-asport > span");
-    public static final Target HOT_MATCH_LEFT_TEAM=Target.the("hot match left team").locatedBy("//*[@class=\"wrapper-match-component \"]/div[1]/div[2]/div[1]/div[1]/div/div/div[1]/div");
-    public static final Target HOT_MATCH_RIGHT_TEAM=Target.the("hot match right team").locatedBy("//*[@class=\"wrapper-match-component \"]/div[1]/div[2]/div[1]/div[1]/div/div/div[2]/div");
-    public static final String FIRST_IFRAME ="my-frame";
+    public static final Target LEFT_FOOTBALL_TEAM = Target.the("left football team").locatedBy(".swiper-slide-visible .hot-match-item__left > .hot-match-item__name");
+    public static final Target RIGHT_FOOTBAL_TEAM = Target.the("right football team").locatedBy(".swiper-slide-visible .hot-match-item__right > .hot-match-item__name");
+    public static final Target HOT_MATCH_BET_BTN = Target.the("hot match bet button").locatedBy(".swiper-slide-visible .btn-asport > span");
+    public static final Target HOT_MATCH_LEFT_TEAM = Target.the("hot match left team").locatedBy("//*[@class=\"wrapper-match-component \"]/div[1]/div[2]/div[1]/div[1]/div/div/div[1]/div");
+    public static final Target HOT_MATCH_RIGHT_TEAM = Target.the("hot match right team").locatedBy("//*[@class=\"wrapper-match-component \"]/div[1]/div[2]/div[1]/div[1]/div/div/div[2]/div");
+    public static final String FIRST_IFRAME = "my-frame";
     public static final String SPORT_IFRAME = "sportsFrame";
 
-    public static final Target SPORT_BTN=Target.the("sport button").locatedBy("//span[.='THỂ THAO']");
-    public static final Target SPORT_K_BTN=Target.the("sport k button").locatedBy("//img[@alt='thể thao ksport']");
-    public static final Target SPORT_K_VERIFY=Target.the("sport k verify").locatedBy(".wrapper-match-live > .handicap-match-header");
-    public static final Target SPORT_I_BTN=Target.the("sport i button").locatedBy("//img[@alt='thể thao i-sports']");
-    public static final Target SPORT_I_VERIFY=Target.the("sport i verify").locatedBy("//*[@id=\"rc_streamer_frame\"]");
-    public static final Target SPORT_A_BTN=Target.the("sport a button").locatedBy("//img[@alt='thể thao asports']");
-    public static final Target SPORT_A_VERIFY=Target.the("sport a verify").locatedBy("//*[@id=\"mainArea\"]/div/div[2]/div[1]");
-    public static final Target SPORT_C_BTN=Target.the("sport c button").locatedBy("//img[@alt='thể thao csport']");
-    public static final Target SPORT_C_VERIFY=Target.the("sport c verify").locatedBy("//*[@id=\"isEventPage\"]/div[2]/section[1]/header");
-    public static final Target SPORT_M_BTN=Target.the("sport m button").locatedBy("//img[@alt='thể thao msport']");
-    public static final Target SPORT_M_VERIFY=Target.the("sport m verify").locatedBy("handicap-ou-component > [data-radium='true'] > div:nth-of-type(1) > div");
-    public static final Target SPORT_HOT_DEAL_BTN=Target.the("sport hot deal button").locatedBy("//span[@class='sub-title sub-title--hot']");
-    public static final Target SPORT_HOT_DEAL_VERIFY=Target.the("sport hot deal verify").locatedBy("//div[@class='league__matchs']");
+    public static final Target SPORT_BTN = Target.the("sport button").locatedBy("//span[.='THỂ THAO']");
+    public static final Target SPORT_K_BTN = Target.the("sport k button").locatedBy("//img[@alt='thể thao ksport']");
+    public static final Target SPORT_K_VERIFY = Target.the("sport k verify").locatedBy(".wrapper-match-live > .handicap-match-header");
+    public static final Target SPORT_I_BTN = Target.the("sport i button").locatedBy("//img[@alt='thể thao i-sports']");
+    public static final Target SPORT_I_VERIFY = Target.the("sport i verify").locatedBy("//*[@id=\"rc_streamer_frame\"]");
+    public static final Target SPORT_A_BTN = Target.the("sport a button").locatedBy("//img[@alt='thể thao asports']");
+    public static final Target SPORT_A_VERIFY = Target.the("sport a verify").locatedBy("//*[@id=\"mainArea\"]/div/div[2]/div[1]");
+    public static final Target SPORT_C_BTN = Target.the("sport c button").locatedBy("//img[@alt='thể thao csport']");
+    public static final Target SPORT_C_VERIFY = Target.the("sport c verify").locatedBy("//*[@id=\"isEventPage\"]/div[2]/section[1]/header");
+    public static final Target SPORT_M_BTN = Target.the("sport m button").locatedBy("//img[@alt='thể thao msport']");
+    public static final Target SPORT_M_VERIFY = Target.the("sport m verify").locatedBy("handicap-ou-component > [data-radium='true'] > div:nth-of-type(1) > div");
+    public static final Target SPORT_HOT_DEAL_BTN = Target.the("sport hot deal button").locatedBy("//span[@class='sub-title sub-title--hot']");
+    public static final Target SPORT_HOT_DEAL_VERIFY = Target.the("sport hot deal verify").locatedBy("//div[@class='league__matchs']");
+    public static final Target SPORT_VIRTUAL_BTN = Target.the("sport virtual button").locatedBy("//div[@class='sub-menu sports']//span[contains(.,'Thể Thao Ảo')]");
+    public static final Target SPORT_VIRTUAL_VERIFY = Target.the("sport virtual verify").locatedBy("//*[@id=\"mainArea\"]/div/div[2]/div[2]/div[2]/div/div[1]/div[1]");
 }
