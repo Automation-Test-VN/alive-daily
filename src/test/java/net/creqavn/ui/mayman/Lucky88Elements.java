@@ -157,5 +157,7 @@ public class Lucky88Elements {
     public static final Target FIRST_TABLE_PLAY_BTN=Target.the("first table play button").locatedBy("//div[@class='lobby-game-list']/div[1]//a[@href='javascript:void(0)']");
     public static final Target VIVO_CASINO_BTN=Target.the("vivo casino button").locatedBy("//a[contains(.,'Vivo gaming')]");
     public static final Target VIVO_CASINO_VERIFY=Target.the("vivo casino verify").locatedBy("//div[@class='center cell']");
-
+    public static final Target MG_CASINO_BTN=Target.the("mg casino button").locatedBy("//a[contains(.,'MG live')]");
+    public static final Target MG_CASINO_VERIFY=Target.the("mg casino verify").locatedBy("//canvas[@id='render-canvas']");
+    public static final String CONTAINS_MG_CASINO="https://contapp8895.agconth5.com/";
 }
