@@ -5,7 +5,6 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.questions.TheSize;
-import net.serenitybdd.screenplay.questions.TheValue;
 import net.serenitybdd.screenplay.targets.Target;
 
 
