@@ -384,4 +384,13 @@ public class TestLucky88AliveDaily {
                 Ensure.that(SPORT_M_VERIFY).isDisplayed()
         );
     }
+
+    @Test
+    public void SportHotDeal() {
+        swagger.attemptsTo(
+                HoverOverElement.over(SPORT_BTN),
+                Click.on(SPORT_HOT_DEAL_BTN),
+                Ensure.that(SPORT_HOT_DEAL_VERIFY).isDisplayed()
+        );
+    }
 }
