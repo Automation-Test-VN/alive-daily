@@ -62,7 +62,6 @@ public class Lucky88Elements {
     public static final Target BALANCE_NUMBER = Target.the("balance number").locatedBy("//span[@class='total-balance__number']");
 
     public static final Target FIRST_HOMEPAGE_CASINO = Target.the("first homepage casino").locatedBy("//div[@class='game-provider']/div[1]");
-    public static final String CONTAINS_EZUGI_CASINO = "play.livetables.io";
 
     public static final Target HOT_NEWS = Target.the("hot news").locatedBy("//div[@class='news-category__hot col-4']/a");
     public static final String CONTAINS_NEWS = "/news/detail";
@@ -160,4 +159,7 @@ public class Lucky88Elements {
     public static final Target MG_CASINO_BTN=Target.the("mg casino button").locatedBy("//a[contains(.,'MG live')]");
     public static final Target MG_CASINO_VERIFY=Target.the("mg casino verify").locatedBy("//canvas[@id='render-canvas']");
     public static final String CONTAINS_MG_CASINO="https://contapp8895.agconth5.com/";
+    public static final Target EZUGI_CASINO_BTN=Target.the("ezugi casino button").locatedBy("//a[contains(.,'Ezugi')]");
+    public static final Target EZUGI_CASINO_VERIFY=Target.the("ezugi casino verify").locatedBy("//*[@id=\"scroller\"]/div[1]/div[3]/div/div[2]/div[*]");
+    public static final String CONTAINS_EZUGI_CASINO="https://play.livetables.io/";
 }

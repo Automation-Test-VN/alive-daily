@@ -441,7 +441,7 @@ public class TestLucky88AliveDaily {
                 Switch.toNewWindow(),
                 WaitForLoad.thePage(VIVO_CASINO_VERIFY)
         );
-        sleep(5000);
+        sleep(10000);
         swagger.attemptsTo(
                 Ensure.that(VIVO_CASINO_VERIFY).isDisplayed(),
                 Switch.toMainWindowAfterCloseCurrentWindow()
@@ -458,9 +458,23 @@ public class TestLucky88AliveDaily {
                 Switch.toNewWindow(),
                 WaitForLoad.theURL(CONTAINS_MG_CASINO)
         );
-        sleep(5000);
+        sleep(10000);
         swagger.attemptsTo(
                 Ensure.that(MG_CASINO_VERIFY).isDisplayed(),
+                Switch.toMainWindowAfterCloseCurrentWindow()
+        );
+    }
+
+    @Test
+    public void CasinoEzugi() {
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Click.on(LIVE_CASINO_BTN),
+                Click.on(EZUGI_CASINO_BTN),
+                Click.on(FIRST_TABLE_PLAY_BTN),
+                Switch.toNewWindow(),
+                WaitForLoad.theURL(CONTAINS_EZUGI_CASINO),
+                WaitForLoad.thePage(EZUGI_CASINO_VERIFY),
                 Switch.toMainWindowAfterCloseCurrentWindow()
         );
     }
