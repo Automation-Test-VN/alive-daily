@@ -430,4 +430,21 @@ public class TestLucky88AliveDaily {
                 Switch.toMainWindowAfterCloseCurrentWindow()
         );
     }
+
+    @Test
+    public void CasinoVivo() throws InterruptedException {
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Click.on(LIVE_CASINO_BTN),
+                Click.on(VIVO_CASINO_BTN),
+                Click.on(FIRST_TABLE_PLAY_BTN),
+                Switch.toNewWindow(),
+                WaitForLoad.thePage(VIVO_CASINO_VERIFY)
+        );
+        sleep(5000);
+        swagger.attemptsTo(
+                Ensure.that(VIVO_CASINO_VERIFY).isDisplayed(),
+                Switch.toMainWindowAfterCloseCurrentWindow()
+        );
+    }
 }

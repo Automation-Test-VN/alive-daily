@@ -131,6 +131,7 @@ public class Lucky88Elements {
     public static final String FIRST_IFRAME = "my-frame";
     public static final String SPORT_IFRAME = "sportsFrame";
 
+    // SPORT SESSION
     public static final Target SPORT_BTN = Target.the("sport button").locatedBy("//span[.='THỂ THAO']");
     public static final Target SPORT_K_BTN = Target.the("sport k button").locatedBy("//img[@alt='thể thao ksport']");
     public static final Target SPORT_K_VERIFY = Target.the("sport k verify").locatedBy(".wrapper-match-live > .handicap-match-header");
@@ -150,4 +151,11 @@ public class Lucky88Elements {
     public static final Target SPORT_E_SPORT_VERIFY=Target.the("sport e-sport verify").locatedBy("//div[@class='match match--parlay in-play ']");
     public static final Target SPORT_HORSE_RACING_BTN=Target.the("sport horse racing button").locatedBy("//a[contains(.,'Đua Ngựa 3D')]");
     public static final String CONTAINS_HORSE_RACING="https://games.mt-sta.com/kts6998";
+
+    // CASINO SESSION
+    public static final Target LIVE_CASINO_BTN=Target.the("casino button").locatedBy("//span[.='casino']");
+    public static final Target FIRST_TABLE_PLAY_BTN=Target.the("first table play button").locatedBy("//div[@class='lobby-game-list']/div[1]//a[@href='javascript:void(0)']");
+    public static final Target VIVO_CASINO_BTN=Target.the("vivo casino button").locatedBy("//a[contains(.,'Vivo gaming')]");
+    public static final Target VIVO_CASINO_VERIFY=Target.the("vivo casino verify").locatedBy("//div[@class='center cell']");
+
 }
