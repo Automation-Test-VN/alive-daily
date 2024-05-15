@@ -3,11 +3,10 @@ package net.creqavn.features.mayman;
 import net.creqavn.models.LoginAccount;
 import net.creqavn.models.RegisterAccount;
 import net.creqavn.questions.TheFootball;
+import net.creqavn.questions.TheLoginState;
 import net.creqavn.tasks.*;
 import net.creqavn.tasks.Switch;
 import net.serenitybdd.annotations.Managed;
-import net.serenitybdd.annotations.WithTag;
-import net.serenitybdd.annotations.WithTags;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
@@ -32,7 +31,8 @@ import static net.serenitybdd.screenplay.GivenWhenThen.when;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestLucky88AliveDaily {
     static Actor swagger = Actor.named("Swagger");
-
+    static RegisterAccount registerAccount = new RegisterAccount();
+    static LoginAccount loginAccount = new LoginAccount();
 
     @Managed(uniqueSession = true)
     public static WebDriver mightyBrowser;
@@ -50,41 +50,30 @@ public class TestLucky88AliveDaily {
 
     @Test
     public void RegisterNewAccount() {
-        RegisterAccount registerAccount = new RegisterAccount();
         when(swagger).attemptsTo(
                 Register.theUser(registerAccount),
                 Ensure.that(WELCOME_POPUP).isEnabled()
         );
-        swagger.remember("register", registerAccount);
     }
-
 
     @Test
     public void LoginWithAccountHasBalance() {
-        LoginAccount loginAccount = new LoginAccount();
-
         when(swagger).attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
                 WaitForLoad.theURL(DOMAIN)
         );
     }
 
-
     @Test
     public void LoginWithAccountNonBalance() {
-        LoginAccount loginAccount = new LoginAccount();
-
         when(swagger).attemptsTo(
                 Login.theAccountNonBalance(loginAccount),
                 WaitForLoad.theURL(CONTAINS_DEPOSIT)
         );
     }
 
-
     @Test
     public void AccessFunctionWithAccountHasBalance() {
-        LoginAccount loginAccount = new LoginAccount();
-
         when(swagger).attemptsTo(
                 Click.on(GAME_BAI_BTN),
                 Click.on(GAME_BAI_TLMN),
@@ -93,11 +82,8 @@ public class TestLucky88AliveDaily {
         );
     }
 
-
     @Test
     public void AccessFunctionWithAccountNonBalance() {
-        LoginAccount loginAccount = new LoginAccount();
-
         when(swagger).attemptsTo(
                 Click.on(GAME_BAI_BTN),
                 Click.on(GAME_BAI_TLMN),
@@ -107,7 +93,6 @@ public class TestLucky88AliveDaily {
                 Ensure.that(POPUP_DEPOSIT).isDisplayed()
         );
     }
-
 
     @Test
     public void ForgetPassword() {
@@ -119,11 +104,8 @@ public class TestLucky88AliveDaily {
         );
     }
 
-
     @Test
     public void LogOut() {
-        LoginAccount loginAccount = new LoginAccount();
-
         when(swagger).attemptsTo(
                 Login.theAccountNonBalance(loginAccount),
                 Click.on(AVATAR_USER),
@@ -131,7 +113,6 @@ public class TestLucky88AliveDaily {
                 Ensure.that(LOGIN_USERNAME).isDisplayed()
         );
     }
-
 
     @Test
     public void HomepageHeroBanner() {
@@ -142,137 +123,102 @@ public class TestLucky88AliveDaily {
         );
     }
 
-
     @Test
     public void HomepageCashBack() {
-        LoginAccount loginAccount = new LoginAccount();
-
         when(swagger).attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
                 Ensure.that(BALANCE_NUMBER).text().isEqualTo("200")
         );
     }
 
-
     @Test
     public void HomepageLiveCasino() {
-        LoginAccount loginAccount = new LoginAccount();
-
         when(swagger).attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
                 Scroll.to(FIRST_HOMEPAGE_CASINO),
                 Click.on(FIRST_HOMEPAGE_CASINO),
-                Switch.toNewWindow()
-        );
-        when(swagger).attemptsTo(
+                Switch.toNewWindow(),
                 WaitForLoad.theURL(CONTAINS_EZUGI_CASINO),
                 Switch.closeCurrentWindowsAndSwitchBackToRemainingWindows()
         );
     }
 
-
     @Test
     public void HomepageSieuPhamHoiTu() {
         swagger.attemptsTo(
                 HoverOverElement.over(SU_KIEN_HOT_BTN),
-                Click.on(SIEU_PHAM_HOI_TU_BTN)
-        );
-        swagger.attemptsTo(
+                Click.on(SIEU_PHAM_HOI_TU_BTN),
                 WaitForLoad.theURL(CONTAINS_SIEU_PHAM_HOI_TU)
         );
     }
-
 
     @Test
     public void HomepageNewsDetail() {
         swagger.attemptsTo(
                 SwipeTo.theBottom(),
-                Click.on(HOT_NEWS)
-        );
-        swagger.attemptsTo(
+                Click.on(HOT_NEWS),
                 WaitForLoad.theURL(CONTAINS_NEWS)
         );
     }
-
 
     @Test
     public void HomepageAboutUs() {
         swagger.attemptsTo(
                 SwipeTo.theBottom(),
-                Click.on(ABOUT_US)
-        );
-        swagger.attemptsTo(
+                Click.on(ABOUT_US),
                 WaitForLoad.theURL(CONTAINS_ABOUT_US)
         );
     }
-
 
     @Test
     public void HomepageTyLeKeo() {
         swagger.attemptsTo(
                 SwipeTo.theBottom(),
-                Click.on(TY_LE_KEO_BTN)
-        );
-        swagger.attemptsTo(
+                Click.on(TY_LE_KEO_BTN),
                 WaitForLoad.theURL(CONTAINS_TY_LE_KEO)
-
         );
     }
-
 
     @Test
     public void HomepageTerms() {
         swagger.attemptsTo(
                 SwipeTo.theBottom(),
-                Click.on(TERMS_BTN)
-        );
-        swagger.attemptsTo(
+                Click.on(TERMS_BTN),
                 WaitForLoad.theURL(CONTAINS_TERMS)
-
         );
     }
-
 
     @Test
     public void HomepagePrivacyPolicy() {
         swagger.attemptsTo(
                 SwipeTo.theBottom(),
-                Click.on(PRIVACY_POLICY_BTN)
-        );
-        swagger.attemptsTo(
+                Click.on(PRIVACY_POLICY_BTN),
                 WaitForLoad.theURL(CONTAINS_PRIVACY_POLICY)
         );
     }
-
 
     @Test
     public void HomepageQuestion() {
         swagger.attemptsTo(
                 SwipeTo.theBottom(),
-                Click.on(QUESTION_BTN)
-        );
-        swagger.attemptsTo(
+                Click.on(QUESTION_BTN),
                 WaitForLoad.theURL(CONTAINS_QUESTION),
                 Click.on(FIRST_QUESTION),
                 Ensure.that(FIRST_ANSWER).isDisplayed()
         );
     }
 
-
     @Test
     public void HomepagePromotionInfomation() {
         swagger.attemptsTo(
                 SwipeTo.theBottom(),
-                Click.on(PROMOTION_INFOR_BTN)
-        );
-        swagger.attemptsTo(
+                Click.on(PROMOTION_INFOR_BTN),
                 WaitForLoad.theURL(CONTAINS_PROMOTION_INFO)
         );
     }
 
-
     @Test
-    public void HomepageContact(){
+    public void HomepageContact() {
         swagger.attemptsTo(
                 SwipeTo.theBottom(),
                 Click.on(CONTACT_BTN),
@@ -280,19 +226,13 @@ public class TestLucky88AliveDaily {
         );
     }
 
-
     @Test
     public void HomepageJackpot() throws InterruptedException {
-        LoginAccount loginAccount = new LoginAccount();
         swagger.attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
-                Scroll.to(JACKPOT_FORM)
-        );
-        swagger.attemptsTo(
+                Scroll.to(JACKPOT_FORM),
                 Click.on(JACKPOT_FIRST_GAME),
-                Switch.toNewWindow()
-        );
-        swagger.attemptsTo(
+                Switch.toNewWindow(),
                 WaitForLoad.theURL("https://games.mt-sta.com/kts"),
                 Switch.closeCurrentWindowsAndSwitchBackToRemainingWindows()
         );
@@ -305,10 +245,8 @@ public class TestLucky88AliveDaily {
         );
     }
 
-
     @Test
     public void AccountInfor() {
-        LoginAccount loginAccount = new LoginAccount();
         swagger.attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
                 Click.on(AVATAR_USER),
@@ -319,10 +257,8 @@ public class TestLucky88AliveDaily {
         );
     }
 
-
     @Test
     public void AccountChangePassword() {
-        LoginAccount loginAccount = new LoginAccount();
         swagger.attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
                 Click.on(AVATAR_USER),
@@ -334,10 +270,8 @@ public class TestLucky88AliveDaily {
         );
     }
 
-
     @Test
     public void AccountVerifyPhoneNumber() {
-        LoginAccount loginAccount = new LoginAccount();
         swagger.attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
                 Click.on(AVATAR_USER),
@@ -346,11 +280,8 @@ public class TestLucky88AliveDaily {
         );
     }
 
-
     @Test
     public void zAccountVerifyEmail() {
-        RegisterAccount registerAccount = swagger.recall("register");
-
         LoginAccount loginAccount = new LoginAccount(registerAccount.getUserName());
         swagger.attemptsTo(
                 Login.theAccountJustRegistered(loginAccount),
@@ -363,7 +294,6 @@ public class TestLucky88AliveDaily {
 
     @Test
     public void AccountBankAccount() {
-        LoginAccount loginAccount = new LoginAccount();
         swagger.attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
                 Click.on(AVATAR_USER),
@@ -373,10 +303,8 @@ public class TestLucky88AliveDaily {
         );
     }
 
-
     @Test
     public void AccountBonus() {
-        LoginAccount loginAccount = new LoginAccount();
         swagger.attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
                 Click.on(AVATAR_USER),
@@ -392,34 +320,28 @@ public class TestLucky88AliveDaily {
         String leftTeam = swagger.asksFor(TheFootball.name(LEFT_FOOTBALL_TEAM));
         String rightTeam = swagger.asksFor(TheFootball.name(RIGHT_FOOTBAL_TEAM));
         swagger.attemptsTo(
-                Click.on(HOT_MATCH_BET_BTN)
-
-        );
-        swagger.attemptsTo(
+                Click.on(HOT_MATCH_BET_BTN),
                 Switch.toFrame(FIRST_IFRAME),
                 Ensure.that(HOT_MATCH_LEFT_TEAM).text().isEqualTo(leftTeam),
                 Ensure.that(HOT_MATCH_RIGHT_TEAM).text().isEqualTo(rightTeam)
         );
     }
 
-
     @Test
-    public void SportK(){
-        LoginAccount loginAccount = new LoginAccount();
+    public void SportK() {
         swagger.attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
                 Click.on(SPORT_BTN),
                 Browser.refreshPage(),
+                WaitForLoad.thePage(SPORT_K_BTN),
                 Click.on(SPORT_K_BTN),
                 Switch.toFrame(FIRST_IFRAME),
                 Ensure.that(SPORT_K_VERIFY).isDisplayed()
         );
     }
 
-
     @Test
-    public void SportI(){
-        LoginAccount loginAccount = new LoginAccount();
+    public void SportI() {
         swagger.attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
                 Click.on(SPORT_BTN),
@@ -429,23 +351,20 @@ public class TestLucky88AliveDaily {
         );
     }
 
-
     @Test
-    public void SportA(){
-        LoginAccount loginAccount = new LoginAccount();
+    public void SportA() {
         swagger.attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
                 Click.on(SPORT_BTN),
                 Click.on(SPORT_A_BTN),
                 Switch.toFrame(FIRST_IFRAME),
+                Switch.toFrame(SPORT_IFRAME),
                 Ensure.that(SPORT_A_VERIFY).isDisplayed()
         );
     }
 
-
     @Test
-    public void SportC(){
-        LoginAccount loginAccount = new LoginAccount();
+    public void SportC() {
         swagger.attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
                 Click.on(SPORT_BTN),
@@ -455,10 +374,8 @@ public class TestLucky88AliveDaily {
         );
     }
 
-
     @Test
-    public void SportM(){
-        LoginAccount loginAccount = new LoginAccount();
+    public void SportM() {
         swagger.attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
                 Click.on(SPORT_BTN),
