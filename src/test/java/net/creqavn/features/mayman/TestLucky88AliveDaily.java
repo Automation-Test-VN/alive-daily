@@ -405,4 +405,16 @@ public class TestLucky88AliveDaily {
                 Switch.toMainWindowAfterCloseCurrentWindow()
         );
     }
+
+    @Test
+    public void SportESport(){
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                HoverOverElement.over(SPORT_BTN),
+                Click.on(SPORT_E_SPORT_BTN),
+                Switch.toNewWindow(),
+                Ensure.that(SPORT_E_SPORT_VERIFY).isDisplayed(),
+                Switch.toMainWindowAfterCloseCurrentWindow()
+        );
+    }
 }
