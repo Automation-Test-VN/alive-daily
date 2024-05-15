@@ -11,13 +11,14 @@ import net.serenitybdd.screenplay.targets.Target;
 public class WaitForLoad {
     public static Performable thePage(Target element) {
         return Task.where("{0} wait for element loaded on the page", actor -> {
+            BrowseTheWeb.as(actor).evaluateJavascript("return document.readyState=='complete'");
             Ensure.that(TheSize.of(element).asInteger()).isGreaterThan(1);
-//            BrowseTheWeb.as(actor).evaluateJavascript("return document.readyState=='complete'");
         });
     }
 
     public static Performable thePage(String element) {
         return Task.where("{0} wait for element loaded on the page", actor -> {
+            BrowseTheWeb.as(actor).evaluateJavascript("return document.readyState=='complete'");
             Ensure.that(TheSize.of(element).asInteger()).isGreaterThan(1);
         });
     }
