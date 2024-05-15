@@ -142,6 +142,6 @@ public class Lucky88Elements {
     public static final Target SPORT_C_VERIFY=Target.the("sport c verify").locatedBy("//*[@id=\"isEventPage\"]/div[2]/section[1]/header");
     public static final Target SPORT_M_BTN=Target.the("sport m button").locatedBy("//img[@alt='thể thao msport']");
     public static final Target SPORT_M_VERIFY=Target.the("sport m verify").locatedBy("handicap-ou-component > [data-radium='true'] > div:nth-of-type(1) > div");
-
-
+    public static final Target SPORT_HOT_DEAL_BTN=Target.the("sport hot deal button").locatedBy("//span[@class='sub-title sub-title--hot']");
+    public static final Target SPORT_HOT_DEAL_VERIFY=Target.the("sport hot deal verify").locatedBy("//div[@class='league__matchs']");
 }
