@@ -1,6 +1,7 @@
 package net.creqavn.tasks;
 
 import net.serenitybdd.screenplay.Performable;
+import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.DriverTask;
 import net.serenitybdd.screenplay.actions.SwitchToNewWindow;
@@ -10,11 +11,12 @@ import java.util.Set;
 public class Switch {
     public Switch() {
     }
+
     public static Performable toNewWindow() {
         return Tasks.instrumented(SwitchToNewWindow.class);
     }
 
-    public static Performable closeCurrentWindowsAndSwitchBackToRemainingWindows() {
+    public static Performable toMainWindowAfterCloseCurrentWindow() {
         return new DriverTask((driver) -> {
             String currentWindow = driver.getWindowHandle();
             Set<String> windowHandles = driver.getWindowHandles();
