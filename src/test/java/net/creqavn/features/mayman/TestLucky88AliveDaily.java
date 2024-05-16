@@ -51,7 +51,7 @@ public class TestLucky88AliveDaily {
     public void RegisterNewAccount() {
         when(swagger).attemptsTo(
                 Register.theUser(registerAccount),
-                Ensure.that(WELCOME_POPUP).isEnabled()
+                Verify.theElementIsDisplayed(WELCOME_POPUP)
         );
     }
 
@@ -59,7 +59,8 @@ public class TestLucky88AliveDaily {
     public void LoginWithAccountHasBalance() {
         when(swagger).attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
-                WaitForLoad.theURL(DOMAIN)
+                WaitForLoad.theURL(DOMAIN),
+                Verify.theElementIsDisplayed(AVATAR_USER)
         );
     }
 
@@ -67,7 +68,8 @@ public class TestLucky88AliveDaily {
     public void LoginWithAccountNonBalance() {
         when(swagger).attemptsTo(
                 Login.theAccountNonBalance(loginAccount),
-                WaitForLoad.theURL(CONTAINS_DEPOSIT)
+                WaitForLoad.theURL(CONTAINS_DEPOSIT),
+                Ensure.that(AVATAR_USER).isDisplayed()
         );
     }
 
@@ -89,7 +91,7 @@ public class TestLucky88AliveDaily {
                 Login.theAccountNonBalanceOnPopup(loginAccount),
                 Click.on(GAME_BAI_TLMN),
                 WaitForLoad.theURL(CONTAINS_GAME_BAI),
-                Ensure.that(POPUP_DEPOSIT).isDisplayed()
+                Verify.theElementIsDisplayed(POPUP_DEPOSIT)
         );
     }
 
@@ -97,9 +99,9 @@ public class TestLucky88AliveDaily {
     public void ForgetPassword() {
         when(swagger).attemptsTo(
                 Click.on(FORGET_PWD_BTN),
-                Enter.keyValues(VERIFIED_EMAIL).into(EMAIL_RESTORE_FIELD),
+                Enter.keyValues(registerAccount.getEmail()).into(EMAIL_RESTORE_FIELD),
                 Click.on(EMAIL_RESTORE_BTN),
-                Ensure.that(RESTORE_NOTIFY).isDisplayed()
+                Verify.theElementIsDisplayed(RESTORE_NOTIFY)
         );
     }
 
@@ -109,7 +111,7 @@ public class TestLucky88AliveDaily {
                 Login.theAccountNonBalance(loginAccount),
                 Click.on(AVATAR_USER),
                 Click.on(LOGOUT_BTN),
-                Ensure.that(LOGIN_USERNAME).isDisplayed()
+                Verify.theElementIsDisplayed(LOGIN_USERNAME)
         );
     }
 
@@ -126,7 +128,7 @@ public class TestLucky88AliveDaily {
     public void HomepageCashBack() {
         when(swagger).attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
-                Ensure.that(BALANCE_NUMBER).text().isEqualTo("200")
+                Verify.theTextIsEqual(BALANCE_NUMBER,"200")
         );
     }
 
@@ -134,7 +136,7 @@ public class TestLucky88AliveDaily {
     public void HomepageLiveCasino() {
         when(swagger).attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
-                Scroll.to(FIRST_HOMEPAGE_CASINO),
+                SwipeTo.theBottom(),
                 Click.on(FIRST_HOMEPAGE_CASINO),
                 SwitchTo.newWindow(),
                 WaitForLoad.theURL(CONTAINS_EZUGI_CASINO),
@@ -203,7 +205,7 @@ public class TestLucky88AliveDaily {
                 Click.on(QUESTION_BTN),
                 WaitForLoad.theURL(CONTAINS_QUESTION),
                 Click.on(FIRST_QUESTION),
-                Ensure.that(FIRST_ANSWER).isDisplayed()
+                Verify.theElementIsDisplayed(FIRST_ANSWER)
         );
     }
 
@@ -229,18 +231,18 @@ public class TestLucky88AliveDaily {
     public void HomepageJackpot() throws InterruptedException {
         swagger.attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
-                Scroll.to(JACKPOT_FORM),
+                Scroll.to(JACKPOT_AREA),
                 Click.on(JACKPOT_FIRST_GAME),
                 SwitchTo.newWindow(),
                 WaitForLoad.theURL("https://games.mt-sta.com/kts"),
                 SwitchTo.mainWindowAfterCloseCurrentWindow()
         );
-        sleep(20000);
+//        sleep(20000);
         swagger.attemptsTo(
-                Ensure.that(JACKPOT_RECENT).text().isNotEmpty(),
-                Ensure.that(JACKPOT_MONTH).text().isNotEmpty(),
-                Ensure.that(JACKPOT_FISH).text().isNotEmpty(),
-                Ensure.that(JACKPOT_NUMBER).text().isNotEmpty()
+                Verify.theValueIsNotEmpty(JACKPOT_RECENT),
+                Verify.theValueIsNotEmpty(JACKPOT_MONTH),
+                Verify.theValueIsNotEmpty(JACKPOT_FISH),
+                Verify.theValueIsNotEmpty(JACKPOT_NUMBER)
         );
     }
 
@@ -250,9 +252,9 @@ public class TestLucky88AliveDaily {
                 Login.theAccountHasBalance(loginAccount),
                 Click.on(AVATAR_USER),
                 WaitForLoad.theURL(CONTAINS_PROFILE),
-                Ensure.that(PROFILE_USERNAME).isDisplayed(),
-                Ensure.that(PROFILE_PWD).isDisplayed(),
-                Ensure.that(PROFILE_DISPLAY_NAME).isDisplayed()
+                Verify.theElementIsDisplayed(PROFILE_USERNAME),
+                Verify.theElementIsDisplayed(PROFILE_PWD),
+                Verify.theElementIsDisplayed(PROFILE_DISPLAY_NAME)
         );
     }
 
@@ -262,10 +264,10 @@ public class TestLucky88AliveDaily {
                 Login.theAccountHasBalance(loginAccount),
                 Click.on(AVATAR_USER),
                 Click.on(CHANGE_PWD_BTN),
-                Ensure.that(CURRENT_PWD_FIELD).isDisplayed(),
-                Ensure.that(NEW_PWD_FIELD).isDisplayed(),
-                Ensure.that(CONFIRM_NEW_PWD_FIELD).isDisplayed(),
-                Ensure.that(CHANGE_PWD_SUBMIT_BTN).isDisplayed()
+                Verify.theElementIsDisplayed(CURRENT_PWD_FIELD),
+                Verify.theElementIsDisplayed(NEW_PWD_FIELD),
+                Verify.theElementIsDisplayed(CONFIRM_NEW_PWD_FIELD),
+                Verify.theElementIsDisplayed(CHANGE_PWD_SUBMIT_BTN)
         );
     }
 
@@ -275,7 +277,7 @@ public class TestLucky88AliveDaily {
                 Login.theAccountHasBalance(loginAccount),
                 Click.on(AVATAR_USER),
                 Click.on(VERIFY_PHONE_NUMBER_BTN),
-                Ensure.that(VERIFY_PHONE_NUMBER_NOW_BTN).isDisplayed()
+                Verify.theElementIsDisplayed(VERIFY_PHONE_NUMBER_NOW_BTN)
         );
     }
 
@@ -285,9 +287,9 @@ public class TestLucky88AliveDaily {
         swagger.attemptsTo(
                 Login.theAccountJustRegistered(loginAccount),
                 Click.on(AVATAR_USER),
-                Enter.keyValues(GenerateRandomValue.generateEmail()).into(PROFILE_EMAIL),
+                Enter.keyValues(EMAIL_VERIFY).into(PROFILE_EMAIL),
                 Click.on(VERIFY_EMAIL_BTN),
-                Ensure.that(EMAIL_CONFIRM_NOTIFICATION).isDisplayed()
+                Verify.theElementIsDisplayed(EMAIL_CONFIRM_NOTIFICATION)
         );
     }
 
@@ -298,7 +300,7 @@ public class TestLucky88AliveDaily {
                 Click.on(AVATAR_USER),
                 Click.on(BANK_BTN),
                 Click.on(ADD_BANK_ACCOUNT_BTN),
-                Ensure.that(FORM_BANK_ACCOUNT).isDisplayed()
+                Verify.theElementIsDisplayed(FORM_BANK_ACCOUNT)
         );
     }
 
@@ -308,7 +310,7 @@ public class TestLucky88AliveDaily {
                 Login.theAccountHasBalance(loginAccount),
                 Click.on(AVATAR_USER),
                 Click.on(BONUS_BTN),
-                Ensure.that(BONUS_INFO).isDisplayed()
+                Verify.theElementIsDisplayed(BONUS_INFO)
         );
     }
 
@@ -321,8 +323,8 @@ public class TestLucky88AliveDaily {
         swagger.attemptsTo(
                 Click.on(HOT_MATCH_BET_BTN),
                 Switch.toFrame(FIRST_IFRAME),
-                Ensure.that(HOT_MATCH_LEFT_TEAM).text().isEqualTo(leftTeam),
-                Ensure.that(HOT_MATCH_RIGHT_TEAM).text().isEqualTo(rightTeam)
+                Verify.theTextIsEqual(HOT_MATCH_LEFT_TEAM,leftTeam),
+                Verify.theTextIsEqual(HOT_MATCH_RIGHT_TEAM,rightTeam)
         );
     }
 
@@ -335,7 +337,7 @@ public class TestLucky88AliveDaily {
                 WaitForLoad.thePage(SPORT_K_BTN),
                 Click.on(SPORT_K_BTN),
                 Switch.toFrame(FIRST_IFRAME),
-                Ensure.that(SPORT_K_VERIFY).isDisplayed()
+                Verify.theElementIsDisplayed(SPORT_K_VERIFY)
         );
     }
 
@@ -346,7 +348,7 @@ public class TestLucky88AliveDaily {
                 Click.on(SPORT_BTN),
                 Click.on(SPORT_I_BTN),
                 Switch.toFrame(FIRST_IFRAME),
-                Ensure.that(SPORT_I_VERIFY).isDisplayed()
+                Verify.theElementIsDisplayed(SPORT_I_VERIFY)
         );
     }
 
@@ -358,7 +360,7 @@ public class TestLucky88AliveDaily {
                 Click.on(SPORT_A_BTN),
                 Switch.toFrame(FIRST_IFRAME),
                 Switch.toFrame(SPORT_IFRAME),
-                Ensure.that(SPORT_A_VERIFY).isDisplayed()
+                Verify.theElementIsDisplayed(SPORT_A_VERIFY)
         );
     }
 
@@ -369,7 +371,7 @@ public class TestLucky88AliveDaily {
                 Click.on(SPORT_BTN),
                 Click.on(SPORT_C_BTN),
                 Switch.toFrame(FIRST_IFRAME),
-                Ensure.that(SPORT_C_VERIFY).isDisplayed()
+                Verify.theElementIsDisplayed(SPORT_C_VERIFY)
         );
     }
 
@@ -380,7 +382,7 @@ public class TestLucky88AliveDaily {
                 Click.on(SPORT_BTN),
                 Click.on(SPORT_M_BTN),
                 Switch.toFrame(FIRST_IFRAME),
-                Ensure.that(SPORT_M_VERIFY).isDisplayed()
+                Verify.theElementIsDisplayed(SPORT_M_VERIFY)
         );
     }
 
@@ -389,7 +391,7 @@ public class TestLucky88AliveDaily {
         swagger.attemptsTo(
                 HoverOverElement.over(SPORT_BTN),
                 Click.on(SPORT_HOT_DEAL_BTN),
-                Ensure.that(SPORT_HOT_DEAL_VERIFY).isDisplayed()
+                Verify.theElementIsDisplayed(SPORT_HOT_DEAL_VERIFY)
         );
     }
 
@@ -400,7 +402,7 @@ public class TestLucky88AliveDaily {
                 Click.on(SPORT_VIRTUAL_BTN),
                 SwitchTo.newWindow(),
                 Switch.toFrame(SPORT_IFRAME),
-                Ensure.that(SPORT_VIRTUAL_VERIFY).isDisplayed(),
+                Verify.theElementIsDisplayed(SPORT_VIRTUAL_VERIFY),
                 SwitchTo.mainWindowAfterCloseCurrentWindow()
         );
     }
@@ -412,10 +414,9 @@ public class TestLucky88AliveDaily {
                 HoverOverElement.over(SPORT_BTN),
                 Click.on(SPORT_E_SPORT_BTN)
         );
-        sleep(3000);
         swagger.attemptsTo(
                 SwitchTo.newWindow(),
-                Ensure.that(SPORT_E_SPORT_VERIFY).isDisplayed(),
+                Verify.theElementIsDisplayed(SPORT_E_SPORT_VERIFY),
                 SwitchTo.mainWindowAfterCloseCurrentWindow()
         );
     }
@@ -436,35 +437,29 @@ public class TestLucky88AliveDaily {
     }
 
     @Test
-    public void CasinoVivo() throws InterruptedException {
+    public void CasinoVivo() {
         swagger.attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
                 Click.on(LIVE_CASINO_BTN),
                 Click.on(VIVO_CASINO_BTN),
                 Click.on(FIRST_TABLE_PLAY_BTN),
                 SwitchTo.newWindow(),
-                WaitForLoad.thePage(VIVO_CASINO_VERIFY)
-        );
-        sleep(10000);
-        swagger.attemptsTo(
-                Ensure.that(VIVO_CASINO_VERIFY).isDisplayed(),
+                WaitForLoad.thePage(VIVO_CASINO_VERIFY),
+                Verify.theElementIsDisplayed(VIVO_CASINO_VERIFY),
                 SwitchTo.mainWindowAfterCloseCurrentWindow()
         );
     }
 
     @Test
-    public void CasinoMG() throws InterruptedException {
+    public void CasinoMG() {
         swagger.attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
                 Click.on(LIVE_CASINO_BTN),
                 Click.on(MG_CASINO_BTN),
                 Click.on(FIRST_TABLE_PLAY_BTN),
                 SwitchTo.newWindow(),
-                WaitForLoad.theURL(CONTAINS_MG_CASINO)
-        );
-        sleep(10000);
-        swagger.attemptsTo(
-                Ensure.that(MG_CASINO_VERIFY).isDisplayed(),
+                WaitForLoad.theURL(CONTAINS_MG_CASINO),
+                Verify.theElementIsDisplayed(MG_CASINO_VERIFY),
                 SwitchTo.mainWindowAfterCloseCurrentWindow()
         );
     }
@@ -478,7 +473,7 @@ public class TestLucky88AliveDaily {
                 Click.on(FIRST_TABLE_PLAY_BTN),
                 SwitchTo.newWindow(),
                 WaitForLoad.theURL(CONTAINS_EZUGI_CASINO),
-                WaitForLoad.thePage(EZUGI_CASINO_VERIFY),
+                Verify.theElementIsDisplayed(EZUGI_CASINO_VERIFY),
                 SwitchTo.mainWindowAfterCloseCurrentWindow()
         );
     }
@@ -492,7 +487,7 @@ public class TestLucky88AliveDaily {
                 Click.on(FIRST_TABLE_PLAY_BTN),
                 SwitchTo.newWindow(),
                 Switch.toFrame(EVOLUTION_CASINO_IFRAME.resolveFor(swagger)),
-                Ensure.that(EVOLUTION_CASINO_VERIFY).isDisplayed(),
+                Verify.theElementIsDisplayed(EVOLUTION_CASINO_VERIFY),
                 SwitchTo.mainWindowAfterCloseCurrentWindow()
         );
     }
