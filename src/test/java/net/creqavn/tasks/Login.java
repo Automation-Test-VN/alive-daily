@@ -17,7 +17,8 @@ public class Login {
                         actor.attemptsTo(
                                 Enter.keyValues(ACCOUNT_HAS_BALANCE).into(LOGIN_USERNAME),
                                 Enter.keyValues(loginAccount.getPwd()).into(LOGIN_PWD),
-                                Click.on(LOGIN_SUBMIT)
+                                Click.on(LOGIN_SUBMIT),
+                                Verify.theElementIsDisplayed(AVATAR_USER)
                         );
                     }
                 }
@@ -29,7 +30,8 @@ public class Login {
                         actor.attemptsTo(
                                 Enter.keyValues(ACCOUNT_NON_BALANCE).into(LOGIN_USERNAME),
                                 Enter.keyValues(loginAccount.getPwd()).into(LOGIN_PWD),
-                                Click.on(LOGIN_SUBMIT)
+                                Click.on(LOGIN_SUBMIT),
+                                Verify.theElementIsDisplayed(AVATAR_USER)
                         );
                 }
         );
@@ -40,7 +42,8 @@ public class Login {
                     actor.attemptsTo(
                             Enter.keyValues(loginAccount.getUserName()).into(LOGIN_USERNAME),
                             Enter.keyValues(loginAccount.getPwd()).into(LOGIN_PWD),
-                            Click.on(LOGIN_SUBMIT)
+                            Click.on(LOGIN_SUBMIT),
+                            Verify.theElementIsDisplayed(AVATAR_USER)
                     );
                 }
         );
@@ -51,7 +54,8 @@ public class Login {
             actor.attemptsTo(
                     Enter.keyValues(ACCOUNT_HAS_BALANCE).into(FORM_LOGIN_USERNAME),
                     Enter.keyValues(loginAccount.getPwd()).into(FORM_LOGIN_PWD),
-                    Click.on(FORM_LOGIN_SUBMIT_BTN)
+                    Click.on(FORM_LOGIN_SUBMIT_BTN),
+                    Verify.theElementIsDisplayed(AVATAR_USER)
             );
         });
     }
@@ -61,7 +65,8 @@ public class Login {
             actor.attemptsTo(
                     Enter.keyValues(ACCOUNT_NON_BALANCE).into(FORM_LOGIN_USERNAME),
                     Enter.keyValues(loginAccount.getPwd()).into(FORM_LOGIN_PWD),
-                    Click.on(FORM_LOGIN_SUBMIT_BTN)
+                    Click.on(FORM_LOGIN_SUBMIT_BTN),
+                    Verify.theElementIsDisplayed(AVATAR_USER)
             );
         });
     }
