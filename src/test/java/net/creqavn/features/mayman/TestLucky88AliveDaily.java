@@ -1,11 +1,10 @@
 package net.creqavn.features.mayman;
 
-import groovy.util.logging.Log;
 import net.creqavn.models.LoginAccount;
 import net.creqavn.models.RegisterAccount;
 import net.creqavn.questions.TheFootball;
 import net.creqavn.tasks.*;
-import net.creqavn.tasks.Switch;
+import net.creqavn.tasks.SwitchTo;
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
@@ -137,9 +136,9 @@ public class TestLucky88AliveDaily {
                 Login.theAccountHasBalance(loginAccount),
                 Scroll.to(FIRST_HOMEPAGE_CASINO),
                 Click.on(FIRST_HOMEPAGE_CASINO),
-                Switch.toNewWindow(),
+                SwitchTo.newWindow(),
                 WaitForLoad.theURL(CONTAINS_EZUGI_CASINO),
-                Switch.toMainWindowAfterCloseCurrentWindow()
+                SwitchTo.mainWindowAfterCloseCurrentWindow()
         );
     }
 
@@ -232,9 +231,9 @@ public class TestLucky88AliveDaily {
                 Login.theAccountHasBalance(loginAccount),
                 Scroll.to(JACKPOT_FORM),
                 Click.on(JACKPOT_FIRST_GAME),
-                Switch.toNewWindow(),
+                SwitchTo.newWindow(),
                 WaitForLoad.theURL("https://games.mt-sta.com/kts"),
-                Switch.toMainWindowAfterCloseCurrentWindow()
+                SwitchTo.mainWindowAfterCloseCurrentWindow()
         );
         sleep(20000);
         swagger.attemptsTo(
@@ -330,7 +329,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void SportK() {
         swagger.attemptsTo(
-//                Login.theAccountHasBalance(loginAccount),
+                Login.theAccountHasBalance(loginAccount),
                 Click.on(SPORT_BTN),
                 Browser.refreshPage(),
                 WaitForLoad.thePage(SPORT_K_BTN),
@@ -366,7 +365,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void SportC() {
         swagger.attemptsTo(
-//                Login.theAccountHasBalance(loginAccount),
+                Login.theAccountHasBalance(loginAccount),
                 Click.on(SPORT_BTN),
                 Click.on(SPORT_C_BTN),
                 Switch.toFrame(FIRST_IFRAME),
@@ -399,35 +398,40 @@ public class TestLucky88AliveDaily {
         swagger.attemptsTo(
                 HoverOverElement.over(SPORT_BTN),
                 Click.on(SPORT_VIRTUAL_BTN),
-                Switch.toNewWindow(),
-                WaitForLoad.thePage(SPORT_IFRAME),
+                SwitchTo.newWindow(),
                 Switch.toFrame(SPORT_IFRAME),
                 Ensure.that(SPORT_VIRTUAL_VERIFY).isDisplayed(),
-                Switch.toMainWindowAfterCloseCurrentWindow()
+                SwitchTo.mainWindowAfterCloseCurrentWindow()
         );
     }
 
     @Test
-    public void SportESport(){
+    public void SportESport() throws InterruptedException {
         swagger.attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
                 HoverOverElement.over(SPORT_BTN),
-                Click.on(SPORT_E_SPORT_BTN),
-                Switch.toNewWindow(),
+                Click.on(SPORT_E_SPORT_BTN)
+        );
+        sleep(3000);
+        swagger.attemptsTo(
+                SwitchTo.newWindow(),
                 Ensure.that(SPORT_E_SPORT_VERIFY).isDisplayed(),
-                Switch.toMainWindowAfterCloseCurrentWindow()
+                SwitchTo.mainWindowAfterCloseCurrentWindow()
         );
     }
 
     @Test
-    public void SportHorseRacing(){
+    public void SportHorseRacing() throws InterruptedException {
         swagger.attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
                 HoverOverElement.over(SPORT_BTN),
-                Click.on(SPORT_HORSE_RACING_BTN),
-                Switch.toNewWindow(),
+                Click.on(SPORT_HORSE_RACING_BTN)
+        );
+        sleep(3000);
+        swagger.attemptsTo(
+                SwitchTo.newWindow(),
                 WaitForLoad.theURL(CONTAINS_HORSE_RACING),
-                Switch.toMainWindowAfterCloseCurrentWindow()
+                SwitchTo.mainWindowAfterCloseCurrentWindow()
         );
     }
 
@@ -438,13 +442,13 @@ public class TestLucky88AliveDaily {
                 Click.on(LIVE_CASINO_BTN),
                 Click.on(VIVO_CASINO_BTN),
                 Click.on(FIRST_TABLE_PLAY_BTN),
-                Switch.toNewWindow(),
+                SwitchTo.newWindow(),
                 WaitForLoad.thePage(VIVO_CASINO_VERIFY)
         );
         sleep(10000);
         swagger.attemptsTo(
                 Ensure.that(VIVO_CASINO_VERIFY).isDisplayed(),
-                Switch.toMainWindowAfterCloseCurrentWindow()
+                SwitchTo.mainWindowAfterCloseCurrentWindow()
         );
     }
 
@@ -455,13 +459,13 @@ public class TestLucky88AliveDaily {
                 Click.on(LIVE_CASINO_BTN),
                 Click.on(MG_CASINO_BTN),
                 Click.on(FIRST_TABLE_PLAY_BTN),
-                Switch.toNewWindow(),
+                SwitchTo.newWindow(),
                 WaitForLoad.theURL(CONTAINS_MG_CASINO)
         );
         sleep(10000);
         swagger.attemptsTo(
                 Ensure.that(MG_CASINO_VERIFY).isDisplayed(),
-                Switch.toMainWindowAfterCloseCurrentWindow()
+                SwitchTo.mainWindowAfterCloseCurrentWindow()
         );
     }
 
@@ -472,10 +476,24 @@ public class TestLucky88AliveDaily {
                 Click.on(LIVE_CASINO_BTN),
                 Click.on(EZUGI_CASINO_BTN),
                 Click.on(FIRST_TABLE_PLAY_BTN),
-                Switch.toNewWindow(),
+                SwitchTo.newWindow(),
                 WaitForLoad.theURL(CONTAINS_EZUGI_CASINO),
                 WaitForLoad.thePage(EZUGI_CASINO_VERIFY),
-                Switch.toMainWindowAfterCloseCurrentWindow()
+                SwitchTo.mainWindowAfterCloseCurrentWindow()
+        );
+    }
+
+    @Test
+    public void CasinoEvolution() {
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Click.on(LIVE_CASINO_BTN),
+                Click.on(EVOLUTION_CASINO_BTN),
+                Click.on(FIRST_TABLE_PLAY_BTN),
+                SwitchTo.newWindow(),
+                Switch.toFrame(EVOLUTION_CASINO_IFRAME.resolveFor(swagger)),
+                Ensure.that(EVOLUTION_CASINO_VERIFY).isDisplayed(),
+                SwitchTo.mainWindowAfterCloseCurrentWindow()
         );
     }
 }

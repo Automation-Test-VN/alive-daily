@@ -1,6 +1,9 @@
 package net.creqavn.ui.mayman;
 
+import net.serenitybdd.screenplay.targets.IFrame;
 import net.serenitybdd.screenplay.targets.Target;
+
+import java.util.Optional;
 
 
 public class Lucky88Elements {
@@ -61,7 +64,9 @@ public class Lucky88Elements {
     public static final String CONTAINS_HERO_BANNER = "saleoff/detail/saleoff-30";
     public static final Target BALANCE_NUMBER = Target.the("balance number").locatedBy("//span[@class='total-balance__number']");
 
-    public static final Target FIRST_HOMEPAGE_CASINO = Target.the("first homepage casino").locatedBy("//div[@class='game-provider']/div[1]");
+    public static final Target FIRST_HOMEPAGE_CASINO = Target
+            .the("first homepage casino")
+            .locatedBy("//div[@class='game-provider']/div[1]");
 
     public static final Target HOT_NEWS = Target.the("hot news").locatedBy("//div[@class='news-category__hot col-4']/a");
     public static final String CONTAINS_NEWS = "/news/detail";
@@ -147,7 +152,7 @@ public class Lucky88Elements {
     public static final Target SPORT_VIRTUAL_BTN = Target.the("sport virtual button").locatedBy("//div[@class='sub-menu sports']//span[contains(.,'Thể Thao Ảo')]");
     public static final Target SPORT_VIRTUAL_VERIFY = Target.the("sport virtual verify").locatedBy("//*[@id=\"mainArea\"]/div/div[2]/div[2]/div[2]/div/div[1]/div[1]");
     public static final Target SPORT_E_SPORT_BTN=Target.the("sport e-sport button").locatedBy("//span[contains(.,'Thể thao điện tử')]");
-    public static final Target SPORT_E_SPORT_VERIFY=Target.the("sport e-sport verify").locatedBy("//div[@class='match match--parlay in-play ']");
+    public static final Target SPORT_E_SPORT_VERIFY=Target.the("sport e-sport verify").locatedBy("//div[@class='odds-table']");
     public static final Target SPORT_HORSE_RACING_BTN=Target.the("sport horse racing button").locatedBy("//a[contains(.,'Đua Ngựa 3D')]");
     public static final String CONTAINS_HORSE_RACING="https://games.mt-sta.com/kts6998";
 
@@ -162,4 +167,14 @@ public class Lucky88Elements {
     public static final Target EZUGI_CASINO_BTN=Target.the("ezugi casino button").locatedBy("//a[contains(.,'Ezugi')]");
     public static final Target EZUGI_CASINO_VERIFY=Target.the("ezugi casino verify").locatedBy("//*[@id=\"scroller\"]/div[1]/div[3]/div/div[2]/div[*]");
     public static final String CONTAINS_EZUGI_CASINO="https://play.livetables.io/";
+    public static final Target EVOLUTION_CASINO_BTN=Target.the("evolution casino button").locatedBy("//a[contains(.,'evolution gaming')]");
+    //public static final String EVOLUTION_CASINO_IFRAME="//iframe[@src='https://spadetechplay.evo-games.com/frontend/evo/r2/#category=baccarat']";
+    public static final Target EVOLUTION_CASINO_IFRAME=Target
+            .the("evolution casino iframe")
+            .locatedBy("//iframe[@src='https://spadetechplay.evo-games.com/frontend/evo/r2/#category=baccarat']");
+    public static final Target EVOLUTION_CASINO_VERIFY=Target
+            .the("evolution casino verify")
+            .locatedBy("//*[@id=\"lobby-root\"]/div/div[2]/ul");
+
+
 }
