@@ -1,22 +1,24 @@
 package net.creqavn.tasks;
 
 import net.serenitybdd.screenplay.Performable;
-import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.DriverTask;
 import net.serenitybdd.screenplay.actions.SwitchToNewWindow;
 
+
 import java.util.Set;
 
-public class Switch {
-    public Switch() {
+import static java.lang.Thread.sleep;
+
+public class SwitchTo {
+    public SwitchTo() {
     }
 
-    public static Performable toNewWindow() {
+    public static Performable newWindow() {
         return Tasks.instrumented(SwitchToNewWindow.class);
     }
 
-    public static Performable toMainWindowAfterCloseCurrentWindow() {
+    public static Performable mainWindowAfterCloseCurrentWindow() {
         return new DriverTask((driver) -> {
             String currentWindow = driver.getWindowHandle();
             Set<String> windowHandles = driver.getWindowHandles();
@@ -28,12 +30,6 @@ public class Switch {
                 driver.close();
                 driver.switchTo().window(remainingWindow);
             }
-        });
-    }
-
-    public static Performable toFrame(String frameName) {
-        return new DriverTask((driver) -> {
-            driver.switchTo().frame(frameName);
         });
     }
 }
