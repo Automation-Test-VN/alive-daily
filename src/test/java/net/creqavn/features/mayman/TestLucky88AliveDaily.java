@@ -515,4 +515,16 @@ public class TestLucky88AliveDaily {
                 SwitchTo.mainWindowAfterCloseCurrentWindow()
         );
     }
+
+    @Test
+    public void LoDeSieuToc(){
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                HoverOverElement.over(LO_DE_BTN),
+                Click.on(LO_DE_SIEU_TOC_BTN),
+                SwitchTo.newWindow(),
+                Verify.theElementIsDisplayed(LO_DE_SIEU_TOC_VERIFY),
+                SwitchTo.mainWindowAfterCloseCurrentWindow()
+        );
+    }
 }
