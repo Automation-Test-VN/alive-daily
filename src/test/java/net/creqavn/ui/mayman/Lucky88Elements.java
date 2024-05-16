@@ -333,4 +333,14 @@ public class Lucky88Elements {
     public static final Target EVOLUTION_CASINO_VERIFY = Target
             .the("evolution casino verify")
             .locatedBy("//*[@id=\"lobby-root\"]//ul[@data-role='category-navigator']");
+
+    public static final Target LO_DE_BTN=Target
+            .the("lo de button")
+            .locatedBy("//a[@class='menu__link']//span[.='Lô Đề']");
+    public static final Target LO_DE_3_MIEN_BTN=Target
+            .the("lo de 3 mien button")
+            .locatedBy("//span[contains(.,'Lô đề 3 miền')]");
+    public static final Target LO_DE_3_MIEN_VERIFY=Target
+            .the("lo de 3 mien verify")
+            .locatedBy("//div[@class='danhlo']");
 }
