@@ -343,4 +343,10 @@ public class Lucky88Elements {
     public static final Target LO_DE_3_MIEN_VERIFY=Target
             .the("lo de 3 mien verify")
             .locatedBy("//div[@class='danhlo']");
+    public static final Target LO_DE_KENO_VIETLOT_BTN=Target
+            .the("keno vietlot button")
+            .locatedBy(".lobby-game-list > div:nth-of-type(2) .game-item__link");
+    public static final Target LO_DE_KENO_VIETLOT_VERIFY=Target
+            .the("keno vietlot verify")
+            .locatedBy(".tab-choose .tabs");
 }
