@@ -7,7 +7,7 @@ public class Lucky88Elements {
     public static final String DOMAIN = "https://lucky88.vip/";
     public static final String ACCOUNT_HAS_BALANCE = "atcasea10";
     public static final String ACCOUNT_NON_BALANCE = "xczx2131";
-    public static final String EMAIL_VERIFY="titss222@yopmail.com";
+    public static final String EMAIL_VERIFY = "titss222@yopmail.com";
     public static final Target AVATAR_USER = Target
             .the("avatar user")
             .locatedBy("//div[@class='avatar user-login-information__avatar']");
@@ -334,19 +334,25 @@ public class Lucky88Elements {
             .the("evolution casino verify")
             .locatedBy("//*[@id=\"lobby-root\"]//ul[@data-role='category-navigator']");
 
-    public static final Target LO_DE_BTN=Target
+    public static final Target LO_DE_BTN = Target
             .the("lo de button")
             .locatedBy("//a[@class='menu__link']//span[.='Lô Đề']");
-    public static final Target LO_DE_3_MIEN_BTN=Target
+    public static final Target LO_DE_3_MIEN_BTN = Target
             .the("lo de 3 mien button")
             .locatedBy("//span[contains(.,'Lô đề 3 miền')]");
-    public static final Target LO_DE_3_MIEN_VERIFY=Target
+    public static final Target LO_DE_3_MIEN_VERIFY = Target
             .the("lo de 3 mien verify")
             .locatedBy("//div[@class='danhlo']");
-    public static final Target LO_DE_KENO_VIETLOT_BTN=Target
+    public static final Target LO_DE_KENO_VIETLOT_BTN = Target
             .the("keno vietlot button")
             .locatedBy(".lobby-game-list > div:nth-of-type(2) .game-item__link");
-    public static final Target LO_DE_KENO_VIETLOT_VERIFY=Target
+    public static final Target LO_DE_KENO_VIETLOT_VERIFY = Target
             .the("keno vietlot verify")
             .locatedBy(".tab-choose .tabs");
+    public static final Target LO_DE_SIEU_TOC_BTN = Target
+            .the("lo de sieu toc button")
+            .locatedBy("//a[contains(.,'Lô đề siêu tốc')]");
+    public static final Target LO_DE_SIEU_TOC_VERIFY = Target
+            .the("lo de sieu toc verify")
+            .locatedBy("//table[@class='danhlo-table']");
 }
