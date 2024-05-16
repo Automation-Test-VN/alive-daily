@@ -491,4 +491,16 @@ public class TestLucky88AliveDaily {
                 SwitchTo.mainWindowAfterCloseCurrentWindow()
         );
     }
+
+    @Test
+    public void LoDe3Mien(){
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                HoverOverElement.over(LO_DE_BTN),
+                Click.on(LO_DE_3_MIEN_BTN),
+                SwitchTo.newWindow(),
+                Verify.theElementIsDisplayed(LO_DE_3_MIEN_VERIFY),
+                SwitchTo.mainWindowAfterCloseCurrentWindow()
+        );
+    }
 }
