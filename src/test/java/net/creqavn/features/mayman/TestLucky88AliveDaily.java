@@ -503,4 +503,16 @@ public class TestLucky88AliveDaily {
                 SwitchTo.mainWindowAfterCloseCurrentWindow()
         );
     }
+
+    @Test
+    public void LoDeKenoVietlot(){
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Click.on(LO_DE_BTN),
+                Click.on(LO_DE_KENO_VIETLOT_BTN),
+                SwitchTo.newWindow(),
+                Verify.theElementIsDisplayed(LO_DE_KENO_VIETLOT_VERIFY),
+                SwitchTo.mainWindowAfterCloseCurrentWindow()
+        );
+    }
 }
