@@ -345,7 +345,7 @@ public class Lucky88Elements {
             .locatedBy("//div[@class='danhlo']");
     public static final Target LO_DE_KENO_VIETLOT_BTN = Target
             .the("keno vietlot button")
-            .locatedBy(".lobby-game-list > div:nth-of-type(2) .game-item__link");
+            .locatedBy("//div[@class='lobby-game-list']/div[2]//a[@href='javascript:void(0)']");
     public static final Target LO_DE_KENO_VIETLOT_VERIFY = Target
             .the("keno vietlot verify")
             .locatedBy(".tab-choose .tabs");
@@ -355,4 +355,11 @@ public class Lucky88Elements {
     public static final Target LO_DE_SIEU_TOC_VERIFY = Target
             .the("lo de sieu toc verify")
             .locatedBy("//table[@class='danhlo-table']");
+    public static final Target NO_HU_BTN=Target
+            .the("no hu button")
+            .locatedBy("//a[contains(.,'NỔ HŨ')]");
+    public static final Target NO_HU_GAME_PLAY_BTN=Target
+            .the("no hu game play button")
+            .locatedBy("//div[@class='lobby-game-list']/div[1]//a[@href='javascript:void(0)']");
+    public static final String CONTAINS_NO_HU_GAME="https://games.mt-sta.com/kts";
 }

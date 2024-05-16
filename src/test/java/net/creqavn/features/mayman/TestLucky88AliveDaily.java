@@ -228,17 +228,14 @@ public class TestLucky88AliveDaily {
     }
 
     @Test
-    public void HomepageJackpot() throws InterruptedException {
+    public void HomepageJackpot() {
         swagger.attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
                 Scroll.to(JACKPOT_AREA),
                 Click.on(JACKPOT_FIRST_GAME),
                 SwitchTo.newWindow(),
-                WaitForLoad.theURL("https://games.mt-sta.com/kts"),
-                SwitchTo.mainWindowAfterCloseCurrentWindow()
-        );
-//        sleep(20000);
-        swagger.attemptsTo(
+                WaitForLoad.theURL(CONTAINS_NO_HU_GAME),
+                SwitchTo.mainWindowAfterCloseCurrentWindow(),
                 Verify.theValueIsNotEmpty(JACKPOT_RECENT),
                 Verify.theValueIsNotEmpty(JACKPOT_MONTH),
                 Verify.theValueIsNotEmpty(JACKPOT_FISH),
@@ -408,13 +405,11 @@ public class TestLucky88AliveDaily {
     }
 
     @Test
-    public void SportESport() throws InterruptedException {
+    public void SportESport() {
         swagger.attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
                 HoverOverElement.over(SPORT_BTN),
-                Click.on(SPORT_E_SPORT_BTN)
-        );
-        swagger.attemptsTo(
+                Click.on(SPORT_E_SPORT_BTN),
                 SwitchTo.newWindow(),
                 Verify.theElementIsDisplayed(SPORT_E_SPORT_VERIFY),
                 SwitchTo.mainWindowAfterCloseCurrentWindow()
@@ -524,6 +519,18 @@ public class TestLucky88AliveDaily {
                 Click.on(LO_DE_SIEU_TOC_BTN),
                 SwitchTo.newWindow(),
                 Verify.theElementIsDisplayed(LO_DE_SIEU_TOC_VERIFY),
+                SwitchTo.mainWindowAfterCloseCurrentWindow()
+        );
+    }
+
+    @Test
+    public void NoHuAccessGame(){
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Click.on(NO_HU_BTN),
+                Click.on(NO_HU_GAME_PLAY_BTN),
+                SwitchTo.newWindow(),
+                WaitForLoad.theURL(CONTAINS_NO_HU_GAME),
                 SwitchTo.mainWindowAfterCloseCurrentWindow()
         );
     }
