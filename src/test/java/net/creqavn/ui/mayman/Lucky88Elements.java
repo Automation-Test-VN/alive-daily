@@ -74,10 +74,19 @@ public class Lucky88Elements {
     public static final Target GAME_BAI_BTN = Target
             .the("game bai button")
             .locatedBy("//span[.='Game bài']");
-    public static final Target GAME_BAI_TLMN = Target
-            .the("game tien len mien nam")
-            .locatedBy(".lobby-game-list > div:nth-of-type(1) .game-item__link");
     public static final String CONTAINS_GAME_BAI = "/game-bai";
+    public static final Target GAME_BAI_RIK = Target
+            .the("game bai rik button")
+            .locatedBy(".lobby-game-list > div:nth-of-type(1) .game-item__link");
+    public static final Target GAME_BAI_RIK_VERIFY =Target
+            .the("game bai rik verify")
+            .locatedBy("//canvas[@id='GameCanvas']");
+    public static final Target GAME_BAI_GO=Target
+            .the("game bai go button")
+            .locatedBy(".lobby-game-list > div:nth-of-type(2) .game-item__link");
+    public static final Target GAME_BAI_GO_VERIFY =Target
+            .the("game bai go verify")
+            .locatedBy("//canvas[@id='GameCanvas']");
 
     //LOGIN FORM
     public static final Target LOGIN_FORM = Target
