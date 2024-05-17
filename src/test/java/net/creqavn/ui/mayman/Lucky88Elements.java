@@ -387,4 +387,17 @@ public class Lucky88Elements {
     public static final Target B52_SUPPLIER_VERIFY = Target
             .the("game bai rik verify")
             .locatedBy("//canvas[@id='GameCanvas']");
+
+    // BAN CA SESSION
+    public static final Target BAN_CA_BTN = Target
+            .the("ban ca button")
+            .locatedBy("//a[contains(.,'Bắn cá')]");
+    public static final Target BAN_CA_TP = INDEX_GAME_PLAY_BTN.of("1");
+    public static final Target BAN_CA_QTECH = INDEX_GAME_PLAY_BTN.of("9");
+    public static final Target QTECH_SUPPLIER_IFRAME = Target
+            .the("qtech supplier iframe")
+            .locatedBy("//iframe[@id='gameIframe']");
+    public static final Target QTECH_SUPPLIER_VERIFY = Target
+            .the("qtech supplier verify")
+            .locatedBy("//canvas[@id='GameCanvas']");
 }
