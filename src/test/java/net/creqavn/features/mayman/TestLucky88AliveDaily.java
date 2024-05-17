@@ -656,4 +656,40 @@ public class TestLucky88AliveDaily {
                 Verify.theElementIsDisplayed(QUAY_SO_VERIFY)
         );
     }
+
+    @Test
+    public void XemThemGameNhanh() throws InterruptedException {
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                HoverOverElement.over(XEM_THEM_BTN),
+                Click.on(GAME_NHANH_BTN),
+                Click.on(XEM_THEM_PLAY_BTN),
+                SwitchTo.newWindow(),
+                Verify.theElementIsDisplayed(QTECH_SUPPLIER_VERIFY)
+        );
+    }
+
+    @Test
+    public void XemThemCoUp() throws InterruptedException {
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                HoverOverElement.over(XEM_THEM_BTN),
+                Click.on(CO_UP_BTN),
+                SwitchTo.newWindow(),
+                Verify.theElementIsDisplayed(QTECH_SUPPLIER_VERIFY)
+        );
+    }
+
+    @Test
+    public void XemThemGameKhac() throws InterruptedException {
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                HoverOverElement.over(XEM_THEM_BTN),
+                Click.on(GAME_KHAC_BTN),
+                Click.on(XEM_THEM_PLAY_BTN),
+                SwitchTo.newWindow(),
+                Switch.toFrame(GAME_IFRAME.resolveFor(swagger)),
+                Verify.theElementIsDisplayed(QTECH_SUPPLIER_VERIFY)
+        );
+    }
 }
