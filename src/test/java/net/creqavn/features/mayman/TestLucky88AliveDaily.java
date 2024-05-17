@@ -629,7 +629,7 @@ public class TestLucky88AliveDaily {
                 Click.on(BAN_CA_BTN),
                 Click.on(BAN_CA_CQ9),
                 SwitchTo.newWindow(),
-                Verify.theElementIsDisplayed(QTECH_SUPPLIER_VERIFY)
+                Verify.theElementIsDisplayed(CQ9_SUPPLIER_VERIFY)
         );
     }
 

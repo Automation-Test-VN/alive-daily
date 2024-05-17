@@ -404,6 +404,9 @@ public class Lucky88Elements {
     public static final Target QTECH_SUPPLIER_VERIFY = Target
             .the("qtech supplier verify")
             .locatedBy("//canvas[@id='GameCanvas']");
+    public static final Target CQ9_SUPPLIER_VERIFY = Target
+            .the("cq9 supplier verify")
+            .locatedBy("//canvas[@id='gameCanvas']");
 
     // KENO SESSION
     public static final Target KENO_BTN = Target
