@@ -407,4 +407,12 @@ public class Lucky88Elements {
             .locatedBy("//span[.='Keno']");
     public static final Target KENO_PLAY_BTN = INDEX_GAME_PLAY_BTN.of("1");
 
+    // QUAY SO SESSION
+    public static final Target QUAY_SO_BTN = Target
+            .the("quay so button")
+            .locatedBy("//span[.='Quay Số']");
+    public static final Target QUAY_SO_PLAY_BTN = INDEX_GAME_PLAY_BTN.of("1");
+    public static final Target QUAY_SO_VERIFY = Target
+            .the("quay so verify")
+            .locatedBy("//div[@class='c-numbergaming']");
 }
