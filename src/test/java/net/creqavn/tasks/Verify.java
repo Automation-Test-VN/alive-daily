@@ -31,7 +31,7 @@ public class Verify {
     public static Performable theValueIsNotEmpty(Target target1) {
         return Task.where("{0} verify the value is not empty", actor -> {
             actor.attemptsTo(
-                    WaitUntil.the(JACKPOT_NUMBER,WebElementStateMatchers.isNotEmpty())
+                    WaitUntil.the(target1,WebElementStateMatchers.isNotEmpty())
             );
         });
     }

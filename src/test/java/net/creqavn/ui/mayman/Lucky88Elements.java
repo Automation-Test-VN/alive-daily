@@ -362,4 +362,7 @@ public class Lucky88Elements {
             .the("no hu game play button")
             .locatedBy("//div[@class='lobby-game-list']/div[1]//a[@href='javascript:void(0)']");
     public static final String CONTAINS_NO_HU_GAME="https://games.mt-sta.com/kts";
+    public static final Target NO_HU_GAME_MONEY=Target
+            .the("no hu game money")
+            .locatedBy("//div[@class='lobby-game-list']/div[1]//div[@class='jackpot']/span");
 }
