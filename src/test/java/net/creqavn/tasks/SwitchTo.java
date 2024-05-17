@@ -14,7 +14,8 @@ public class SwitchTo {
     public SwitchTo() {
     }
 
-    public static Performable newWindow() {
+    public static Performable newWindow() throws InterruptedException {
+        sleep(3000);
         return Tasks.instrumented(SwitchToNewWindow.class);
     }
 
