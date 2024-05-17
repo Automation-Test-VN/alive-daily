@@ -76,7 +76,7 @@ public class TestLucky88AliveDaily {
     public void AccessFunctionWithAccountHasBalance() {
         when(swagger).attemptsTo(
                 Click.on(GAME_BAI_BTN),
-                Click.on(GAME_BAI_TLMN),
+                Click.on(GAME_BAI_RIK),
                 Login.theAccountHasBalanceOnPopup(loginAccount),
                 WaitForLoad.theURL(CONTAINS_GAME_BAI)
         );
@@ -86,9 +86,9 @@ public class TestLucky88AliveDaily {
     public void AccessFunctionWithAccountNonBalance() {
         when(swagger).attemptsTo(
                 Click.on(GAME_BAI_BTN),
-                Click.on(GAME_BAI_TLMN),
+                Click.on(GAME_BAI_RIK),
                 Login.theAccountNonBalanceOnPopup(loginAccount),
-                Click.on(GAME_BAI_TLMN),
+                Click.on(GAME_BAI_RIK),
                 WaitForLoad.theURL(CONTAINS_GAME_BAI),
                 Verify.theElementIsDisplayed(POPUP_DEPOSIT)
         );
@@ -530,6 +530,28 @@ public class TestLucky88AliveDaily {
         sleep(25000);
         swagger.attemptsTo(
                 Verify.theValueIsNotEmpty(NO_HU_GAME_MONEY)
+        );
+    }
+
+    @Test
+    public void GameBaiRik() throws InterruptedException {
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Click.on(GAME_BAI_BTN),
+                Click.on(GAME_BAI_RIK),
+                SwitchTo.newWindow(),
+                Verify.theElementIsDisplayed(GAME_BAI_RIK_VERIFY)
+        );
+    }
+
+    @Test
+    public void GameBaiGo() throws InterruptedException {
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Click.on(GAME_BAI_BTN),
+                Click.on(GAME_BAI_GO),
+                SwitchTo.newWindow(),
+                Verify.theElementIsDisplayed(GAME_BAI_GO_VERIFY)
         );
     }
 }
