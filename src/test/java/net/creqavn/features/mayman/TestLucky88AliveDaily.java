@@ -127,7 +127,7 @@ public class TestLucky88AliveDaily {
     public void HomepageCashBack() {
         when(swagger).attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
-                Verify.theTextIsEqual(BALANCE_NUMBER,"200")
+                Verify.theTextIsEqual(BALANCE_NUMBER, "200")
         );
     }
 
@@ -318,8 +318,8 @@ public class TestLucky88AliveDaily {
         swagger.attemptsTo(
                 Click.on(HOT_MATCH_BET_BTN),
                 Switch.toFrame(FIRST_IFRAME),
-                Verify.theTextIsEqual(HOT_MATCH_LEFT_TEAM,leftTeam),
-                Verify.theTextIsEqual(HOT_MATCH_RIGHT_TEAM,rightTeam)
+                Verify.theTextIsEqual(HOT_MATCH_LEFT_TEAM, leftTeam),
+                Verify.theTextIsEqual(HOT_MATCH_RIGHT_TEAM, rightTeam)
         );
     }
 
@@ -523,7 +523,7 @@ public class TestLucky88AliveDaily {
     }
 
     @Test
-    public void NoHuCheckMoney () throws InterruptedException {
+    public void NoHuCheckMoney() throws InterruptedException {
         swagger.attemptsTo(
                 Click.on(NO_HU_BTN)
         );
@@ -580,7 +580,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void TableGameTP() throws InterruptedException {
         swagger.attemptsTo(
-            Login.theAccountHasBalance(loginAccount),
+                Login.theAccountHasBalance(loginAccount),
                 Click.on(TABLE_GAME_BTN),
                 Click.on(TABLE_GAME_TP),
                 SwitchTo.newWindow(),
@@ -596,6 +596,41 @@ public class TestLucky88AliveDaily {
                 Click.on(TABLE_GAME_B52),
                 SwitchTo.newWindow(),
                 Verify.theElementIsDisplayed(B52_SUPPLIER_VERIFY)
+        );
+    }
+
+    @Test
+    public void BanCaTP() throws InterruptedException {
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Click.on(BAN_CA_BTN),
+                Click.on(BAN_CA_TP),
+                SwitchTo.newWindow(),
+                Verify.theElementIsDisplayed(TP_SUPPLIER_VERIFY)
+        );
+    }
+
+    @Test
+    public void BanCaQTech() throws InterruptedException {
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Click.on(BAN_CA_BTN),
+                Click.on(BAN_CA_QTECH),
+                SwitchTo.newWindow(),
+                Switch.toFrame(QTECH_SUPPLIER_IFRAME.resolveFor(swagger)),
+                Verify.theElementIsDisplayed(QTECH_SUPPLIER_VERIFY)
+        );
+    }
+
+    @Test
+    public void BanCaCQ9() throws InterruptedException {
+        swagger.attemptsTo(
+//                Login.theAccountHasBalance(loginAccount),
+                Click.on(BAN_CA_BTN)
+//                Click.on(BAN_CA_QTECH),
+//                SwitchTo.newWindow(),
+//                Switch.toFrame(QTECH_SUPPLIER_IFRAME.resolveFor(swagger)),
+//                Verify.theElementIsDisplayed(QTECH_SUPPLIER_VERIFY)
         );
     }
 }
