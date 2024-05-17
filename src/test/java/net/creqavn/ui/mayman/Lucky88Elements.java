@@ -243,6 +243,9 @@ public class Lucky88Elements {
             .locatedBy("//*[@class=\"wrapper-match-component \"]//div[2]/div[@class='row-team-name']");
     public static final String FIRST_IFRAME = "my-frame";
     public static final String SPORT_IFRAME = "sportsFrame";
+    public static final Target GAME_IFRAME = Target
+            .the("game iframe")
+            .locatedBy("//iframe[@id='frmGame']");
 
     // SPORT SESSION
     public static final Target SPORT_BTN = Target
@@ -393,6 +396,7 @@ public class Lucky88Elements {
             .the("ban ca button")
             .locatedBy("//a[contains(.,'Bắn cá')]");
     public static final Target BAN_CA_TP = INDEX_GAME_PLAY_BTN.of("1");
+    public static final Target BAN_CA_CQ9 = INDEX_GAME_PLAY_BTN.of("6");
     public static final Target BAN_CA_QTECH = INDEX_GAME_PLAY_BTN.of("9");
     public static final Target QTECH_SUPPLIER_IFRAME = Target
             .the("qtech supplier iframe")
@@ -415,4 +419,19 @@ public class Lucky88Elements {
     public static final Target QUAY_SO_VERIFY = Target
             .the("quay so verify")
             .locatedBy("//div[@class='c-numbergaming']");
+
+    // XEM THEM SESSION
+    public static final Target XEM_THEM_BTN = Target
+            .the("xem them button")
+            .locatedBy("//span[.='Xem Thêm']");
+    public static final Target GAME_NHANH_BTN = Target
+            .the("game nhanh button")
+            .locatedBy("//span[contains(.,'Game Nhanh')]");
+    public static final Target CO_UP_BTN = Target
+            .the("co up button")
+            .locatedBy("//span[contains(.,'Cờ Úp')]");
+    public static final Target GAME_KHAC_BTN = Target
+            .the("game khac button")
+            .locatedBy("//span[contains(.,'Game Khác')]");
+    public static final Target XEM_THEM_PLAY_BTN = INDEX_GAME_PLAY_BTN.of("1");
 }
