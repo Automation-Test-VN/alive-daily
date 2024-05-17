@@ -633,4 +633,15 @@ public class TestLucky88AliveDaily {
 //                Verify.theElementIsDisplayed(QTECH_SUPPLIER_VERIFY)
         );
     }
+
+    @Test
+    public void Keno() throws InterruptedException {
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Click.on(KENO_BTN),
+                Click.on(KENO_PLAY_BTN),
+                SwitchTo.newWindow(),
+                Verify.theElementIsDisplayed(LO_DE_KENO_VIETLOT_VERIFY)
+        );
+    }
 }
