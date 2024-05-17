@@ -625,12 +625,11 @@ public class TestLucky88AliveDaily {
     @Test
     public void BanCaCQ9() throws InterruptedException {
         swagger.attemptsTo(
-//                Login.theAccountHasBalance(loginAccount),
-                Click.on(BAN_CA_BTN)
-//                Click.on(BAN_CA_QTECH),
-//                SwitchTo.newWindow(),
-//                Switch.toFrame(QTECH_SUPPLIER_IFRAME.resolveFor(swagger)),
-//                Verify.theElementIsDisplayed(QTECH_SUPPLIER_VERIFY)
+                Login.theAccountHasBalance(loginAccount),
+                Click.on(BAN_CA_BTN),
+                Click.on(BAN_CA_CQ9),
+                SwitchTo.newWindow(),
+                Verify.theElementIsDisplayed(QTECH_SUPPLIER_VERIFY)
         );
     }
 
