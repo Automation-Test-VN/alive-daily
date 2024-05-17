@@ -644,4 +644,16 @@ public class TestLucky88AliveDaily {
                 Verify.theElementIsDisplayed(LO_DE_KENO_VIETLOT_VERIFY)
         );
     }
+
+    @Test
+    public void QuaySo() throws InterruptedException {
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Click.on(QUAY_SO_BTN),
+                Click.on(QUAY_SO_PLAY_BTN),
+                SwitchTo.newWindow(),
+                Switch.toFrame(SPORT_IFRAME),
+                Verify.theElementIsDisplayed(QUAY_SO_VERIFY)
+        );
+    }
 }
