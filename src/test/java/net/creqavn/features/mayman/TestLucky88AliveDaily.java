@@ -43,7 +43,7 @@ public class TestLucky88AliveDaily {
     }
 
     @After
-    public void tearDown(){
+    public void tearDown() {
         swagger.attemptsTo(SwitchTo.mainWindowAfterCloseCurrentWindow());
     }
 
@@ -540,7 +540,7 @@ public class TestLucky88AliveDaily {
                 Click.on(GAME_BAI_BTN),
                 Click.on(GAME_BAI_RIK),
                 SwitchTo.newWindow(),
-                Verify.theElementIsDisplayed(GAME_BAI_RIK_VERIFY)
+                Verify.theElementIsDisplayed(RIK_SUPPLIER_VERIFY)
         );
     }
 
@@ -551,7 +551,51 @@ public class TestLucky88AliveDaily {
                 Click.on(GAME_BAI_BTN),
                 Click.on(GAME_BAI_GO),
                 SwitchTo.newWindow(),
-                Verify.theElementIsDisplayed(GAME_BAI_GO_VERIFY)
+                Verify.theElementIsDisplayed(GO_SUPPLIER_VERIFY)
+        );
+    }
+
+    @Test
+    public void TableGameRik() throws InterruptedException {
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Click.on(TABLE_GAME_BTN),
+                Click.on(TABLE_GAME_RIK),
+                SwitchTo.newWindow(),
+                Verify.theElementIsDisplayed(RIK_SUPPLIER_VERIFY)
+        );
+    }
+
+    @Test
+    public void TableGameGo() throws InterruptedException {
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Click.on(TABLE_GAME_BTN),
+                Click.on(TABLE_GAME_GO),
+                SwitchTo.newWindow(),
+                Verify.theElementIsDisplayed(GO_SUPPLIER_VERIFY)
+        );
+    }
+
+    @Test
+    public void TableGameTP() throws InterruptedException {
+        swagger.attemptsTo(
+            Login.theAccountHasBalance(loginAccount),
+                Click.on(TABLE_GAME_BTN),
+                Click.on(TABLE_GAME_TP),
+                SwitchTo.newWindow(),
+                Verify.theElementIsDisplayed(TP_SUPPLIER_VERIFY)
+        );
+    }
+
+    @Test
+    public void TableGameB52() throws InterruptedException {
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Click.on(TABLE_GAME_BTN),
+                Click.on(TABLE_GAME_B52),
+                SwitchTo.newWindow(),
+                Verify.theElementIsDisplayed(B52_SUPPLIER_VERIFY)
         );
     }
 }
