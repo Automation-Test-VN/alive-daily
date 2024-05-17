@@ -74,19 +74,13 @@ public class Lucky88Elements {
     public static final Target GAME_BAI_BTN = Target
             .the("game bai button")
             .locatedBy("//span[.='Game bài']");
+    public static final Target INDEX_GAME_PLAY_BTN = Target
+            .the("game {0} play button")
+            .locatedBy(".lobby-game-list > div:nth-of-type({0}) .game-item__link");
     public static final String CONTAINS_GAME_BAI = "/game-bai";
-    public static final Target GAME_BAI_RIK = Target
-            .the("game bai rik button")
-            .locatedBy(".lobby-game-list > div:nth-of-type(1) .game-item__link");
-    public static final Target GAME_BAI_RIK_VERIFY =Target
-            .the("game bai rik verify")
-            .locatedBy("//canvas[@id='GameCanvas']");
-    public static final Target GAME_BAI_GO=Target
-            .the("game bai go button")
-            .locatedBy(".lobby-game-list > div:nth-of-type(2) .game-item__link");
-    public static final Target GAME_BAI_GO_VERIFY =Target
-            .the("game bai go verify")
-            .locatedBy("//canvas[@id='GameCanvas']");
+    public static final Target GAME_BAI_RIK = INDEX_GAME_PLAY_BTN.of("1");
+    public static final Target GAME_BAI_GO = INDEX_GAME_PLAY_BTN.of("2");
+
 
     //LOGIN FORM
     public static final Target LOGIN_FORM = Target
@@ -136,7 +130,6 @@ public class Lucky88Elements {
             .the("about us")
             .locatedBy("//a[contains(.,'Giới thiệu')]");
     public static final String CONTAINS_ABOUT_US = "/about-us";
-
     public static final Target SU_KIEN_HOT_BTN = Target
             .the("su kien hot button")
             .locatedBy("//p[@class='text']");
@@ -224,6 +217,7 @@ public class Lucky88Elements {
     public static final Target CHANGE_PWD_SUBMIT_BTN = Target
             .the("change password submit butotn")
             .locatedBy("//button[@class='base-button btn base-button base-button-custom base-button--full']");
+
     public static final Target VERIFY_PHONE_NUMBER_BTN = Target
             .the("verify phone number button")
             .locatedBy("//div[@id='phone']//span[.='Xác thực']");
@@ -231,6 +225,7 @@ public class Lucky88Elements {
             .the("verify phone number now button")
             .locatedBy("//div[@class='StepProgress-item__button']");
 
+    // HOT MATCH SESSION
     public static final Target LEFT_FOOTBALL_TEAM = Target
             .the("left football team")
             .locatedBy(".swiper-slide-visible .hot-match-item__left > .hot-match-item__name");
@@ -310,9 +305,7 @@ public class Lucky88Elements {
     public static final Target LIVE_CASINO_BTN = Target
             .the("casino button")
             .locatedBy("//span[.='casino']");
-    public static final Target FIRST_TABLE_PLAY_BTN = Target
-            .the("first table play button")
-            .locatedBy("//div[@class='lobby-game-list']/div[1]//a[@href='javascript:void(0)']");
+    public static final Target FIRST_TABLE_PLAY_BTN = INDEX_GAME_PLAY_BTN.of("1");
     public static final Target VIVO_CASINO_BTN = Target
             .the("vivo casino button")
             .locatedBy("//a[contains(.,'Vivo gaming')]");
@@ -343,6 +336,7 @@ public class Lucky88Elements {
             .the("evolution casino verify")
             .locatedBy("//*[@id=\"lobby-root\"]//ul[@data-role='category-navigator']");
 
+    // LO DE SESSION
     public static final Target LO_DE_BTN = Target
             .the("lo de button")
             .locatedBy("//a[@class='menu__link']//span[.='Lô Đề']");
@@ -352,9 +346,7 @@ public class Lucky88Elements {
     public static final Target LO_DE_3_MIEN_VERIFY = Target
             .the("lo de 3 mien verify")
             .locatedBy("//div[@class='danhlo']");
-    public static final Target LO_DE_KENO_VIETLOT_BTN = Target
-            .the("keno vietlot button")
-            .locatedBy("//div[@class='lobby-game-list']/div[2]//a[@href='javascript:void(0)']");
+    public static final Target LO_DE_KENO_VIETLOT_BTN = INDEX_GAME_PLAY_BTN.of("2");
     public static final Target LO_DE_KENO_VIETLOT_VERIFY = Target
             .the("keno vietlot verify")
             .locatedBy(".tab-choose .tabs");
@@ -364,14 +356,35 @@ public class Lucky88Elements {
     public static final Target LO_DE_SIEU_TOC_VERIFY = Target
             .the("lo de sieu toc verify")
             .locatedBy("//table[@class='danhlo-table']");
-    public static final Target NO_HU_BTN=Target
+
+    // NO HU SESSION
+    public static final Target NO_HU_BTN = Target
             .the("no hu button")
             .locatedBy("//a[contains(.,'NỔ HŨ')]");
-    public static final Target NO_HU_GAME_PLAY_BTN=Target
-            .the("no hu game play button")
-            .locatedBy("//div[@class='lobby-game-list']/div[1]//a[@href='javascript:void(0)']");
-    public static final String CONTAINS_NO_HU_GAME="https://games.mt-sta.com/kts";
-    public static final Target NO_HU_GAME_MONEY=Target
+    public static final Target NO_HU_GAME_PLAY_BTN = INDEX_GAME_PLAY_BTN.of("1");
+    public static final String CONTAINS_NO_HU_GAME = "https://games.mt-sta.com/kts";
+    public static final Target NO_HU_GAME_MONEY = Target
             .the("no hu game money")
             .locatedBy("//div[@class='lobby-game-list']/div[1]//div[@class='jackpot']/span");
+
+    // TABLE GAME SESSION
+    public static final Target TABLE_GAME_BTN = Target
+            .the("table game button")
+            .locatedBy("//a[contains(.,'Table Games')]");
+    public static final Target TABLE_GAME_RIK = INDEX_GAME_PLAY_BTN.of("2");
+    public static final Target TABLE_GAME_GO = INDEX_GAME_PLAY_BTN.of("1");
+    public static final Target TABLE_GAME_TP = INDEX_GAME_PLAY_BTN.of("10");
+    public static final Target TABLE_GAME_B52 = INDEX_GAME_PLAY_BTN.of("24");
+    public static final Target GO_SUPPLIER_VERIFY = Target
+            .the("game bai go verify")
+            .locatedBy("//canvas[@id='GameCanvas']");
+    public static final Target TP_SUPPLIER_VERIFY = Target
+            .the("tp supplier verify")
+            .locatedBy("//canvas[@id='GameCanvas']");
+    public static final Target RIK_SUPPLIER_VERIFY = Target
+            .the("game bai rik verify")
+            .locatedBy("//canvas[@id='GameCanvas']");
+    public static final Target B52_SUPPLIER_VERIFY = Target
+            .the("game bai rik verify")
+            .locatedBy("//canvas[@id='GameCanvas']");
 }
