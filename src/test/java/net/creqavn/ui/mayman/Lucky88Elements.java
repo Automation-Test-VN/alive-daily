@@ -327,7 +327,7 @@ public class Lucky88Elements {
             .locatedBy("//a[contains(.,'Ezugi')]");
     public static final Target EZUGI_CASINO_VERIFY = Target
             .the("ezugi casino verify")
-            .locatedBy("//*[@id=\"scroller\"]/div[1]/div[3]/div/div[2]/div[*]");
+            .locatedBy("//*[@id=\"scroller\"]/div[1]/div[3]/div/div[2]/div[1]");
     public static final String CONTAINS_EZUGI_CASINO = "https://play.livetables.io/";
     public static final Target EVOLUTION_CASINO_BTN = Target
             .the("evolution casino button")
@@ -437,4 +437,12 @@ public class Lucky88Elements {
             .the("game khac button")
             .locatedBy("//span[contains(.,'Game Khác')]");
     public static final Target XEM_THEM_PLAY_BTN = INDEX_GAME_PLAY_BTN.of("1");
+
+    // NAP TIEN SESSION
+    public static final Target NAP_TIEN_BTN = Target
+            .the("nap tien button")
+            .locatedBy("//span[.='Nạp tiền']");
+    public static final Target QR_IMG_URL = Target
+            .the("qr image url")
+            .locatedBy("//div[@class='deposit-bank-info__qr-container']/img[1]");
 }

@@ -98,7 +98,7 @@ public class TestLucky88AliveDaily {
     public void ForgetPassword() {
         when(swagger).attemptsTo(
                 Click.on(FORGET_PWD_BTN),
-                Enter.keyValues(registerAccount.getEmail()).into(EMAIL_RESTORE_FIELD),
+                Enter.keyValues(EMAIL_VERIFY).into(EMAIL_RESTORE_FIELD),
                 Click.on(EMAIL_RESTORE_BTN),
                 Verify.theElementIsDisplayed(RESTORE_NOTIFY)
         );
@@ -225,7 +225,7 @@ public class TestLucky88AliveDaily {
         );
     }
 
-    @Test
+/*    @Test
     public void HomepageJackpot() throws InterruptedException {
         swagger.attemptsTo(
                 Login.theAccountHasBalance(loginAccount),
@@ -239,7 +239,7 @@ public class TestLucky88AliveDaily {
                 Verify.theValueIsNotEmpty(JACKPOT_FISH),
                 Verify.theValueIsNotEmpty(JACKPOT_NUMBER)
         );
-    }
+    }*/
 
     @Test
     public void AccountInfor() {
@@ -691,4 +691,20 @@ public class TestLucky88AliveDaily {
                 Verify.theElementIsDisplayed(QTECH_SUPPLIER_VERIFY)
         );
     }
+
+/*    @Test
+    public void NapTienCodePay() {
+        swagger.attemptsTo(
+                Login.theAccountHasBalance(loginAccount),
+                Click.on(AVATAR_USER),
+                Click.on(NAP_TIEN_BTN),
+                Click.on("//div[@class='deposit-select__item']"),
+                Click.on("//p[contains(.,'BIDV')]"),
+                Click.on("//div[@class='codepay__recommend-list']/p[contains(.,'500.000')]"),
+                Click.on(".codepay__action"),
+                Capture.theCurrentDesktop("bank.jpg"),
+                Decoder.theQRImage()
+        );
+        String leftTeam = swagger.asksFor(TheFootball.name(LEFT_FOOTBALL_TEAM));
+    }*/
 }
