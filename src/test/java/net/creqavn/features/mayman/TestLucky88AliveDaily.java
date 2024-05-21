@@ -2,15 +2,13 @@ package net.creqavn.features.mayman;
 
 import net.creqavn.models.LoginAccount;
 import net.creqavn.models.RegisterAccount;
-import net.creqavn.questions.TheFootball;
+import net.creqavn.questions.*;
 import net.creqavn.tasks.*;
-import net.creqavn.tasks.SwitchTo;
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.*;
-
 
 import org.junit.*;
 import org.junit.runner.RunWith;
@@ -20,14 +18,13 @@ import org.openqa.selenium.WebDriver;
 
 import static java.lang.Thread.sleep;
 import static net.creqavn.ui.mayman.Lucky88Elements.*;
-import static net.serenitybdd.screenplay.GivenWhenThen.when;
 
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestLucky88AliveDaily {
     static Actor swagger = Actor.named("Swagger");
     static RegisterAccount registerAccount = new RegisterAccount();
-    static LoginAccount loginAccount = new LoginAccount();
+    static LoginAccount loginAccount = new LoginAccount(LOGIN_USERNAME,ACCOUNT_HAS_BALANCE,LOGIN_PWD,LOGIN_SUBMIT,AVATAR_USER);
 
     @Managed(uniqueSession = true)
     public static WebDriver mightyBrowser;
@@ -48,43 +45,44 @@ public class TestLucky88AliveDaily {
     }
 
     @Test
-    public void RegisterNewAccount() {
-        when(swagger).attemptsTo(
-                Register.theUser(registerAccount),
+    public void Register() {
+        swagger.attemptsTo(
+                Register.theUserMayMan(registerAccount),
                 Verify.theElementIsDisplayed(WELCOME_POPUP)
         );
     }
 
     @Test
-    public void LoginWithAccountHasBalance() {
-        when(swagger).attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
-                WaitForLoad.theURL(DOMAIN),
-                Verify.theElementIsDisplayed(AVATAR_USER)
+    public void LoginTheAccountHasBalance() {
+        swagger.attemptsTo(
+                Login.theValidAccount(loginAccount),
+                WaitForLoad.theURL(DOMAIN)
         );
     }
 
     @Test
-    public void LoginWithAccountNonBalance() {
-        when(swagger).attemptsTo(
-                Login.theAccountNonBalance(loginAccount),
+    public void LoginTheAccountNonBalance() {
+        swagger.attemptsTo(
+                Login.theAccountNonBalance(loginAccount,ACCOUNT_NON_BALANCE),
                 WaitForLoad.theURL(CONTAINS_DEPOSIT)
         );
     }
 
     @Test
-    public void AccessFunctionWithAccountHasBalance() {
-        when(swagger).attemptsTo(
+    public void AccessFunctionWithValidAccount() {
+        LoginAccount loginAccount = new LoginAccount(FORM_LOGIN_USERNAME,ACCOUNT_HAS_BALANCE,FORM_LOGIN_PWD,FORM_LOGIN_SUBMIT_BTN,AVATAR_USER);
+        swagger.attemptsTo(
                 Click.on(GAME_BAI_BTN),
                 Click.on(GAME_BAI_RIK),
-                Login.theAccountHasBalanceOnPopup(loginAccount),
+                Login.theValidAccountOnPopup(loginAccount),
                 WaitForLoad.theURL(CONTAINS_GAME_BAI)
         );
     }
 
     @Test
     public void AccessFunctionWithAccountNonBalance() {
-        when(swagger).attemptsTo(
+        LoginAccount loginAccount = new LoginAccount(FORM_LOGIN_USERNAME,ACCOUNT_NON_BALANCE,FORM_LOGIN_PWD,FORM_LOGIN_SUBMIT_BTN,AVATAR_USER);
+        swagger.attemptsTo(
                 Click.on(GAME_BAI_BTN),
                 Click.on(GAME_BAI_RIK),
                 Login.theAccountNonBalanceOnPopup(loginAccount),
@@ -96,7 +94,7 @@ public class TestLucky88AliveDaily {
 
     @Test
     public void ForgetPassword() {
-        when(swagger).attemptsTo(
+        swagger.attemptsTo(
                 Click.on(FORGET_PWD_BTN),
                 Enter.keyValues(EMAIL_VERIFY).into(EMAIL_RESTORE_FIELD),
                 Click.on(EMAIL_RESTORE_BTN),
@@ -106,8 +104,8 @@ public class TestLucky88AliveDaily {
 
     @Test
     public void LogOut() {
-        when(swagger).attemptsTo(
-                Login.theAccountNonBalance(loginAccount),
+        swagger.attemptsTo(
+                Login.theValidAccount(loginAccount),
                 Click.on(AVATAR_USER),
                 Click.on(LOGOUT_BTN),
                 Verify.theElementIsDisplayed(LOGIN_USERNAME)
@@ -116,7 +114,7 @@ public class TestLucky88AliveDaily {
 
     @Test
     public void HomepageHeroBanner() {
-        when(swagger).attemptsTo(
+        swagger.attemptsTo(
                 Click.on(FIRST_SWIPER_PAGINATION),
                 Click.on(FIRST_HERO_BANNER),
                 WaitForLoad.theURL(CONTAINS_HERO_BANNER)
@@ -125,16 +123,16 @@ public class TestLucky88AliveDaily {
 
     @Test
     public void HomepageCashBack() {
-        when(swagger).attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+        swagger.attemptsTo(
+                Login.theValidAccount(loginAccount),
                 Verify.theTextIsEqual(BALANCE_NUMBER, "200")
         );
     }
 
     @Test
     public void HomepageLiveCasino() throws InterruptedException {
-        when(swagger).attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+        swagger.attemptsTo(
+                Login.theValidAccount(loginAccount),
                 SwipeTo.theBottom(),
                 Click.on(FIRST_HOMEPAGE_CASINO),
                 SwitchTo.newWindow(),
@@ -228,7 +226,7 @@ public class TestLucky88AliveDaily {
 /*    @Test
     public void HomepageJackpot() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Scroll.to(JACKPOT_AREA),
                 Click.on(JACKPOT_FIRST_GAME),
                 SwitchTo.newWindow(),
@@ -244,7 +242,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void AccountInfor() {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(AVATAR_USER),
                 WaitForLoad.theURL(CONTAINS_PROFILE),
                 Verify.theElementIsDisplayed(PROFILE_USERNAME),
@@ -256,7 +254,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void AccountChangePassword() {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(AVATAR_USER),
                 Click.on(CHANGE_PWD_BTN),
                 Verify.theElementIsDisplayed(CURRENT_PWD_FIELD),
@@ -269,7 +267,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void AccountVerifyPhoneNumber() {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(AVATAR_USER),
                 Click.on(VERIFY_PHONE_NUMBER_BTN),
                 Verify.theElementIsDisplayed(VERIFY_PHONE_NUMBER_NOW_BTN)
@@ -278,7 +276,7 @@ public class TestLucky88AliveDaily {
 
     @Test
     public void zAccountVerifyEmail() {
-        LoginAccount loginAccount = new LoginAccount(registerAccount.getUserName());
+        LoginAccount loginAccount = new LoginAccount(LOGIN_USERNAME,registerAccount.getUserName(),LOGIN_PWD,LOGIN_SUBMIT,AVATAR_USER);
         swagger.attemptsTo(
                 Login.theAccountJustRegistered(loginAccount),
                 Click.on(AVATAR_USER),
@@ -291,7 +289,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void AccountBankAccount() {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(AVATAR_USER),
                 Click.on(BANK_BTN),
                 Click.on(ADD_BANK_ACCOUNT_BTN),
@@ -302,7 +300,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void AccountBonus() {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(AVATAR_USER),
                 Click.on(BONUS_BTN),
                 Verify.theElementIsDisplayed(BONUS_INFO)
@@ -326,10 +324,9 @@ public class TestLucky88AliveDaily {
     @Test
     public void SportK() {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(SPORT_BTN),
                 Browser.refreshPage(),
-                WaitForLoad.thePage(SPORT_K_BTN),
                 Click.on(SPORT_K_BTN),
                 Switch.toFrame(FIRST_IFRAME),
                 Verify.theElementIsDisplayed(SPORT_K_VERIFY)
@@ -339,7 +336,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void SportI() {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(SPORT_BTN),
                 Click.on(SPORT_I_BTN),
                 Switch.toFrame(FIRST_IFRAME),
@@ -350,7 +347,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void SportA() {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(SPORT_BTN),
                 Click.on(SPORT_A_BTN),
                 Switch.toFrame(FIRST_IFRAME),
@@ -362,7 +359,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void SportC() {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(SPORT_BTN),
                 Click.on(SPORT_C_BTN),
                 Switch.toFrame(FIRST_IFRAME),
@@ -373,7 +370,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void SportM() {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(SPORT_BTN),
                 Click.on(SPORT_M_BTN),
                 Switch.toFrame(FIRST_IFRAME),
@@ -393,7 +390,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void SportVirtual() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 HoverOverElement.over(SPORT_BTN),
                 Click.on(SPORT_VIRTUAL_BTN),
                 SwitchTo.newWindow(),
@@ -405,7 +402,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void SportESport() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 HoverOverElement.over(SPORT_BTN),
                 Click.on(SPORT_E_SPORT_BTN),
                 SwitchTo.newWindow(),
@@ -416,7 +413,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void SportHorseRacing() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 HoverOverElement.over(SPORT_BTN),
                 Click.on(SPORT_HORSE_RACING_BTN)
         );
@@ -429,12 +426,12 @@ public class TestLucky88AliveDaily {
     @Test
     public void CasinoVivo() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(LIVE_CASINO_BTN),
                 Click.on(VIVO_CASINO_BTN),
                 Click.on(FIRST_TABLE_PLAY_BTN),
                 SwitchTo.newWindow(),
-                WaitForLoad.thePage(VIVO_CASINO_VERIFY),
+//                WaitForLoad.thePage(VIVO_CASINO_VERIFY),
                 Verify.theElementIsDisplayed(VIVO_CASINO_VERIFY)
         );
     }
@@ -442,7 +439,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void CasinoMG() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(LIVE_CASINO_BTN),
                 Click.on(MG_CASINO_BTN),
                 Click.on(FIRST_TABLE_PLAY_BTN),
@@ -455,7 +452,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void CasinoEzugi() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(LIVE_CASINO_BTN),
                 Click.on(EZUGI_CASINO_BTN),
                 Click.on(FIRST_TABLE_PLAY_BTN),
@@ -468,7 +465,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void CasinoEvolution() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(LIVE_CASINO_BTN),
                 Click.on(EVOLUTION_CASINO_BTN),
                 Click.on(FIRST_TABLE_PLAY_BTN),
@@ -481,7 +478,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void LoDe3Mien() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 HoverOverElement.over(LO_DE_BTN),
                 Click.on(LO_DE_3_MIEN_BTN),
                 SwitchTo.newWindow(),
@@ -492,7 +489,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void LoDeKenoVietlot() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(LO_DE_BTN),
                 Click.on(LO_DE_KENO_VIETLOT_BTN),
                 SwitchTo.newWindow(),
@@ -503,7 +500,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void LoDeSieuToc() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 HoverOverElement.over(LO_DE_BTN),
                 Click.on(LO_DE_SIEU_TOC_BTN),
                 SwitchTo.newWindow(),
@@ -514,7 +511,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void NoHuAccessGame() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(NO_HU_BTN),
                 Click.on(NO_HU_GAME_PLAY_BTN),
                 SwitchTo.newWindow(),
@@ -536,7 +533,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void GameBaiRik() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(GAME_BAI_BTN),
                 Click.on(GAME_BAI_RIK),
                 SwitchTo.newWindow(),
@@ -547,7 +544,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void GameBaiGo() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(GAME_BAI_BTN),
                 Click.on(GAME_BAI_GO),
                 SwitchTo.newWindow(),
@@ -558,7 +555,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void TableGameRik() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(TABLE_GAME_BTN),
                 Click.on(TABLE_GAME_RIK),
                 SwitchTo.newWindow(),
@@ -569,7 +566,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void TableGameGo() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(TABLE_GAME_BTN),
                 Click.on(TABLE_GAME_GO),
                 SwitchTo.newWindow(),
@@ -580,7 +577,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void TableGameTP() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(TABLE_GAME_BTN),
                 Click.on(TABLE_GAME_TP),
                 SwitchTo.newWindow(),
@@ -591,7 +588,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void TableGameB52() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(TABLE_GAME_BTN),
                 Click.on(TABLE_GAME_B52),
                 SwitchTo.newWindow(),
@@ -602,7 +599,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void BanCaTP() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(BAN_CA_BTN),
                 Click.on(BAN_CA_TP),
                 SwitchTo.newWindow(),
@@ -613,7 +610,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void BanCaQTech() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(BAN_CA_BTN),
                 Click.on(BAN_CA_QTECH),
                 SwitchTo.newWindow(),
@@ -625,7 +622,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void BanCaCQ9() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(BAN_CA_BTN),
                 Click.on(BAN_CA_CQ9),
                 SwitchTo.newWindow(),
@@ -636,7 +633,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void Keno() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(KENO_BTN),
                 Click.on(KENO_PLAY_BTN),
                 SwitchTo.newWindow(),
@@ -647,7 +644,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void QuaySo() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(QUAY_SO_BTN),
                 Click.on(QUAY_SO_PLAY_BTN),
                 SwitchTo.newWindow(),
@@ -659,7 +656,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void XemThemGameNhanh() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 HoverOverElement.over(XEM_THEM_BTN),
                 Click.on(GAME_NHANH_BTN),
                 Click.on(XEM_THEM_PLAY_BTN),
@@ -671,7 +668,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void XemThemCoUp() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 HoverOverElement.over(XEM_THEM_BTN),
                 Click.on(CO_UP_BTN),
                 SwitchTo.newWindow(),
@@ -682,7 +679,7 @@ public class TestLucky88AliveDaily {
     @Test
     public void XemThemGameKhac() throws InterruptedException {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 HoverOverElement.over(XEM_THEM_BTN),
                 Click.on(GAME_KHAC_BTN),
                 Click.on(XEM_THEM_PLAY_BTN),
@@ -695,7 +692,7 @@ public class TestLucky88AliveDaily {
 /*    @Test
     public void NapTienCodePay() {
         swagger.attemptsTo(
-                Login.theAccountHasBalance(loginAccount),
+                Login.theValidAccount(loginAccount),
                 Click.on(AVATAR_USER),
                 Click.on(NAP_TIEN_BTN),
                 Click.on("//div[@class='deposit-select__item']"),
