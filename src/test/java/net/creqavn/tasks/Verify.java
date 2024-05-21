@@ -9,10 +9,28 @@ import net.serenitybdd.screenplay.waits.WaitUntil;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.*;
 
 public class Verify {
+//    // Default timeout value
+//    public static final int DEFAULT_TIMEOUT = 15;
+//
+//    // Method with default timeout value
+//    public static Performable theElementIsDisplayed(Target element) {
+//        return theElementIsDisplayed(element, DEFAULT_TIMEOUT);
+//    }
+//
+//    // Method with customizable timeout value
+//    public static Performable theElementIsDisplayed(Target element, int timeOut) {
+//        return Task.where("{0} verify the element", actor -> {
+//            actor.attemptsTo(
+//                    WaitUntil.the(element, isVisible()).forNoMoreThan(timeOut).seconds(),
+//                    Ensure.that(element).isDisplayed()
+//            );
+//        });
+//    }
+
     public static Performable theElementIsDisplayed(Target element) {
         return Task.where("{0} verify the element", actor -> {
             actor.attemptsTo(
-                    WaitUntil.the(element, isVisible()),
+                    WaitUntil.the(element, isVisible()).forNoMoreThan(10).seconds(),
                     Ensure.that(element).isDisplayed()
             );
         });
