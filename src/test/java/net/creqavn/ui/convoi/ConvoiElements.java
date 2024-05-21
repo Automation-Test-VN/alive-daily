@@ -5,7 +5,7 @@ import net.serenitybdd.screenplay.targets.Target;
 public class ConvoiElements {
     public static final String DOMAIN = "https://11bet.uk/";
     public static final String ACCOUNT_HAS_BALANCE = "cq4atsea01";
-    public static final String ACCOUNT_NON_BALANCE = "";
+    public static final String ACCOUNT_NON_BALANCE = "atcasea1";
     public static final Target AVATER_USER = Target
             .the("avater user")
             .locatedBy("//img[@alt='avatar']");
@@ -36,5 +36,15 @@ public class ConvoiElements {
     public static final Target FORM_LOGIN_SUBMIT_BTN = Target
             .the("form login submit button")
             .locatedBy("//form[@id='formLogin']/button[@class='base-button btn base-button form-login__btn base-button--bg-green']");
+    public static final String CONTAINS_DEPOSIT = "/?account=deposit&tab=codepay";
+
+    //NO HU SESSION
+    public static final Target NO_HU_BTN = Target
+            .the("no hu buttton")
+            .locatedBy("//p[contains(.,'NỔ HŨ')]");
+    public static final String CONTAINS_NO_HU = "/lobby?game=no-hu";
+    public static final Target NO_HU_INDEX_PLAY_BTN = Target
+            .the("no hu index {0} play btn")
+            .locatedBy(".game-list__content > div:nth-of-type(1) button");
 
 }
