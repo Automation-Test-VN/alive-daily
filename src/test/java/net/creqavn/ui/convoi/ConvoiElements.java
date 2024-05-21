@@ -6,6 +6,19 @@ public class ConvoiElements {
     public static final String DOMAIN = "https://11bet.uk/";
     public static final String ACCOUNT_HAS_BALANCE = "cq4atsea01";
     public static final String ACCOUNT_NON_BALANCE = "atcasea1";
+    public static final String EMAIL_VERIFY = "hello210524@yopmail.com";
+    public static final Target FORGET_PWD_BTN = Target
+            .the("forget password button")
+            .locatedBy("//span[.='Khôi phục mật khẩu?']");
+    public static final Target EMAIL_RECOVERY_FIELD = Target
+            .the("email recovery field")
+            .locatedBy("//input[@name='email']");
+    public static final Target FORGET_PWD_SUBMIT_BTN = Target
+            .the("forget password submit button")
+            .locatedBy(".form-forgot-password__submit");
+    public static final Target FORGET_PWD_VERIFY = Target
+            .the("forget password verify")
+            .locatedBy("//div[@class='swal2-content']");
     public static final Target AVATER_USER = Target
             .the("avater user")
             .locatedBy("//img[@alt='avatar']");

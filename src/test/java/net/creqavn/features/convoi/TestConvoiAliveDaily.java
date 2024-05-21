@@ -9,6 +9,7 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.Click;
+import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.JavaScriptClick;
 import net.serenitybdd.screenplay.actions.Open;
 import org.junit.*;
@@ -86,6 +87,17 @@ public class TestConvoiAliveDaily {
                 JavaScriptClick.on(NO_HU_INDEX_PLAY_BTN.of("1")),
                 Login.theAccountNonBalance(loginAccount,ACCOUNT_NON_BALANCE),
                 WaitForLoad.theURL(CONTAINS_DEPOSIT)
+        );
+    }
+
+    @Test
+    public void ForgetPassword(){
+        swagger.attemptsTo(
+                Click.on(LOGIN_BTN),
+                Click.on(FORGET_PWD_BTN),
+                Enter.keyValues(EMAIL_VERIFY).into(EMAIL_RECOVERY_FIELD),
+                Click.on(FORGET_PWD_SUBMIT_BTN),
+                Verify.theTextIsEqual(FORGET_PWD_VERIFY,"Email đã được gửi, vui lòng kiểm tra hộp thư để cập nhật thông tin.")
         );
     }
 }
