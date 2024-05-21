@@ -53,7 +53,7 @@ public class TestLucky88AliveDaily {
     }
 
     @Test
-    public void LoginTheAccountHasBalance() {
+    public void LoginTheValidAccount() {
         swagger.attemptsTo(
                 Login.theValidAccount(loginAccount),
                 WaitForLoad.theURL(DOMAIN)
