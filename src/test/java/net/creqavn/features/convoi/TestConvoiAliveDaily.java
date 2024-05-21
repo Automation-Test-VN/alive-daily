@@ -22,7 +22,7 @@ import static net.creqavn.ui.convoi.ConvoiElements.*;
 public class TestConvoiAliveDaily {
     static Actor swagger = Actor.named("swagger");
     static RegisterAccount registerAccount = new RegisterAccount();
-    static LoginAccount loginAccount = new LoginAccount();
+    static LoginAccount loginAccount = new LoginAccount(FORM_USER_NAME,ACCOUNT_HAS_BALANCE,FORM_PWD,FORM_LOGIN_SUBMIT_BTN,AVATER_USER);
 
     @Managed(uniqueSession = true)
     public static WebDriver mightyBrowser;
@@ -47,6 +47,15 @@ public class TestConvoiAliveDaily {
         swagger.attemptsTo(
                 Register.theUserConvoi(registerAccount),
                 Verify.theElementIsDisplayed(AVATER_USER)
+        );
+    }
+
+    @Test
+    public void LoginTheValidAccount() {
+        swagger.attemptsTo(
+                Click.on(LOGIN_BTN),
+                Login.theValidAccount(loginAccount),
+                WaitForLoad.theURL(DOMAIN)
         );
     }
 }
