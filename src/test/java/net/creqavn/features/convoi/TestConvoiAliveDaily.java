@@ -9,6 +9,7 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.Click;
+import net.serenitybdd.screenplay.actions.JavaScriptClick;
 import net.serenitybdd.screenplay.actions.Open;
 import org.junit.*;
 import org.junit.runner.RunWith;
@@ -56,6 +57,35 @@ public class TestConvoiAliveDaily {
                 Click.on(LOGIN_BTN),
                 Login.theValidAccount(loginAccount),
                 WaitForLoad.theURL(DOMAIN)
+        );
+    }
+
+    @Test
+    public void LoginTheAccountNonBalance(){
+        swagger.attemptsTo(
+                Click.on(LOGIN_BTN),
+                Login.theAccountNonBalance(loginAccount,ACCOUNT_NON_BALANCE),
+                WaitForLoad.theURL(CONTAINS_DEPOSIT)
+        );
+    }
+
+    @Test
+    public void AccessFunctionWithValidAccount() {
+        swagger.attemptsTo(
+                Click.on(NO_HU_BTN),
+                JavaScriptClick.on(NO_HU_INDEX_PLAY_BTN.of("1")),
+                Login.theValidAccountOnPopup(loginAccount),
+                WaitForLoad.theURL(CONTAINS_NO_HU)
+        );
+    }
+
+    @Test
+    public void AccessFunctionWithAccountNonBalance() {
+        swagger.attemptsTo(
+                Click.on(NO_HU_BTN),
+                JavaScriptClick.on(NO_HU_INDEX_PLAY_BTN.of("1")),
+                Login.theAccountNonBalance(loginAccount,ACCOUNT_NON_BALANCE),
+                WaitForLoad.theURL(CONTAINS_DEPOSIT)
         );
     }
 }
