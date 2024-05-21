@@ -54,6 +54,53 @@ public class ConvoiElements {
             .locatedBy("//form[@id='formLogin']/button[@class='base-button btn base-button form-login__btn base-button--bg-green']");
     public static final String CONTAINS_DEPOSIT = "/?account=deposit&tab=codepay";
 
+    //HOMEPAGE SESSION
+    public static final Target FIRST_SLIDER_BTN = Target
+            .the("first slider button")
+            .locatedBy("[aria-label='Go to slide 1']");
+    public static final Target FIRST_SLIDER_IMG = Target
+            .the("first slider image")
+            .locatedBy(".swiper-wrapper > div:nth-of-type(2) [alt='Volta PC']");
+    public static final String FIRST_IFRAME = "my-frame";
+    public static final String SPORT_IFRAME = "sportsFrame";
+    public static final Target HOT_MATCH_LEFT_TEAM = Target
+            .the("hot match left team")
+            .locatedBy("//div[@class='league__matchs']/div[1]/div[1]//div[@class='match__left']//div[@class='match__home-team']//span");
+    public static final Target HOT_MATCH_RIGHT_TEAM = Target
+            .the("hot match right team")
+            .locatedBy("//div[@class='league__matchs']/div[1]/div[1]//div[@class='match__left']//div[@class='match__away-team']//span");
+    public static final Target HOT_MATCH_PLAY_BTN = Target
+            .the("hot match play button")
+            .locatedBy("//div[@class='league__matchs']/div[1]/div[@class='match__item']//span[contains(.,'Cược K-Sport')]");
+    public static final Target MATCH_LEFT_TEAM = Target
+            .the("match left team")
+            .locatedBy("//div[@class='match-row-title']/div/div[1]/div");
+    public static final Target MATCH_RIGHT_TEAM = Target
+            .the("match right team")
+            .locatedBy("//div[@class='match-row-title']/div/div[2]/div");
+    public static final Target HOMEPAGE_SPORT_K = Target
+            .the("homepage sport k")
+            .locatedBy("//a[@href='/ksports']");
+    public static final Target HOMEPAGE_SPORT_C = Target
+            .the("homepage sport c")
+            .locatedBy("//a[@href='/csports']");
+    public static final Target HOMEPAGE_SPORT_P = Target
+            .the("homepage sport p")
+            .locatedBy("//a[@href='/psports']");
+
+
+
+    // SPORT SESSION
+    public static final Target SPORT_K_VERIFY = Target
+            .the("sport k verify")
+            .locatedBy("//div[@class='header-match color-header']");
+    public static final Target SPORT_C_VERIFY = Target
+            .the("sport c verify")
+            .locatedBy("//div[@title='Trận Đấu']");
+    public static final Target SPORT_P_VERIFY = Target
+            .the("sport p verify")
+            .locatedBy("//div[@class='eventlist_asia_fe_sharedGrid_headersRow']");
+
     //NO HU SESSION
     public static final Target NO_HU_BTN = Target
             .the("no hu buttton")
