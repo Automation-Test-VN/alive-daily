@@ -10,4 +10,10 @@ public class SwipeTo {
             BrowseTheWeb.as(actor).evaluateJavascript("window.scrollTo(0, document.body.scrollHeight)");
         });
     }
+
+    public static Performable theMiddle() {
+        return Task.where("", actor -> {
+            BrowseTheWeb.as(actor).evaluateJavascript("window.scrollTo(0, document.body.scrollHeight/2)");
+        });
+    }
 }
