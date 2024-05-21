@@ -6,6 +6,9 @@ public class ConvoiElements {
     public static final String DOMAIN = "https://11bet.uk/";
     public static final String ACCOUNT_HAS_BALANCE = "cq4atsea01";
     public static final String ACCOUNT_NON_BALANCE = "atcasea1";
+    public static final Target LOGOUT_BTN = Target
+            .the("logout button")
+            .locatedBy("//span[.='Đăng xuất']");
     public static final String EMAIL_VERIFY = "hello210524@yopmail.com";
     public static final Target FORGET_PWD_BTN = Target
             .the("forget password button")

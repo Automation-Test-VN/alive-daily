@@ -100,4 +100,15 @@ public class TestConvoiAliveDaily {
                 Verify.theTextIsEqual(FORGET_PWD_VERIFY,"Email đã được gửi, vui lòng kiểm tra hộp thư để cập nhật thông tin.")
         );
     }
+
+    @Test
+    public void Logout(){
+        swagger.attemptsTo(
+                Click.on(LOGIN_BTN),
+                Login.theValidAccount(loginAccount),
+                Click.on(AVATER_USER),
+                Click.on(LOGOUT_BTN),
+                Verify.theElementIsDisplayed(LOGIN_BTN)
+        );
+    }
 }
