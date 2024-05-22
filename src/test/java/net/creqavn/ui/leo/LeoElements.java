@@ -9,10 +9,40 @@ public class LeoElements {
     public static final String EMAIL_VERIFY = "hello210524@yopmail.com";
     public static final Target LOGGED_USER = Target
             .the("logged user")
-            .locatedBy("//div[@class='flex items-center font-normal']");
+            .locatedBy(".truncate");
     public static final Target LOGOUT_BTN = Target
             .the("logout button")
             .locatedBy("//li[.='Logout']");
+    public static final Target USER_INFO_BTN = Target
+            .the("user info button")
+            .locatedBy("//li[.='User Information']");
+    public static final Target USER_INFO = Target
+            .the("user infor")
+            .locatedBy("//div[@class='flex items-center justify-center py-7 px-[25px]']");
+    public static final Target BANK_DETAILS_BTN = Target
+            .the("bank details button")
+            .locatedBy("//span[contains(text(),'Bank Details')]");
+    public static final Target BANK_DETAILS = Target
+            .the("bank details")
+            .locatedBy("//div[@class='w-full pl-3.5 space-y-[18px]']");
+    public static final Target CHANGE_PWD_BTN = Target
+            .the("change password button")
+            .locatedBy("//span[.='Change Password']");
+    public static final Target CHANGE_PWD = Target
+            .the("change password")
+            .locatedBy("//div[@class='flex flex-col items-center justify-center w-full space-y-8']");
+    public static final Target PROMOTION_CASHBACK_BTN = Target
+            .the("promotion and cashback button")
+            .locatedBy("//span[.='Promotion & Bonus']");
+    public static final Target PROMOTION_CASHBACK = Target
+            .the("promotion and cashback")
+            .locatedBy("//div[@class='py-6 px-9']");
+    public static final Target VIP_PROGRAM_BTN = Target
+            .the("vip program button")
+            .locatedBy("//span[.='VIP Program']");
+    public static final Target VIP_PROGRAM = Target
+            .the("vip program")
+            .locatedBy("//div[@class='px-9 pb-9 lg:px-4 md:px-4']");
 
     // SIGN UP SESSION
     public static final Target SIGN_UP_BTN = Target
