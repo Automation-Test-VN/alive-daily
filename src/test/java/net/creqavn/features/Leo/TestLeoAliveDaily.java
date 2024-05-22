@@ -266,11 +266,70 @@ public class TestLeoAliveDaily {
     }
 
     @Test
-    public void HomepageLiveChat() throws InterruptedException {
+    public void HomepageLiveChat() {
         swagger.attemptsTo(
                 Click.on(LIVE_CHAT_BTN),
                 Switch.toFrame(LIVE_CHAT_IFRAME.resolveFor(swagger)),
                 Click.on(LIVE_CHAT_MINIMIZE_BTN)
+        );
+    }
+
+    @Test
+    public void ProfileInfo(){
+        swagger.attemptsTo(
+                Click.on(SIGN_IN_BTN),
+                Login.theInvalidAccount(loginInvalidAccount),
+                Click.on(LOGGED_USER),
+                Click.on(USER_INFO_BTN),
+                Verify.theElementIsDisplayed(USER_INFO)
+        );
+    }
+
+    @Test
+    public void ProfileBankDetail(){
+        swagger.attemptsTo(
+                Click.on(SIGN_IN_BTN),
+                Login.theInvalidAccount(loginInvalidAccount),
+                Click.on(LOGGED_USER),
+                Click.on(USER_INFO_BTN),
+                Click.on(BANK_DETAILS_BTN),
+                Verify.theElementIsDisplayed(BANK_DETAILS)
+        );
+    }
+
+    @Test
+    public void ProfileChangePassword(){
+        swagger.attemptsTo(
+                Click.on(SIGN_IN_BTN),
+                Login.theInvalidAccount(loginInvalidAccount),
+                Click.on(LOGGED_USER),
+                Click.on(USER_INFO_BTN),
+                Click.on(CHANGE_PWD_BTN),
+                Verify.theElementIsDisplayed(CHANGE_PWD)
+        );
+    }
+
+    @Test
+    public void ProfilePromotionAndCashBack(){
+        swagger.attemptsTo(
+                Click.on(SIGN_IN_BTN),
+                Login.theInvalidAccount(loginInvalidAccount),
+                Click.on(LOGGED_USER),
+                Click.on(USER_INFO_BTN),
+                Click.on(PROMOTION_CASHBACK_BTN),
+                Verify.theElementIsDisplayed(PROMOTION_CASHBACK)
+        );
+    }
+
+    @Test
+    public void ProfileVipProgram(){
+        swagger.attemptsTo(
+                Click.on(SIGN_IN_BTN),
+                Login.theInvalidAccount(loginInvalidAccount),
+                Click.on(LOGGED_USER),
+                Click.on(USER_INFO_BTN),
+                Click.on(VIP_PROGRAM_BTN),
+                Verify.theElementIsDisplayed(VIP_PROGRAM)
         );
     }
 }
