@@ -23,10 +23,10 @@ public class Login {
         );
     }
 
-    public static Performable theAccountNonBalance(LoginAccount loginAccount,String accountNonBalance) {
+    public static Performable theInvalidAccount(LoginAccount loginAccount) {
         return Task.where("{0} login the account non balance", actor -> {
                     actor.attemptsTo(
-                            Enter.keyValues(accountNonBalance).into(loginAccount.getUserName_Field()),
+                            Enter.keyValues(loginAccount.getUserName()).into(loginAccount.getUserName_Field()),
                             Enter.keyValues(loginAccount.getPwd()).into(loginAccount.getPwd_Field()),
                             Click.on(loginAccount.getSubmit_BTN()),
                             Verify.theElementIsDisplayed(loginAccount.getAVATAR_USER())
