@@ -1,17 +1,14 @@
 package net.creqavn.tasks;
 
-import com.microsoft.playwright.Mouse;
 import net.creqavn.models.RegisterAccount;
 import net.creqavn.ui.convoi.ConvoiElements;
+import net.creqavn.ui.leo.LeoElements;
 import net.creqavn.ui.mayman.Lucky88Elements;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
-import net.serenitybdd.screenplay.actions.HoverOverElement;
 
-import static net.creqavn.ui.mayman.Lucky88Elements.*;
-import static net.creqavn.ui.convoi.ConvoiElements.*;
 
 public class Register {
     public static Performable theUserMayMan(RegisterAccount registerAccount) {
@@ -42,6 +39,20 @@ public class Register {
                     Enter.keyValues(registerAccount.getPhoneNumber())
                             .into(ConvoiElements.REGISTER_PHONE_NUMBER),
                     Click.on(ConvoiElements.REGISTER_SUBMIT)
+            );
+        });
+    }
+
+    public static Performable theUserLeo(RegisterAccount registerAccount) {
+        return Task.where("{0} register a new user", actor -> {
+            actor.attemptsTo(
+                    Enter.keyValues(registerAccount.getUserName())
+                            .into(LeoElements.SIGN_UP_USERNAME),
+                    Enter.keyValues(registerAccount.getPwd())
+                            .into(LeoElements.SIGN_UP_PWD),
+                    Enter.keyValues(registerAccount.getPwd())
+                            .into(LeoElements.SIGN_UP_RE_PWD),
+                    Click.on(LeoElements.SIGN_UP_SUBMIT)
             );
         });
     }

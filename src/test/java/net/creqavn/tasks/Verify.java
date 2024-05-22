@@ -30,16 +30,16 @@ public class Verify {
     public static Performable theElementIsDisplayed(Target element) {
         return Task.where("{0} verify the element", actor -> {
             actor.attemptsTo(
-                    WaitUntil.the(element, isVisible()).forNoMoreThan(10).seconds(),
+                    WaitUntil.the(element, isVisible()).forNoMoreThan(15).seconds(),
                     Ensure.that(element).isDisplayed()
             );
         });
     }
 
-    public static Performable theTextIsEqual(Target target1, String target2) {
+    public static Performable theTextIsEqual(Target target, String compareString) {
         return Task.where("{0} compare the text of element", actor -> {
             actor.attemptsTo(
-                    Ensure.that(target1).text().isEqualTo(target2)
+                    Ensure.that(target).text().isEqualTo(compareString)
             );
         });
     }
