@@ -120,9 +120,49 @@ public class LeoElements {
     public static final Target SPORT_K_IFRAME = Target
             .the("sport k iframe")
             .locatedBy("//iframe[@id='kSport']");
+    public static final Target SPORT_A_IFRAME = Target
+            .the("sport a iframe")
+            .locatedBy("//iframe[@id='aSport']");
+    public static final Target SPORT_IFRAME = Target
+            .the("sport iframe")
+            .locatedBy("//*[@id=\"sportsFrame\"]");
+    public static final Target SPORT_BTI_IFRAME = Target
+            .the("sport bti iframe")
+            .locatedBy("//iframe[@id='bti']");
+    public static final Target SPORT_V_IFRAME = Target
+            .the("sport v iframe")
+            .locatedBy("//iframe[@id='vSport']");
+    public static final Target VIRTUAL_IFRAME = Target
+            .the("virtual iframe")
+            .locatedBy("//*[@id=\"virtualIframe\"]");
+    public static final Target VIRTUAL_IFRAME_2 = Target
+            .the("virtual iframe 2")
+            .locatedBy("//*[@id=\"vsm-ea-iframe\"]");
     public static final Target SPORT_K_VERIFY = Target
             .the("sport k verify")
             .locatedBy("//div[@class='header-match color-header']");
+    public static final Target SPORT_LEO = Target
+            .the("sport leo")
+            .locatedBy("[src='/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fleo-sport.008a9089.png&w=3840&q=100']");
+    public static final Target SPORT_IBC = Target
+            .the("sport ibc")
+            .locatedBy("[src='/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fibc.bc3bf2ad.png&w=3840&q=100']");
+    public static final Target SPORT_IBC_VERIFY = Target
+            .the("sport ibc veriry")
+            .locatedBy("//div[@class='c-odds-table__header']");
+    public static final Target SPORT_BTI = Target
+            .the("sport bti")
+            .locatedBy("[src='/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fbti.c09e017f.png&w=3840&q=100']");
+    public static final Target SPORT_BTI_VERIFY = Target
+            .the("sport bti verify")
+            .locatedBy("//div[@class='eventlist_asia_fe_sharedGrid_headersRow']");
+    public static final Target SPORT_LEO_VIRTUAL = Target
+            .the("sport leo virtual")
+            .locatedBy("[src='/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fleo-vr.494ef44e.png&w=3840&q=100']");
+    public static final Target SPORT_LEO_VIRTUAL_VERIFY = Target
+            .the("sport leo virtual verify")
+            .locatedBy("//gaming-vgpc-composition[@sport='vfb']");
+
 
     // LIVE CASINO SESSION
     public static final Target LIVE_CASINO_BTN = Target
