@@ -1,4 +1,4 @@
-package net.creqavn;
+package net.creqavn.utilities;
 
 import org.apache.commons.lang3.RandomStringUtils;
 

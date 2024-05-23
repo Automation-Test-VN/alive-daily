@@ -4,6 +4,7 @@ import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.model.*;
 import net.creqavn.Config;
 import net.creqavn.GlobalConstants;
+import net.creqavn.ISP;
 import net.creqavn.googleapi.GoogleApiServices;
 import net.creqavn.googleapi.drive.GoogleDriveService;
 import net.creqavn.utilities.DateTimeUtils;
@@ -13,10 +14,8 @@ import net.thucydides.model.reports.TestOutcomes;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.security.GeneralSecurityException;
+import java.util.*;
 
 public class GoogleSheetApi extends GoogleApiServices {
     private final Sheets sheet;
@@ -149,20 +148,97 @@ public class GoogleSheetApi extends GoogleApiServices {
     public void writeOutput(TestOutcomes outcomes) throws IOException {
         String sheetName = DateTimeUtils.setFolderName();
         String spreadsheetId = Config.getSessionSpreadIdGlobal();
-        addSheet(spreadsheetId,sheetName);
-        int row = 1;
-        List<List<Object>> title = List.of(List.of("scenario","vnpt"));
+        addSheet(spreadsheetId, sheetName);
+        String feature = outcomes.getOutcomes().getFirst().getCompleteName();
+
+        List<List<Object>> headers = List.of(
+                Arrays.asList(feature, ISP.VNPT.name(), ISP.FPT.name(), ISP.VIETTEL.name(),
+                        ISP.VIETTEL4G.name(), ISP.VINA.name(), ISP.MOBI.name(), ISP.VPN.name()));
+
         List<List<Object>> scenario = new ArrayList<>(List.of());
-        List<List<Object>> result = new ArrayList<>(List.of());;
-        for (TestOutcome outcome : outcomes.getOutcomes()){
-            //scenario.getFirst().add(outcome.getTitle());
+        List<List<Object>> result = new ArrayList<>(List.of());
+        for (TestOutcome outcome : outcomes.getOutcomes()) {
             scenario.add(List.of(outcome.getTitle()));
             result.add(List.of(outcome.getResult().name()));
         }
-        String range = sheetName + "!A1";
-        updateValue(spreadsheetId,range,title);
-        updateValue(spreadsheetId,sheetName + "!A2",scenario);
-        updateValue(spreadsheetId,sheetName + "!B2",result);
+
+        updateValue(spreadsheetId, sheetName + "!A1", headers);
+        updateValue(spreadsheetId, sheetName + "!A2", scenario);
+
+        EnumSet.allOf(ISP.class).forEach(e -> {
+            if (System.getenv("ISP").equalsIgnoreCase(e.name())) {
+                try {
+                    updateValue(spreadsheetId, sheetName + e.getColumnIndex(), result);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
+        applyConditionalFormatting(spreadsheetId, sheetName, result);
+
+    }
+
+    private void applyConditionalFormatting(String spreadsheetId, String sheetName, List<List<Object>> result) {
+        Sheets service = getSheetsService();
+
+        Spreadsheet spreadsheet = null;
+        try {
+            spreadsheet = service.spreadsheets().get(spreadsheetId).execute();
+            Sheet sheet = spreadsheet.getSheets().stream()
+                    .filter(s -> s.getProperties().getTitle().equals(sheetName))
+                    .findFirst()
+                    .orElseThrow(() -> new IllegalArgumentException("Sheet not found"));
+
+            int sheetId = sheet.getProperties().getSheetId();
+
+            // Create the request to add the conditional format rule
+            GridRange gridRange = new GridRange()
+                    .setSheetId(sheetId)
+                    .setStartRowIndex(1) // Starts from the second row
+                    .setEndRowIndex(1 + result.size()) // Number of result rows
+                    .setStartColumnIndex(1) //
+                    .setEndColumnIndex(8); // Ends at the last column of headers
+
+            // Create the condition for "SUCCESS"
+            BooleanCondition successCondition = new BooleanCondition()
+                    .setType("TEXT_EQ")
+                    .setValues(Collections.singletonList(new ConditionValue().setUserEnteredValue("SUCCESS")));
+
+            // Create the format for "SUCCESS"
+            CellFormat successFormat = new CellFormat()
+                    .setBackgroundColor(new Color().setRed(0.0f).setGreen(1.0f).setBlue(0.0f));
+
+            // Create the conditional format rule for "SUCCESS"
+            ConditionalFormatRule successRule = new ConditionalFormatRule()
+                    .setRanges(Collections.singletonList(gridRange))
+                    .setBooleanRule(new BooleanRule().setCondition(successCondition).setFormat(successFormat));
+
+            // Create the condition for "FAILED"
+            BooleanCondition failedCondition = new BooleanCondition()
+                    .setType("TEXT_EQ")
+                    .setValues(Collections.singletonList(new ConditionValue().setUserEnteredValue("FAILED")));
+
+            // Create the format for "FAILED"
+            CellFormat failedFormat = new CellFormat()
+                    .setBackgroundColor(new Color().setRed(1.0f).setGreen(0.0f).setBlue(0.0f));
+
+            // Create the conditional format rule for "FAILED"
+            ConditionalFormatRule failedRule = new ConditionalFormatRule()
+                    .setRanges(Collections.singletonList(gridRange))
+                    .setBooleanRule(new BooleanRule().setCondition(failedCondition).setFormat(failedFormat));
+
+            // Create the batch update request
+            BatchUpdateSpreadsheetRequest body = new BatchUpdateSpreadsheetRequest()
+                    .setRequests(Arrays.asList(
+                            new Request().setAddConditionalFormatRule(new AddConditionalFormatRuleRequest().setRule(successRule).setIndex(0)),
+                            new Request().setAddConditionalFormatRule(new AddConditionalFormatRuleRequest().setRule(failedRule).setIndex(1))
+                    ));
+
+            service.spreadsheets().batchUpdate(spreadsheetId, body).execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private List<CellPosition> getPositions(String spreadsheetId, String sheetName, String domain) throws IOException {

@@ -1,6 +1,6 @@
 package net.creqavn;
 
-import net.creqavn.Generator;
+import net.creqavn.utilities.Generator;
 
 public class Account {
 
