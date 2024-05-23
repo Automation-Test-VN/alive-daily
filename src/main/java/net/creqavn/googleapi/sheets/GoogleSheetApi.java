@@ -149,7 +149,7 @@ public class GoogleSheetApi extends GoogleApiServices {
         String sheetName = DateTimeUtils.setFolderName();
         String spreadsheetId = Config.getSessionSpreadIdGlobal();
         addSheet(spreadsheetId, sheetName);
-        String feature = outcomes.getOutcomes().getFirst().getCompleteName();
+        String feature = outcomes.getOutcomes().getFirst().getUserStory().getName();;
 
         List<List<Object>> headers = List.of(
                 Arrays.asList(feature, ISP.VNPT.name(), ISP.FPT.name(), ISP.VIETTEL.name(),
@@ -204,7 +204,7 @@ public class GoogleSheetApi extends GoogleApiServices {
                     .setStartRowIndex(1) // Starts from the second row
                     .setEndRowIndex(1 + result.size()) // Number of result rows
                     .setStartColumnIndex(1) //
-                    .setEndColumnIndex(8); // Ends at the last column of headers
+                    .setEndColumnIndex(ISP.values().length+1); // Ends at the last column of headers
 
             // Create the condition for "SUCCESS"
             BooleanCondition successCondition = new BooleanCondition()
