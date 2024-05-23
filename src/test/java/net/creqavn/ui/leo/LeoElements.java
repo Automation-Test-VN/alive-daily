@@ -112,24 +112,20 @@ public class LeoElements {
             .the("live chat minimize button")
             .locatedBy("//div[@dir='ltr']/div[@role='main']/div[3]/button[2]");
 
-    // SPORT SESSION
-    public static final Target SPORTS_BTN = Target
-            .the("sports button")
-            .locatedBy("//nav[@class='h-full']//div[contains(text(),'Sports')]");
-    public static final String CONTAINS_SPORTS = "/leosport";
-    public static final Target SPORT_K_IFRAME = Target
+    // IFRAME COLLECTION
+    public static final Target K_SPORT_IFRAME = Target
             .the("sport k iframe")
             .locatedBy("//iframe[@id='kSport']");
-    public static final Target SPORT_A_IFRAME = Target
+    public static final Target A_SPORT_IFRAME = Target
             .the("sport a iframe")
             .locatedBy("//iframe[@id='aSport']");
     public static final Target SPORT_IFRAME = Target
             .the("sport iframe")
             .locatedBy("//*[@id=\"sportsFrame\"]");
-    public static final Target SPORT_BTI_IFRAME = Target
+    public static final Target BTI_IFRAME = Target
             .the("sport bti iframe")
             .locatedBy("//iframe[@id='bti']");
-    public static final Target SPORT_V_IFRAME = Target
+    public static final Target V_SPORT_IFRAME = Target
             .the("sport v iframe")
             .locatedBy("//iframe[@id='vSport']");
     public static final Target VIRTUAL_IFRAME = Target
@@ -137,7 +133,22 @@ public class LeoElements {
             .locatedBy("//*[@id=\"virtualIframe\"]");
     public static final Target VIRTUAL_IFRAME_2 = Target
             .the("virtual iframe 2")
-            .locatedBy("//*[@id=\"vsm-ea-iframe\"]");
+            .locatedBy("//div[@class='sr-entertainment-area']/iframe[@id=\"vsm-ea-iframe\"]");
+    public static final Target ATHENA_SABA_IFRAME = Target
+            .the("athena saba iframe")
+            .locatedBy("//iframe[@id='Athena saba']");
+    public static final Target SABA_IFRAME = Target
+            .the("saba iframe")
+            .locatedBy("//iframe[@id='saba']");
+    public static final Target IM_IFRAME = Target
+            .the("im iframe")
+            .locatedBy("//iframe[@id='im']");
+
+    // SPORT SESSION
+    public static final Target SPORTS_BTN = Target
+            .the("sports button")
+            .locatedBy("//nav[@class='h-full']//div[contains(text(),'Sports')]");
+    public static final String CONTAINS_SPORTS = "/leosport";
     public static final Target SPORT_K_VERIFY = Target
             .the("sport k verify")
             .locatedBy("//div[@class='header-match color-header']");
@@ -161,7 +172,22 @@ public class LeoElements {
             .locatedBy("[src='/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fleo-vr.494ef44e.png&w=3840&q=100']");
     public static final Target SPORT_LEO_VIRTUAL_VERIFY = Target
             .the("sport leo virtual verify")
-            .locatedBy("//gaming-vgpc-composition[@sport='vfb']");
+            .locatedBy("//div[@id=\"application_container\"]/gaming-vgpc-composition");
+    public static final Target SPORT_SABA_VIRTUAL = Target
+            .the("sport saba virtual")
+            .locatedBy("[src='/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fsaba-vr.e1d9e09b.png&w=3840&q=100']");
+    public static final Target SPORT_SABA_ESPORT = Target
+            .the("sport saba esport")
+            .locatedBy("[src='/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fsaba-esport.cb9b2160.png&w=3840&q=100']");
+    public static final Target SPORT_SABA_ESPORT_VERIFY = Target
+            .the("sport saba esport verify")
+            .locatedBy("//div[@class=\"odds-table\"]");
+    public static final Target SPORT_IM_ESPORT = Target
+            .the("sport im esport")
+            .locatedBy("[src='/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fim-esport.c870c2c0.png&w=3840&q=100']");
+    public static final Target SPORT_IM_ESPORT_VERIFY = Target
+            .the("sport im esport verify")
+            .locatedBy("//div[@class='gameHall']");
 
 
     // LIVE CASINO SESSION
@@ -229,5 +255,5 @@ public class LeoElements {
     public static final Target PROMOTION_BTN = Target
             .the("promotion button")
             .locatedBy("[src='/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fpromotion.66f5f2eb.png&w=3840&q=100']");
-    public static final  String CONTAINS_PROMOTION = "/promotion";
+    public static final String CONTAINS_PROMOTION = "/promotion";
 }

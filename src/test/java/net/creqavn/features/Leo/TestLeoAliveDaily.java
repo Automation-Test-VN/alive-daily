@@ -130,7 +130,7 @@ public class TestLeoAliveDaily {
                 Click.on(SIGN_IN_BTN),
                 Login.theValidAccount(loginAccount),
                 Click.on(MOST_POPULAR_BTN),
-                Switch.toFrame(SPORT_K_IFRAME.resolveFor(swagger)),
+                Switch.toFrame(K_SPORT_IFRAME.resolveFor(swagger)),
                 Verify.theElementIsDisplayed(SPORT_K_VERIFY)
         );
     }
@@ -338,7 +338,7 @@ public class TestLeoAliveDaily {
         swagger.attemptsTo(
                 HoverOverElement.over(SPORTS_BTN),
                 Click.on(SPORT_LEO),
-                Switch.toFrame(SPORT_K_IFRAME.resolveFor(swagger)),
+                Switch.toFrame(K_SPORT_IFRAME.resolveFor(swagger)),
                 Verify.theElementIsDisplayed(SPORT_K_VERIFY)
         );
     }
@@ -348,7 +348,7 @@ public class TestLeoAliveDaily {
         swagger.attemptsTo(
                 HoverOverElement.over(SPORTS_BTN),
                 Click.on(SPORT_IBC),
-                Switch.toFrame(SPORT_A_IFRAME.resolveFor(swagger)),
+                Switch.toFrame(A_SPORT_IFRAME.resolveFor(swagger)),
                 Switch.toFrame(SPORT_IFRAME.resolveFor(swagger)),
                 Verify.theElementIsDisplayed(SPORT_IBC_VERIFY)
         );
@@ -359,9 +359,55 @@ public class TestLeoAliveDaily {
         swagger.attemptsTo(
                 HoverOverElement.over(SPORTS_BTN),
                 Click.on(SPORT_BTI),
-                Switch.toFrame(SPORT_BTI_IFRAME.resolveFor(swagger)),
+                Switch.toFrame(BTI_IFRAME.resolveFor(swagger)),
                 Verify.theElementIsDisplayed(SPORT_BTI_VERIFY)
         );
     }
 
+    @Test
+    public void SportbookLeoVirtual() throws InterruptedException {
+        swagger.attemptsTo(
+                HoverOverElement.over(SPORTS_BTN),
+                Click.on(SPORT_LEO_VIRTUAL)
+        );
+        sleep(3000);
+        swagger.attemptsTo(
+                Switch.toFrame(V_SPORT_IFRAME.resolveFor(swagger)),
+                Switch.toFrame(VIRTUAL_IFRAME.resolveFor(swagger)),
+                Verify.theElementIsDisplayed(SPORT_LEO_VIRTUAL_VERIFY)
+        );
+    }
+
+    @Test
+    public void SportbookSABAVirtual() {
+        swagger.attemptsTo(
+                HoverOverElement.over(SPORTS_BTN),
+                Click.on(SPORT_SABA_VIRTUAL),
+                Switch.toFrame(ATHENA_SABA_IFRAME.resolveFor(swagger)),
+                Switch.toFrame(SPORT_IFRAME.resolveFor(swagger)),
+                Verify.theElementIsDisplayed(SPORT_IBC_VERIFY)
+        );
+    }
+
+    @Test
+    public void SportbookSABAEsport(){
+        swagger.attemptsTo(
+                HoverOverElement.over(SPORTS_BTN),
+                Click.on(SPORT_SABA_ESPORT),
+                Switch.toFrame(SABA_IFRAME.resolveFor(swagger)),
+                Verify.theElementIsDisplayed(SPORT_SABA_ESPORT_VERIFY)
+        );
+    }
+
+    @Test
+    public void SportbookIMESport(){
+        swagger.attemptsTo(
+                Click.on(SIGN_IN_BTN),
+                Login.theInvalidAccount(loginInvalidAccount),
+                HoverOverElement.over(SPORTS_BTN),
+                Click.on(SPORT_IM_ESPORT),
+                Switch.toFrame(IM_IFRAME.resolveFor(swagger)),
+                Verify.theElementIsDisplayed(SPORT_IM_ESPORT_VERIFY)
+        );
+    }
 }
