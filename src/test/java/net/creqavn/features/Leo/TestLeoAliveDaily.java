@@ -332,4 +332,36 @@ public class TestLeoAliveDaily {
                 Verify.theElementIsDisplayed(VIP_PROGRAM)
         );
     }
+
+    @Test
+    public void SportbookLeo() {
+        swagger.attemptsTo(
+                HoverOverElement.over(SPORTS_BTN),
+                Click.on(SPORT_LEO),
+                Switch.toFrame(SPORT_K_IFRAME.resolveFor(swagger)),
+                Verify.theElementIsDisplayed(SPORT_K_VERIFY)
+        );
+    }
+
+    @Test
+    public void SportbookIBC() {
+        swagger.attemptsTo(
+                HoverOverElement.over(SPORTS_BTN),
+                Click.on(SPORT_IBC),
+                Switch.toFrame(SPORT_A_IFRAME.resolveFor(swagger)),
+                Switch.toFrame(SPORT_IFRAME.resolveFor(swagger)),
+                Verify.theElementIsDisplayed(SPORT_IBC_VERIFY)
+        );
+    }
+
+    @Test
+    public void SportbookBTI() {
+        swagger.attemptsTo(
+                HoverOverElement.over(SPORTS_BTN),
+                Click.on(SPORT_BTI),
+                Switch.toFrame(SPORT_BTI_IFRAME.resolveFor(swagger)),
+                Verify.theElementIsDisplayed(SPORT_BTI_VERIFY)
+        );
+    }
+
 }
