@@ -159,7 +159,13 @@ public class GoogleSheetApi extends GoogleApiServices {
         List<List<Object>> result = new ArrayList<>(List.of());
         for (TestOutcome outcome : outcomes.getOutcomes()) {
             scenario.add(List.of(outcome.getTitle()));
-            result.add(List.of(outcome.getResult().name()));
+            String res;
+            if(outcome.getResult().name().equalsIgnoreCase("SUCCESS")){
+                res = "PASSED";
+            } else{
+                res = "FAILED";
+            }
+            result.add(List.of(res));
         }
 
         updateValue(spreadsheetId, sheetName + "!A1", headers);
@@ -203,7 +209,7 @@ public class GoogleSheetApi extends GoogleApiServices {
             // Create the condition for "SUCCESS"
             BooleanCondition successCondition = new BooleanCondition()
                     .setType("TEXT_EQ")
-                    .setValues(Collections.singletonList(new ConditionValue().setUserEnteredValue("SUCCESS")));
+                    .setValues(Collections.singletonList(new ConditionValue().setUserEnteredValue("PASSED")));
 
             // Create the format for "SUCCESS"
             CellFormat successFormat = new CellFormat()
