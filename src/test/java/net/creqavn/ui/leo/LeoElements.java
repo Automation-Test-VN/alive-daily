@@ -143,6 +143,9 @@ public class LeoElements {
     public static final Target IM_IFRAME = Target
             .the("im iframe")
             .locatedBy("//iframe[@id='im']");
+    public static final Target EVOLUTION_IFRAME = Target
+            .the("evolution iframe")
+            .locatedBy("//iframe[contains(@src,'https://skylinetechplayivo.evo-games.com/frontend/evo/r2/#provider=evolution')]");
 
     // SPORT SESSION
     public static final Target SPORTS_BTN = Target
@@ -204,6 +207,36 @@ public class LeoElements {
     public static final Target SA_GAMING_CASINO_VERIFY = Target
             .the("sa gaming casino verify")
             .locatedBy("//canvas[1]");
+    public static final Target ALLBET_BTN = Target
+            .the("allbet button")
+            .locatedBy("//div[@class='swiper swiper-initialized swiper-horizontal swiper-free-mode !py-[15px] xl:!px-5 lg:!px-5 md:!px-5 swiper-backface-hidden']//div[contains(text(),'Allbet')]");
+    public static final Target SAGAMING_BTN = Target
+            .the("sa gaming button")
+            .locatedBy("//div[@class='swiper swiper-initialized swiper-horizontal swiper-free-mode !py-[15px] xl:!px-5 lg:!px-5 md:!px-5 swiper-backface-hidden']//div[contains(text(),'SAgaming')]");
+    public static final Target EZUGI_BTN = Target
+            .the("ezugi button")
+            .locatedBy("//div[@class='swiper swiper-initialized swiper-horizontal swiper-free-mode !py-[15px] xl:!px-5 lg:!px-5 md:!px-5 swiper-backface-hidden']//div[contains(text(),'Ezugi')]");
+    public static final Target EZUGI_VERIFY = Target
+            .the("ezugi verify")
+            .locatedBy("[label='Menu']");
+    public static final Target EVOLUTION_BTN = Target
+            .the("evolution button")
+            .locatedBy("//div[@class='swiper swiper-initialized swiper-horizontal swiper-free-mode !py-[15px] xl:!px-5 lg:!px-5 md:!px-5 swiper-backface-hidden']//div[contains(text(),'Evolution')]");
+    public static final Target EVOLUTION_VERIFY = Target
+            .the("evolution verify")
+            .locatedBy("//div[@data-role='top-right-corner']/div/div/div[1]");
+    public static final Target PRAGMATIC_BTN = Target
+            .the("evolution button")
+            .locatedBy("//div[@class='swiper swiper-initialized swiper-horizontal swiper-free-mode !py-[15px] xl:!px-5 lg:!px-5 md:!px-5 swiper-backface-hidden']//div[contains(text(),'Pragmatic')]");
+    public static final Target PRAGMATIC_VERIFY = Target
+            .the("pragmatic verify")
+            .locatedBy("#main_nav .desktop-menu");
+    public static final Target MICROGAMING_BTN = Target
+            .the("microgaming button")
+            .locatedBy("//div[@class='swiper swiper-initialized swiper-horizontal swiper-free-mode !py-[15px] xl:!px-5 lg:!px-5 md:!px-5 swiper-backface-hidden']//div[contains(text(),'Microgaming')]");
+    public static final Target MICROGAMING_VERIFY = Target
+            .the("microgaming verify")
+            .locatedBy("//canvas[@id='render-canvas']");
 
     // CASINO SESSION
     public static final Target CASINO_BTN = Target
