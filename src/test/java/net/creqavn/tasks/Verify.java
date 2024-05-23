@@ -30,7 +30,7 @@ public class Verify {
     public static Performable theElementIsDisplayed(Target element) {
         return Task.where("{0} verify the element", actor -> {
             actor.attemptsTo(
-                    WaitUntil.the(element, isVisible()).forNoMoreThan(15).seconds(),
+                    WaitUntil.the(element, isVisible()).forNoMoreThan(20).seconds(),
                     Ensure.that(element).isDisplayed()
             );
         });

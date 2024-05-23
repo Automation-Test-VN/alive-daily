@@ -410,4 +410,84 @@ public class TestLeoAliveDaily {
                 Verify.theElementIsDisplayed(SPORT_IM_ESPORT_VERIFY)
         );
     }
+
+    @Test
+    public void LiveCasinoSAGaming() throws InterruptedException {
+        swagger.attemptsTo(
+                Click.on(SIGN_IN_BTN),
+                Login.theValidAccount(loginAccount),
+                Click.on(LIVE_CASINO_BTN),
+                Browser.refreshPage(),
+                Click.on(SAGAMING_BTN),
+                JavaScriptClick.on(LIVE_CASINO_INDEX_PLAY_BTN.of("1"))
+        );
+        sleep(3000);
+        swagger.attemptsTo(
+                SwitchTo.newWindow(),
+                Verify.theElementIsDisplayed(SA_GAMING_CASINO_VERIFY)
+        );
+    }
+
+    @Test
+    public void LiveCasinoEzugi() throws InterruptedException {
+        swagger.attemptsTo(
+                Click.on(SIGN_IN_BTN),
+                Login.theValidAccount(loginAccount),
+                Click.on(LIVE_CASINO_BTN),
+                Browser.refreshPage(),
+                Click.on(EZUGI_BTN),
+                JavaScriptClick.on(LIVE_CASINO_INDEX_PLAY_BTN.of("1")),
+                SwitchTo.newWindow(),
+                Verify.theElementIsDisplayed(EZUGI_VERIFY)
+        );
+    }
+
+    @Test
+    public void LiveCasinoEvolution() throws InterruptedException {
+        swagger.attemptsTo(
+                Click.on(SIGN_IN_BTN),
+                Login.theValidAccount(loginAccount),
+                Click.on(LIVE_CASINO_BTN),
+                Browser.refreshPage(),
+                Click.on(EVOLUTION_BTN),
+                JavaScriptClick.on(LIVE_CASINO_INDEX_PLAY_BTN.of("1"))
+        );
+        sleep(3000);
+        swagger.attemptsTo(
+                SwitchTo.newWindow(),
+                Switch.toFrame(EVOLUTION_IFRAME.resolveFor(swagger)),
+                Verify.theElementIsDisplayed(EVOLUTION_VERIFY)
+        );
+    }
+
+    @Test
+    public void LiveCasinoPragmatic() throws InterruptedException {
+        swagger.attemptsTo(
+                Click.on(SIGN_IN_BTN),
+                Login.theValidAccount(loginAccount),
+                Click.on(LIVE_CASINO_BTN),
+                Browser.refreshPage(),
+                Click.on(PRAGMATIC_BTN),
+                JavaScriptClick.on(LIVE_CASINO_INDEX_PLAY_BTN.of("1")),
+                SwitchTo.newWindow(),
+                Verify.theElementIsDisplayed(PRAGMATIC_VERIFY)
+        );
+    }
+
+    @Test
+    public void LiveCasinoMicrogaming() throws InterruptedException {
+        swagger.attemptsTo(
+                Click.on(SIGN_IN_BTN),
+                Login.theValidAccount(loginAccount),
+                Click.on(LIVE_CASINO_BTN),
+                Browser.refreshPage(),
+                Click.on(MICROGAMING_BTN),
+                JavaScriptClick.on(LIVE_CASINO_INDEX_PLAY_BTN.of("1"))
+        );
+        sleep(3000);
+        swagger.attemptsTo(
+                SwitchTo.newWindow(),
+                Verify.theElementIsDisplayed(MICROGAMING_VERIFY)
+        );
+    }
 }
