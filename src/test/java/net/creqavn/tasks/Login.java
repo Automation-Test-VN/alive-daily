@@ -8,7 +8,7 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 
 public class Login {
-    public static Performable theValidAccount(LoginAccount loginAccount) {
+    public static Performable WaitAndLoginAccount(LoginAccount loginAccount) {
         return Task.where("{0} login the account has balance", actor -> {
                     boolean loginState = TheLoginState.isElementPresent(loginAccount.getAVATAR_USER()).answeredBy(actor);
                     if (!loginState) {
@@ -23,7 +23,7 @@ public class Login {
         );
     }
 
-    public static Performable theInvalidAccount(LoginAccount loginAccount) {
+    public static Performable theAccount(LoginAccount loginAccount) {
         return Task.where("{0} login the account non balance", actor -> {
                     actor.attemptsTo(
                             Enter.keyValues(loginAccount.getUserName()).into(loginAccount.getUserName_Field()),
