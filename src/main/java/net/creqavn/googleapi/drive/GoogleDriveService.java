@@ -6,6 +6,7 @@ import com.google.api.client.http.HttpResponse;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.model.File;
 import com.google.api.services.drive.model.FileList;
+import net.creqavn.Baymax;
 import net.creqavn.Config;
 import net.creqavn.googleapi.GoogleApiServices;
 
@@ -97,6 +98,24 @@ public class GoogleDriveService extends GoogleApiServices {
             }
         }
         return null;
+    }
+
+    public void synchronizeTestId() throws IOException {
+        String spreadsheetId = Config.getSessionSpreadIdGlobal();
+
+        // Sheet resource ID
+        String sheetGid = Config.getSpreadId();
+
+        String exportUrl = "https://docs.google.com/spreadsheets/d/" + spreadsheetId + "/export?format=csv&gid=" + sheetGid;
+
+        // request HTTP GET
+        HttpResponse httpResponse = drive.getRequestFactory()
+                .buildGetRequest(new GenericUrl(exportUrl))
+                .execute();
+
+        try (FileOutputStream fileOutputStream = new FileOutputStream(Baymax.SESSION_SHARED)) {
+            httpResponse.download(fileOutputStream);
+        }
     }
 
     public void moveFileToFolder(String spreadID, String folderId) throws IOException {

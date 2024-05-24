@@ -7,9 +7,6 @@ import net.thucydides.model.util.EnvironmentVariables;
 public class Config {
 
     static EnvironmentVariables variables = SystemEnvironmentVariables.createEnvironmentVariables();
-    public static String getISPName() {
-        return EnvironmentSpecificConfiguration.from(variables).getProperty("isp");
-    }
 
     public static String getSessionSpreadIdGlobal() {
         return EnvironmentSpecificConfiguration.from(variables).getProperty("google.spread.id");

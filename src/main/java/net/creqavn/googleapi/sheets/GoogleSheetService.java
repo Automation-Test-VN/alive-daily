@@ -6,22 +6,16 @@ import net.creqavn.Config;
 import net.creqavn.GlobalConstants;
 import net.creqavn.ISP;
 import net.creqavn.googleapi.GoogleApiServices;
-import net.creqavn.googleapi.drive.GoogleDriveService;
 import net.creqavn.utilities.DateTimeUtils;
-import net.thucydides.model.domain.TestOutcome;
-import net.thucydides.model.reports.TestOutcomeLoader;
-import net.thucydides.model.reports.TestOutcomes;
 
-import java.io.File;
 import java.io.IOException;
-import java.security.GeneralSecurityException;
 import java.util.*;
 
-public class GoogleSheetApi extends GoogleApiServices {
+public class GoogleSheetService extends GoogleApiServices {
     private final Sheets sheet;
     public static final String NO_DATA_FOUND = "No data found";
 
-    public GoogleSheetApi() {
+    public GoogleSheetService() {
         this.sheet = GoogleApiServices.getSheetsService();
     }
 
@@ -145,30 +139,8 @@ public class GoogleSheetApi extends GoogleApiServices {
         }
     }
 
-    public void writeOutput(TestOutcomes outcomes) throws IOException {
-        String sheetName = DateTimeUtils.setFolderName();
-        String spreadsheetId = Config.getSessionSpreadIdGlobal();
-        addSheet(spreadsheetId, sheetName);
-        String feature = outcomes.getOutcomes().getFirst().getUserStory().getName();;
+    public void writeOutput(String spreadsheetId, String sheetName,List<List<Object>> scenario,List<List<Object>> result) throws IOException {
 
-        List<List<Object>> headers = List.of(
-                Arrays.asList(feature, ISP.VNPT.name(), ISP.FPT.name(), ISP.VIETTEL.name(),
-                        ISP.VIETTEL4G.name(), ISP.VINA.name(), ISP.MOBI.name(), ISP.VPN.name()));
-
-        List<List<Object>> scenario = new ArrayList<>(List.of());
-        List<List<Object>> result = new ArrayList<>(List.of());
-        for (TestOutcome outcome : outcomes.getOutcomes()) {
-            scenario.add(List.of(outcome.getTitle()));
-            String res;
-            if(outcome.getResult().name().equalsIgnoreCase("SUCCESS")){
-                res = "PASSED";
-            } else{
-                res = "FAILED";
-            }
-            result.add(List.of(res));
-        }
-
-        updateValue(spreadsheetId, sheetName + "!A1", headers);
         updateValue(spreadsheetId, sheetName + "!A2", scenario);
 
         EnumSet.allOf(ISP.class).forEach(e -> {
@@ -180,9 +152,7 @@ public class GoogleSheetApi extends GoogleApiServices {
                 }
             }
         });
-
         applyConditionalFormatting(spreadsheetId, sheetName, result);
-
     }
 
     private void applyConditionalFormatting(String spreadsheetId, String sheetName, List<List<Object>> result) {
