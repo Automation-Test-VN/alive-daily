@@ -96,7 +96,7 @@ public class LeoElements {
     public static final Target MOST_COMMON_BTN = Target
             .the("most common button")
             .locatedBy("//*[@id=\"__next\"]/div/main/div/div[5]/div/div/div[2]/div[1]/div/div[3]/div/div[1]/div/div/div[1]/span/img");
-    public static final Target CANVAS = Target
+    public static final Target GAME_CANVAS = Target
             .the("canvas")
             .locatedBy("//canvas[@id='GameCanvas']");
     public static final Target BEST_LIVE_CASINO = Target
@@ -111,6 +111,7 @@ public class LeoElements {
     public static final Target LIVE_CHAT_MINIMIZE_BTN = Target
             .the("live chat minimize button")
             .locatedBy("//div[@dir='ltr']/div[@role='main']/div[3]/button[2]");
+
 
     // IFRAME COLLECTION
     public static final Target K_SPORT_IFRAME = Target
@@ -146,6 +147,12 @@ public class LeoElements {
     public static final Target EVOLUTION_IFRAME = Target
             .the("evolution iframe")
             .locatedBy("//iframe[contains(@src,'https://skylinetechplayivo.evo-games.com/frontend/evo/r2/#provider=evolution')]");
+    public static final Target GAME_IFRAME = Target
+            .the("game iframe")
+            .locatedBy("//iframe[@id='gameIframe']");
+    public static final Target SLOT_CONTAINER_IFRAME = Target
+            .the("slot container iframe")
+            .locatedBy("//iframe[@id='slotContainer']");
 
     // SPORT SESSION
     public static final Target SPORTS_BTN = Target
@@ -198,43 +205,40 @@ public class LeoElements {
             .the("live casino button")
             .locatedBy("//nav[@class='h-full']//div[contains(text(),'Live Casino')]");
     public static final String CONTAINS_LIVE_CASINO = "h/live-casino?provider=all&category=all";
-    public static final Target EVOLUTION_CASINO_BTN = Target
-            .the("evolution casino button")
-            .locatedBy("//div[@class='swiper-wrapper']//div[contains(text(),'Evolution')]");
     public static final Target LIVE_CASINO_INDEX_PLAY_BTN = Target
             .the("casino index {0} play button")
             .locatedBy(".grid-cols-6 > div:nth-of-type({0}) > div:nth-of-type(1) div:nth-of-type(1) > div:nth-of-type(1)");
-    public static final Target SA_GAMING_CASINO_VERIFY = Target
+    public static final Target LIVE_CASINO_SA_GAMING_VERIFY = Target
             .the("sa gaming casino verify")
             .locatedBy("//canvas[1]");
-    public static final Target ALLBET_BTN = Target
+    public static final Target LIVE_CASINO_ALLBET_BTN = Target
             .the("allbet button")
-            .locatedBy("//div[@class='swiper swiper-initialized swiper-horizontal swiper-free-mode !py-[15px] xl:!px-5 lg:!px-5 md:!px-5 swiper-backface-hidden']//div[contains(text(),'Allbet')]");
-    public static final Target SAGAMING_BTN = Target
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fall-bet.png&w=3840&q=100']");
+    public static final Target LIVE_CASINO_SAGAMING_BTN = Target
             .the("sa gaming button")
-            .locatedBy("//div[@class='swiper swiper-initialized swiper-horizontal swiper-free-mode !py-[15px] xl:!px-5 lg:!px-5 md:!px-5 swiper-backface-hidden']//div[contains(text(),'SAgaming')]");
-    public static final Target EZUGI_BTN = Target
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fsa-gaming.png&w=3840&q=100']");
+    public static final Target LIVE_CASINO_EZUGI_BTN = Target
             .the("ezugi button")
-            .locatedBy("//div[@class='swiper swiper-initialized swiper-horizontal swiper-free-mode !py-[15px] xl:!px-5 lg:!px-5 md:!px-5 swiper-backface-hidden']//div[contains(text(),'Ezugi')]");
-    public static final Target EZUGI_VERIFY = Target
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fezugi.png&w=3840&q=100']");
+    public static final Target LIVE_CASINO_EZUGI_VERIFY = Target
             .the("ezugi verify")
             .locatedBy("[label='Menu']");
-    public static final Target EVOLUTION_BTN = Target
+    public static final Target LIVE_CASINO_EVOLUTION_BTN = Target
             .the("evolution button")
-            .locatedBy("//div[@class='swiper swiper-initialized swiper-horizontal swiper-free-mode !py-[15px] xl:!px-5 lg:!px-5 md:!px-5 swiper-backface-hidden']//div[contains(text(),'Evolution')]");
-    public static final Target EVOLUTION_VERIFY = Target
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fevolution.png&w=3840&q=100']");
+    public static final Target LIVE_CASINO_EVOLUTION_VERIFY = Target
             .the("evolution verify")
             .locatedBy("//div[@data-role='top-right-corner']/div/div/div[1]");
-    public static final Target PRAGMATIC_BTN = Target
+    public static final Target LIVE_CASINO_PRAGMATIC_BTN = Target
             .the("evolution button")
-            .locatedBy("//div[@class='swiper swiper-initialized swiper-horizontal swiper-free-mode !py-[15px] xl:!px-5 lg:!px-5 md:!px-5 swiper-backface-hidden']//div[contains(text(),'Pragmatic')]");
-    public static final Target PRAGMATIC_VERIFY = Target
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fpragmatic.png&w=3840&q=100']");
+    public static final Target LIVE_CASINO_PRAGMATIC_VERIFY = Target
             .the("pragmatic verify")
             .locatedBy("#main_nav .desktop-menu");
-    public static final Target MICROGAMING_BTN = Target
+    public static final Target LIVE_CASINO_MICROGAMING_BTN = Target
             .the("microgaming button")
-            .locatedBy("//div[@class='swiper swiper-initialized swiper-horizontal swiper-free-mode !py-[15px] xl:!px-5 lg:!px-5 md:!px-5 swiper-backface-hidden']//div[contains(text(),'Microgaming')]");
-    public static final Target MICROGAMING_VERIFY = Target
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fmicrogaming.png&w=3840&q=100']");
+    public static final Target LIVE_CASINO_MICROGAMING_VERIFY = Target
             .the("microgaming verify")
             .locatedBy("//canvas[@id='render-canvas']");
 
@@ -242,7 +246,89 @@ public class LeoElements {
     public static final Target CASINO_BTN = Target
             .the("casino button")
             .locatedBy("ul > div:nth-of-type(3) > .group > .h-full");
+    public static final Target CASINO_INDEX_PLAY_BTN = Target
+            .the("casino index {0} play button")
+            .locatedBy(".grid-cols-6 > div:nth-of-type({0}) > div:nth-of-type(1) div:nth-of-type(1) > div:nth-of-type(1)");
     public static final String CONTAINS_CASINO = "/casino?provider=all&category=all";
+    public static final Target CASINO_FACHAI_BTN = Target
+            .the("fachai button")
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Ffa-chai.png&w=3840&q=100']");
+    public static final Target CASINO_ASKMEBET_BTN = Target
+            .the("askmebet button")
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Faskmebet.png&w=3840&q=100']");
+    public static final Target CASINO_EVOPLAY_BTN = Target
+            .the("evoplay button")
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fevo-play.png&w=3840&q=100']");
+    public static final Target SLOT_CANVAS = Target
+            .the("slot canvas")
+            .locatedBy("//canvas[@id='slotCanvas']");
+    public static final Target CASINO_MICROGAMING_BTN = Target
+            .the("microgaming button")
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fmicro-gaming.png&w=3840&q=100']");
+    public static final Target CANVAS_VIEW = Target
+            .the("canvas view")
+            .locatedBy("//canvas[@id='canvasView']");
+    public static final Target CASINO_PLAY_N_GO_BTN = Target
+            .the("play'n go button")
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fplayngo.png&w=3840&q=100']");
+    public static final Target CANVAS_1 = Target
+            .the("canvas 1")
+            .locatedBy("//canvas[1]");
+    public static final Target CASINO_NETENT_BTN = Target
+            .the("netent button")
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fnetent.png&w=3840&q=100']");
+    public static final Target CASINO_PRAGMATIC_BTN = Target
+            .the("pragmatic button")
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fpragamatic-play.png&w=3840&q=100']");
+    public static final Target CASINO_PRAGMATIC_VERIFY = Target
+            .the("pragmatic verify")
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fpragamatic-play.png&w=3840&q=100']");
+    public static final Target CASINO_JILI_BTN = Target
+            .the("jili button")
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fjili.png&w=3840&q=100']");
+    public static final Target CASINO_NETENT_IFRAME = Target
+            .the("netent iframe")
+            .locatedBy("//iframe[contains(@src, 'https://skylinetechplayivo.evo-games.com/frontend/evo/r2/#provider=netent')]");
+    public static final Target CANVAS_ANIMATION_MANAGER = Target
+            .the("canvas animation manager")
+            .locatedBy("//canvas[@id='canvasAnimationManager']");
+    public static final Target CASINO_JDB_BTN = Target
+            .the("jdb button")
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fjdb.png&w=3840&q=100']");
+    public static final Target CASINO_JDB_VERIFY = Target
+            .the("jdb verify")
+            .locatedBy("//div[@class='player-info-section']");
+    public static final Target CASINO_RED_TIGER_BTN = Target
+            .the("red tiger button")
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fred-tiger.png&w=3840&q=100']");
+    public static final Target CASINO_RED_TIGER_IFRAME = Target
+            .the("red tiger iframe")
+            .locatedBy("//iframe[contains(@src, 'https://skylinetechplayivo.evo-games.com/frontend/evo/r2/#provider=redtiger')]");
+    public static final Target CASINO_RED_TIGER_IFRAME_2 = Target
+            .the("red tiger iframe 2")
+            .locatedBy("//iframe[contains(@src, 'https://gserver-evo-spadetechplay001.m-gservices.com')]");
+    public static final Target CASINO_RED_TIGER_VERIFY = Target
+            .the("red tiger verify")
+            .locatedBy("//div[@class='paytable-ui-controls']");
+    public static final Target CASINO_BTG_BTN = Target
+            .the("btg button")
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fbt-gaming.png&w=3840&q=100']");
+    public static final Target CASINO_BTG_IFRAME = Target
+            .the("btg iframe")
+            .locatedBy("//iframe[contains(@src, 'https://skylinetechplayivo.evo-games.com/frontend/evo/r2/#provider=btg')]");
+    public static final Target CASINO_BTG_IFRAME_2 = Target
+            .the("btg iframe 2")
+            .locatedBy("//iframe[contains(@src, '/frontend/btg')]");
+    public static final Target CASINO_NLC_BTN = Target
+            .the("nlc button")
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fnlc.png&w=3840&q=100']");
+    public static final Target CASINO_NLC_IFRAME = Target
+            .the("nlc iframe")
+            .locatedBy("//iframe[contains(@src, 'https://skylinetechplayivo.evo-games.com/frontend/evo/r2/#provider=nlc')]");
+    public static final Target CASINO_NLC_IFRAME_2 = Target
+            .the("nlc iframe 2")
+            .locatedBy("//iframe[contains(@src, 'https://prod.nlcasiacdn.net/loader/evo.html')]");
+
 
     // LOTTERY SESSION
     public static final Target LOTTERY_BTN = Target
