@@ -153,6 +153,9 @@ public class LeoElements {
     public static final Target SLOT_CONTAINER_IFRAME = Target
             .the("slot container iframe")
             .locatedBy("//iframe[@id='slotContainer']");
+    public static final Target IFRAME_GAME = Target
+            .the("iframe game")
+            .locatedBy("//iframe[@id='frmGame']");
 
     // SPORT SESSION
     public static final Target SPORTS_BTN = Target
@@ -335,6 +338,27 @@ public class LeoElements {
             .the("lottery button")
             .locatedBy("//nav[@class='h-full']//div[contains(text(),'Lottery')]");
     public static final String CONTAINS_LOTTERY = "/lottery?provider=all&category=all";
+    public static final Target LOTTERY_LEO88_BTN = Target
+            .the("leo88 button")
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fleo.png&w=3840&q=100']");
+    public static final Target LOTTERY_INDEX_PLAY_BTN = Target
+            .the("lottery index {0} play button")
+            .locatedBy(".grid-cols-6 > div:nth-of-type({0}) > div:nth-of-type(1) div:nth-of-type(1) > div:nth-of-type(1)");
+    public static final Target LOTTERY_LEO88_VERIFY = Target
+            .the("leo88 verify")
+            .locatedBy(".grid-cols-2");
+    public static final Target LOTTERY_ASKMEBET_BTN = Target
+            .the("askmebet button")
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Faskmebet-1.png&w=3840&q=100']");
+    public static final Target LOTTERY_ASKMEBET_VERIFY = Target
+            .the("askmebet verify")
+            .locatedBy("//div[@class='bet-layout']");
+    public static final Target LOTTERY_IBC_BTN = Target
+            .the("ibc button")
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fibc.png&w=3840&q=100']");
+    public static final Target LOTTERY_IBC_VERIFY = Target
+            .the("ibc verify")
+            .locatedBy("//div[@class='app-content-playview-wrapper ']");
 
     // SIAM GAMES SESSION
     public static final Target SIAM_GAMES_BTN = Target
@@ -347,6 +371,22 @@ public class LeoElements {
             .the("fishing button")
             .locatedBy("//nav[@class='h-full']//div[contains(text(),'Fishing')]");
     public static final String CONTAINS_FISHING = "/fishing?provider=all&tab=all";
+    public static final Target FISHING_ASKMEBET_BTN = Target
+            .the("askmebet button")
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Famb.png&w=3840&q=100']");
+    public static final Target FISHING_JILI_BTN = Target
+            .the("jili button")
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fjili-1.png&w=3840&q=100']");
+    public static final Target FISHING_JDB_BTN = Target
+            .the("jdb button")
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fjdbl.png&w=3840&q=100']");
+    public static final Target FISHING_FACHAI_BTN = Target
+            .the("fachai button")
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Ffa-chai-1.png&w=3840&q=100']");
+    public static final Target CANVAS_2 = Target
+            .the("canvas 2")
+            .locatedBy("//canvas[2]");
+
 
     // FAST GAMES SESSION
     public static final Target FAST_GAMES_BTN = Target
