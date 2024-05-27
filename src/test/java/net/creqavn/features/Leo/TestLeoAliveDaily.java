@@ -2,6 +2,7 @@ package net.creqavn.features.Leo;
 
 import net.creqavn.models.LoginAccount;
 import net.creqavn.models.RegisterAccount;
+import net.creqavn.questions.ElementUtils;
 import net.creqavn.tasks.*;
 import net.serenitybdd.annotations.ClearCookiesPolicy;
 import net.serenitybdd.annotations.Managed;
@@ -9,6 +10,7 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.*;
+
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -699,6 +701,27 @@ public class TestLeoAliveDaily {
                 SwitchTo.newWindow(),
                 Verify.theElementIsDisplayed(GAME_CANVAS)
         );
+    }
+
+    @Test
+    public void FastGame() throws InterruptedException {
+        swagger.attemptsTo(
+                Click.on(FAST_GAMES_BTN),
+                Click.on(SIGN_IN_BTN),
+                Login.theAccount(validAccount)
+        );
+        int leng = swagger.asksFor(ElementUtils.lengthOfElements(FAST_GAMES_TOTAL_GAME));
+        for (int i = 1; i < leng + 1; i++) {
+            swagger.attemptsTo(
+                    JavaScriptClick.on(CASINO_INDEX_PLAY_BTN.of(String.valueOf(i)))
+            );
+            sleep(1000);
+            swagger.attemptsTo(
+                    SwitchTo.newWindow(),
+                    Verify.theElementIsDisplayed(FAST_GAME_VERIFY),
+                    SwitchTo.mainWindowAfterCloseCurrentWindow()
+            );
+        }
     }
 
     @After
