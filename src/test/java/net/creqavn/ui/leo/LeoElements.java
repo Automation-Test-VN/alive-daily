@@ -393,6 +393,12 @@ public class LeoElements {
             .the("fast game button")
             .locatedBy("//nav[@class='h-full']//div[contains(text(),'fast games')]");
     public static final String CONTAINS_FAST_GAMES = "/fast-game?tab=all";
+    public static final Target FAST_GAMES_TOTAL_GAME = Target
+            .the("fast games total game")
+            .locatedBy("//*[@id=\"__next\"]/div/main/div/div[2]/div[2]/div/div/div/div[*]/div[1]/div[3]/div/div");
+    public static final Target FAST_GAME_VERIFY = Target
+            .the("fast game verify")
+            .locatedBy("//div[@class='bet-controls']");
 
     // COCK FIGHT SESSION
     public static final Target COCK_FIGHT_BTN = Target
