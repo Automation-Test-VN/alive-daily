@@ -132,9 +132,6 @@ public class LeoElements {
     public static final Target VIRTUAL_IFRAME = Target
             .the("virtual iframe")
             .locatedBy("//*[@id=\"virtualIframe\"]");
-    public static final Target VIRTUAL_IFRAME_2 = Target
-            .the("virtual iframe 2")
-            .locatedBy("//div[@class='sr-entertainment-area']/iframe[@id=\"vsm-ea-iframe\"]");
     public static final Target ATHENA_SABA_IFRAME = Target
             .the("athena saba iframe")
             .locatedBy("//iframe[@id='Athena saba']");
@@ -208,7 +205,7 @@ public class LeoElements {
             .the("live casino button")
             .locatedBy("//nav[@class='h-full']//div[contains(text(),'Live Casino')]");
     public static final String CONTAINS_LIVE_CASINO = "h/live-casino?provider=all&category=all";
-    public static final Target LIVE_CASINO_INDEX_PLAY_BTN = Target
+    public static final Target GAME_INDEX_PLAY_BTN = Target
             .the("casino index {0} play button")
             .locatedBy(".grid-cols-6 > div:nth-of-type({0}) > div:nth-of-type(1) div:nth-of-type(1) > div:nth-of-type(1)");
     public static final Target LIVE_CASINO_SA_GAMING_VERIFY = Target
@@ -249,9 +246,6 @@ public class LeoElements {
     public static final Target CASINO_BTN = Target
             .the("casino button")
             .locatedBy("ul > div:nth-of-type(3) > .group > .h-full");
-    public static final Target CASINO_INDEX_PLAY_BTN = Target
-            .the("casino index {0} play button")
-            .locatedBy(".grid-cols-6 > div:nth-of-type({0}) > div:nth-of-type(1) div:nth-of-type(1) > div:nth-of-type(1)");
     public static final String CONTAINS_CASINO = "/casino?provider=all&category=all";
     public static final Target CASINO_FACHAI_BTN = Target
             .the("fachai button")
@@ -313,15 +307,6 @@ public class LeoElements {
     public static final Target CASINO_RED_TIGER_VERIFY = Target
             .the("red tiger verify")
             .locatedBy("//div[@class='paytable-ui-controls']");
-    public static final Target CASINO_BTG_BTN = Target
-            .the("btg button")
-            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fbt-gaming.png&w=3840&q=100']");
-    public static final Target CASINO_BTG_IFRAME = Target
-            .the("btg iframe")
-            .locatedBy("//iframe[contains(@src, 'https://skylinetechplayivo.evo-games.com/frontend/evo/r2/#provider=btg')]");
-    public static final Target CASINO_BTG_IFRAME_2 = Target
-            .the("btg iframe 2")
-            .locatedBy("//iframe[contains(@src, '/frontend/btg')]");
     public static final Target CASINO_NLC_BTN = Target
             .the("nlc button")
             .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fnlc.png&w=3840&q=100']");
@@ -341,9 +326,6 @@ public class LeoElements {
     public static final Target LOTTERY_LEO88_BTN = Target
             .the("leo88 button")
             .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2Fleo.png&w=3840&q=100']");
-    public static final Target LOTTERY_INDEX_PLAY_BTN = Target
-            .the("lottery index {0} play button")
-            .locatedBy(".grid-cols-6 > div:nth-of-type({0}) > div:nth-of-type(1) div:nth-of-type(1) > div:nth-of-type(1)");
     public static final Target LOTTERY_LEO88_VERIFY = Target
             .the("leo88 verify")
             .locatedBy(".grid-cols-2");

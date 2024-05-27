@@ -70,7 +70,7 @@ public class TestLeoAliveDaily {
         swagger.attemptsTo(
                 Click.on(LIVE_CASINO_BTN),
                 Click.on(LIVE_CASINO_EVOLUTION_BTN),
-                JavaScriptClick.on(LIVE_CASINO_INDEX_PLAY_BTN.of("1")),
+                JavaScriptClick.on(GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(validAccount)
         );
     }
@@ -80,7 +80,7 @@ public class TestLeoAliveDaily {
         swagger.attemptsTo(
                 Click.on(LIVE_CASINO_BTN),
                 Click.on(LIVE_CASINO_EVOLUTION_BTN),
-                JavaScriptClick.on(LIVE_CASINO_INDEX_PLAY_BTN.of("1")),
+                JavaScriptClick.on(GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(invalidAccount)
         );
     }
@@ -713,7 +713,7 @@ public class TestLeoAliveDaily {
         int leng = swagger.asksFor(ElementUtils.lengthOfElements(FAST_GAMES_TOTAL_GAME));
         for (int i = 1; i < leng + 1; i++) {
             swagger.attemptsTo(
-                    JavaScriptClick.on(CASINO_INDEX_PLAY_BTN.of(String.valueOf(i)))
+                    JavaScriptClick.on(GAME_INDEX_PLAY_BTN.of(String.valueOf(i)))
             );
             sleep(1000);
             swagger.attemptsTo(
