@@ -1,6 +1,5 @@
 package net.creqavn.features.Leo;
 
-import net.creqavn.Listener.CustomSerenityRunner;
 import net.creqavn.models.LoginAccount;
 import net.creqavn.models.RegisterAccount;
 import net.creqavn.questions.ElementUtils;
@@ -20,7 +19,7 @@ import org.openqa.selenium.WebDriver;
 import static java.lang.Thread.sleep;
 import static net.creqavn.ui.leo.LeoElements.*;
 
-@RunWith(CustomSerenityRunner.class)
+@RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestLeoAliveDaily {
     static Actor swagger = Actor.named("Swagger");
@@ -44,6 +43,7 @@ public class TestLeoAliveDaily {
 
     @Test
     public void Register() {
+        swagger.attemptsTo(Open.url(DOMAIN));
         swagger.attemptsTo(
                 Click.on(SIGN_UP_BTN),
                 Register.theUserLeo(registerAccount)
