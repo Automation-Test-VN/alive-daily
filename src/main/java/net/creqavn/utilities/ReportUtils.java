@@ -51,7 +51,7 @@ public class ReportUtils {
             GoogleSheetService sheet = new GoogleSheetService();
             sheet.writeOutput(spreadId,sheetName,scenario,result);
         } catch (Exception e) {
-           e.printStackTrace();
+            e.printStackTrace();
         }
 
     }
@@ -90,7 +90,7 @@ public class ReportUtils {
             spreadId = Baymax.getCurrentTest().getSpreadId();
 
             if (isNewTestId()) {
-                sheetName = DateTimeUtils.formatHH_MM_SS();
+                sheetName = DateTimeUtils.formatHH_MM();
                 sheet.addSheet(spreadId, sheetName);
                 sheet.storeTestId(sheetName);
                 sheet.updateValue(spreadId, sheetName + "!A1", header);
