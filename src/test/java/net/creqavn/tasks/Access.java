@@ -29,11 +29,11 @@ public class Access {
         });
     }
 
-    public static Performable theSport(Target sportBTN) {
+    public static Performable theFunctionFromMenu(Target mainFunction, Target subFunction) {
         return Task.where("{0} access sport ",actor -> {
             actor.attemptsTo(
-                    HoverOverElement.over(SPORTS_BTN),
-                    Click.on(sportBTN)
+                    HoverOverElement.over(mainFunction),
+                    Click.on(subFunction)
             );
         });
     }
