@@ -29,11 +29,4 @@ public class WaitForLoad {
             Ensure.thatTheCurrentPage().currentUrl().hasValue().contains(url);
         });
     }
-
-    public static Performable theURLIsEqual(String url) {
-        return Task.where("{0} wait for page url loaded ", actor -> {
-            BrowseTheWeb.as(actor).evaluateJavascript("return document.readyState=='complete'");
-            Ensure.thatTheCurrentPage().currentUrl().hasValue().isEqualTo(url);
-        });
-    }
 }
