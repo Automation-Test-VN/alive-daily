@@ -408,6 +408,9 @@ public class LeoElements {
             .the("cock fight game button")
             .locatedBy("[src='/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fdigmaan.79dbb079.png&w=3840&q=100']");
     public static final String CONTAINS_COCK_FIGHT = "https://css4.1288128.net/Game/Lobby.aspx";
+    public static final Target COCK_FIGHT_VERIFY = Target
+            .the("cock fight verify")
+            .locatedBy("//div[@id='lobby-matches']");
 
     // OTHERS SESSION
     public static final Target OTHERS_BTN = Target
