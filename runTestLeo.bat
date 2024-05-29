@@ -1,0 +1,1 @@
+mvn clean verify "-Denvironment=chrome" "-Dit.test=TestLeoAliveDaily"

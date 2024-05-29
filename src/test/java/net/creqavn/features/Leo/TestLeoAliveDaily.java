@@ -43,7 +43,6 @@ public class TestLeoAliveDaily {
 
     @Test
     public void Register() {
-        swagger.attemptsTo(Open.url(DOMAIN));
         swagger.attemptsTo(
                 Click.on(SIGN_UP_BTN),
                 Register.theUserLeo(registerAccount)
