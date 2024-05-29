@@ -10,6 +10,7 @@ import net.serenitybdd.screenplay.targets.Target;
 import static net.creqavn.ui.leo.LeoElements.*;
 
 public class Access {
+    public static final String DEFAULT_INDEX = "1";
     public static Performable theGameFrom(Target functionName, Target subFunction) {
         return Task.where("{0} access game from function", actor -> {
             actor.attemptsTo(
@@ -21,10 +22,14 @@ public class Access {
     }
 
     public static Performable theGameFrom(Target functionName) {
+        return theGameFrom(functionName, DEFAULT_INDEX);
+    }
+
+    public static Performable theGameFrom(Target functionName, String index) {
         return Task.where("{0} access game from function", actor -> {
             actor.attemptsTo(
                     Click.on(functionName),
-                    JavaScriptClick.on(GAME_INDEX_PLAY_BTN.of("1"))
+                    JavaScriptClick.on(GAME_INDEX_PLAY_BTN.of(index))
             );
         });
     }

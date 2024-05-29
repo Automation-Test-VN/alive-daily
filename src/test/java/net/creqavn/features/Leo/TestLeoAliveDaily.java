@@ -641,7 +641,7 @@ public class TestLeoAliveDaily {
     @Test
     public void SiamGame() throws InterruptedException {
         swagger.attemptsTo(
-                Access.theGameFrom(SIAM_GAMES_BTN),
+                Access.theGameFrom(SIAM_GAMES_BTN,"2"),
                 Login.theAccount(validAccount)
         );
         sleep(3000);
