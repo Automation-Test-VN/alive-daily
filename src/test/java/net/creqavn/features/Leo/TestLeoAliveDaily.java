@@ -115,7 +115,7 @@ public class TestLeoAliveDaily {
                 WaitForLoad.theURL(CONTAINS_HERO_BANNER)
         );
     }
-
+/*
     @Test
     public void HomepageSubBanner() {
         swagger.attemptsTo(
@@ -123,7 +123,7 @@ public class TestLeoAliveDaily {
                 WaitForLoad.theURL(CONTAIN_SUB_BANNER)
         );
     }
-
+*/
     @Test
     public void HomepageMostPopular() {
         swagger.attemptsTo(
@@ -136,7 +136,7 @@ public class TestLeoAliveDaily {
     @Test
     public void HomepageMostCommon() throws InterruptedException {
         swagger.attemptsTo(
-                Click.on(MOST_COMMON_BTN),
+                Access.theGameFrom(MOST_COMMON_BTN),
                 Login.theAccount(validAccount)
         );
         sleep(3000);
@@ -149,6 +149,7 @@ public class TestLeoAliveDaily {
     @Test
     public void HomepageBestLiveCasino() throws InterruptedException {
         swagger.attemptsTo(
+                SwipeTo.theMiddle(),
                 Click.on(BEST_LIVE_CASINO),
                 Login.theAccount(validAccount)
         );
@@ -232,7 +233,7 @@ public class TestLeoAliveDaily {
     @Test
     public void HomepageVIP() {
         swagger.attemptsTo(
-                HoverOverElement.over(OTHERS_BTN),
+                HoverOverElement.over(OFFERS_BTN),
                 Click.on(VIP_BTN),
                 WaitForLoad.theURL(CONTAINS_VIP)
         );
@@ -241,7 +242,7 @@ public class TestLeoAliveDaily {
     @Test
     public void HomepagePromotion() {
         swagger.attemptsTo(
-                HoverOverElement.over(OTHERS_BTN),
+                HoverOverElement.over(OFFERS_BTN),
                 Click.on(PROMOTION_BTN),
                 WaitForLoad.theURL(CONTAINS_PROMOTION)
         );

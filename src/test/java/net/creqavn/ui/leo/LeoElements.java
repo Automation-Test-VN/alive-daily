@@ -47,7 +47,7 @@ public class LeoElements {
     // SIGN UP SESSION
     public static final Target SIGN_UP_BTN = Target
             .the("sign up button")
-            .locatedBy(".bg-btn-action > .w-full");
+            .locatedBy(".bg-btn-action-register-blue");
     public static final Target FORM_SIGN_UP = Target
             .the("form sign up {0} field")
             .locatedBy("//input[@id='{0}']");
@@ -68,7 +68,7 @@ public class LeoElements {
     // SIGN IN SESSION
     public static final Target SIGN_IN_BTN = Target
             .the("sign in button")
-            .locatedBy(".bg-btn-action-yellow > .w-full");
+            .locatedBy(".bg-btn-action-login");
     public static final Target FORM_SIGN_IN = Target
             .the("form sign in {0} field")
             .locatedBy("//input[@id='{0}']");
@@ -95,16 +95,16 @@ public class LeoElements {
             .locatedBy("//img[@alt='local-active-3']");
     public static final Target MOST_COMMON_BTN = Target
             .the("most common button")
-            .locatedBy("//*[@id=\"__next\"]/div/main/div/div[5]/div/div/div[2]/div[1]/div/div[3]/div/div[1]/div/div/div[1]/span/img");
+            .locatedBy("[alt='super_jackpot_model']");
     public static final Target GAME_CANVAS = Target
             .the("canvas")
             .locatedBy("//canvas[@id='GameCanvas']");
     public static final Target BEST_LIVE_CASINO = Target
             .the("best live casino")
-            .locatedBy("//div[@class='swiper-slide swiper-slide-prev !w-80']//span[1]");
+            .locatedBy("[src='/_next/image?url=https%3A%2F%2Fadmin.leo88.com%2Fwp-content%2Fuploads%2F2024%2F05%2FBLC-Roulette-Sexy-Hall-SA-Gaming.png&w=3840&q=75']");
     public static final Target LIVE_CHAT_BTN = Target
             .the("live chat button")
-            .locatedBy("//div[@id='chat-widget-container']");
+            .locatedBy(".z-20 div:nth-of-type(3)");
     public static final Target LIVE_CHAT_IFRAME = Target
             .the("live chat iframe")
             .locatedBy("//iframe[@id='chat-widget']");
@@ -377,7 +377,7 @@ public class LeoElements {
     public static final String CONTAINS_FAST_GAMES = "/fast-game?tab=all";
     public static final Target FAST_GAMES_TOTAL_GAME = Target
             .the("fast games total game")
-            .locatedBy("//*[@id=\"__next\"]/div/main/div/div[2]/div[2]/div/div/div/div[*]/div[1]/div[3]/div/div");
+            .locatedBy("//*[@id=\"__next\"]/div/main/div/div[2]/div[2]/div/div/div/div/div[*]/div[1]/div[3]/div/div");
     public static final Target FAST_GAME_VERIFY = Target
             .the("fast game verify")
             .locatedBy("//div[@class='bet-controls']");
@@ -395,9 +395,9 @@ public class LeoElements {
             .locatedBy("//div[@id='lobby-matches']");
 
     // OTHERS SESSION
-    public static final Target OTHERS_BTN = Target
+    public static final Target OFFERS_BTN = Target
             .the("others session")
-            .locatedBy("//nav[@class='h-full']//div[contains(text(),'others')]");
+            .locatedBy("//nav[@class='h-full']//div[contains(text(),'offers')]");
     public static final Target VIP_BTN = Target
             .the("vip button")
             .locatedBy("[src='/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fvip.ead3ee5c.png&w=3840&q=100']");

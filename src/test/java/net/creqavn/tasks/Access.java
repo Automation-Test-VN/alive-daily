@@ -15,7 +15,7 @@ public class Access {
             actor.attemptsTo(
                     HoverOverElement.over(functionName),
                     Click.on(subFunction),
-                    JavaScriptClick.on(GAME_INDEX_PLAY_BTN.of("1"))
+                    JavaScriptClick.on(GAME_INDEX_PLAY_BTN.of("2"))
             );
         });
     }
@@ -24,7 +24,7 @@ public class Access {
         return Task.where("{0} access game from function", actor -> {
             actor.attemptsTo(
                     Click.on(functionName),
-                    JavaScriptClick.on(GAME_INDEX_PLAY_BTN.of("1"))
+                    JavaScriptClick.on(GAME_INDEX_PLAY_BTN.of("2"))
             );
         });
     }

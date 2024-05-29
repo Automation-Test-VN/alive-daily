@@ -30,9 +30,15 @@ public class DateTimeUtils {
         return now.format(formatter);
     }
 
+    public static String formatYYYY_MM_DD() {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd");
+        return now.format(formatter);
+    }
+
     public static String setFolderName() {
         List<String> words = Arrays.asList(
-                formatYYYY_MM_DD_HH());
+                formatYYYY_MM_DD());
         return String.join("_", words);
     }
 }
