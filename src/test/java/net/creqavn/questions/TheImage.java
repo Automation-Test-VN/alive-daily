@@ -13,7 +13,6 @@ import java.util.stream.Collectors;
  * @return List<String> - Danh sách các giá trị của thuộc tính src
  */
 public class TheImage implements Question<List<String>>{
-
     static Target imagesWithSrc = Target.the("image")
             .locatedBy("//img");
 

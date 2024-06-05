@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 public class TheList {
     // Biến tĩnh chứa danh sách từ khóa mặc định
     private static final List<String> DEFAULT_KEYWORDS = List.of(".png", ".jpg");
-
     /**
      * Phương thức để lọc danh sách chuỗi và giữ lại các chuỗi chứa bất kỳ từ khóa nào trong danh sách từ khóa.
      *
