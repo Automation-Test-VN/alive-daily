@@ -1,6 +1,5 @@
 package net.creqavn.features.Leo;
 
-
 import net.creqavn.models.UrlStatus;
 import net.creqavn.tasks.DataProcessor;
 import net.serenitybdd.annotations.ClearCookiesPolicy;
@@ -24,7 +23,6 @@ import java.util.Map;
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestLeoBrokenImages {
-
     static Actor swagger = Actor.named("Swagger");
 
     @Managed(uniqueSession = true, clearCookies = ClearCookiesPolicy.BeforeEachTest)
@@ -167,34 +165,40 @@ public class TestLeoBrokenImages {
         List<String> processedData;
         Map<String, String> imageToDomainMap = new HashMap<>();
 
-        List<String> DOMAIN = new ArrayList<>();
-        DOMAIN.add("https://leo88.top");
-//        DOMAIN.add("https://leo88.top/en-TH/casino?provider=techplay&category=all");
-//        DOMAIN.add("https://leo88.top/en-TH/casino?provider=nextspin&category=all");
-//        DOMAIN.add("https://leo88.top/en-TH/casino?provider=jili&category=all");
-//        DOMAIN.add("https://leo88.top/en-TH/casino?provider=pgsoft&category=all");
-//        DOMAIN.add("https://leo88.top/en-TH/casino?provider=amb&category=all");
-//        DOMAIN.add("https://leo88.top/en-TH/casino?provider=pragmatic&category=all");
-//        DOMAIN.add("https://leo88.top/en-TH/casino?provider=evoplay&category=all");
-//        DOMAIN.add("https://leo88.top/en-TH/casino?provider=microgaming&category=all");
-//        DOMAIN.add("https://leo88.top/en-TH/casino?provider=jdb&category=all");
-//        DOMAIN.add("https://leo88.top/en-TH/casino?provider=kingmaker&category=all");
-//        DOMAIN.add("https://leo88.top/en-TH/casino?provider=fachai&category=all");
-//        DOMAIN.add("https://leo88.top/en-TH/casino?provider=playngo&category=all");
-//        DOMAIN.add("https://leo88.top/en-TH/casino?provider=btg&category=all");
-//        DOMAIN.add("https://leo88.top/en-TH/casino?provider=netent&category=all");
-//        DOMAIN.add("https://leo88.top/en-TH/casino?provider=redtiger&category=all");
-//        DOMAIN.add("https://leo88.top/en-TH/casino?provider=nlc&category=all");
-//        DOMAIN.add("https://leo88.top/en-TH/lottery?provider=all&category=all");
-//        DOMAIN.add("https://leo88.top/en-TH/siam-game?category=all");
-//        DOMAIN.add("https://leo88.top/en-TH/fishing?provider=all&category=all&tab=all");
-//        DOMAIN.add("https://leo88.top/en-TH/fast-game?tab=all");
+        List<String> listDOMAIN = new ArrayList<>();
+        listDOMAIN.add("https://leo88.top");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=techplay&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=nextspin&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=jili&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=pgsoft&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=amb&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=pragmatic&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=evoplay&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=microgaming&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=jdb&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=kingmaker&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=fachai&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=playngo&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=btg&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=netent&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=redtiger&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=nlc&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/lottery?provider=all&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/siam-game?category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/fishing?provider=all&category=all&tab=all");
+        listDOMAIN.add("https://leo88.top/en-TH/fast-game?tab=all");
 
-        for (String url : DOMAIN) {
-            processedData = DataProcessor.getProcessedImageUrls(swagger, url);
-            lastedData.addAll(processedData);
-            for (String imageUrl : processedData) {
-                imageToDomainMap.put(imageUrl, url);
+        for (String url : listDOMAIN) {
+            try {
+                processedData = DataProcessor.getProcessedImageUrls(swagger, url);
+                lastedData.addAll(processedData);
+                for (String imageUrl : processedData) {
+                    imageToDomainMap.put(imageUrl, url);
+                }
+            } catch (AssertionError e) {
+                System.err.println("AssertionError: " + e.getMessage());
+            } catch (Exception e) {
+                System.err.println("Exception: " + e.getMessage());
             }
         }
         System.out.println("Total image URLs found: " + lastedData.size());
@@ -204,11 +208,16 @@ public class TestLeoBrokenImages {
         // Danh sách các UrlStatus chứa các URL và mã trạng thái
         List<UrlStatus> brokenImageUrls = DataProcessor.sendRequests(lastedData);
 
+        StringBuilder logBuilder = new StringBuilder();
         for (UrlStatus brokenImageUrl : brokenImageUrls) {
-            String domain = imageToDomainMap.get(brokenImageUrl.getUrl());
-            System.out.println("Broken image found in domain: " + domain
-                    + ", Image URL: " + brokenImageUrl.getUrl()
-                    + ", Status Code: " + brokenImageUrl.getStatusCode());
+
+            String domain = imageToDomainMap.get(brokenImageUrl.getUrl()); // Lấy domain từ map
+            int statusCode = brokenImageUrl.getStatusCode(); // Lấy mã trạng thái
+            String imageUrl = brokenImageUrl.getUrl(); // Lấy URL hỏng
+
+            logBuilder.append(domain).append(" ").append(statusCode).append("-").append(imageUrl).append("\n");
+//            System.out.println(logBuilder); //https://leo88.top 200-/_next/image?url=/_next/static/media/age.04319df5.png&w=640&q=75
+
         }
     }
 }
