@@ -17,7 +17,7 @@ public class TheImage implements Question<List<String>>{
     static Target imagesWithSrc = Target.the("image")
             .locatedBy("//img");
 
-    public static Question<List<String>> hasSrc() {
+    public static Question<List<String>> srcAttributes() {
         return new TheImage();
     }
 

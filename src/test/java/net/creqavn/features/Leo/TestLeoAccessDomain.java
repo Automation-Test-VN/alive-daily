@@ -11,7 +11,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import net.serenitybdd.rest.SerenityRest;
 
-import static net.creqavn.ui.leo.LeoElements.*;
 import static net.thucydides.model.domain.ReportData.withTitle;
 
 @RunWith(SerenityRunner.class)
@@ -37,13 +36,13 @@ public class TestLeoAccessDomain {
 
         // Kiểm tra mã trạng thái
         if (statusCode >= 400) {
-            System.out.println("Test failed: Received status code " + statusCode);
+            System.out.println("Test failed: Status code: " + statusCode);
             throw new AssertionError("Expected status code 200 but received " + statusCode);
         }
     }
 
     @Test
-    @Title("Test if homepage is accessible and returns status 200")
+    @Title("Test if homepage is accessible")
     public void testHomepage() {
         String homepageUrl = "https://leo88.top/";  // Thay thế bằng URL của trang chủ
         sendRequestAndCheckStatus(homepageUrl);

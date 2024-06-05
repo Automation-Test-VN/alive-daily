@@ -14,7 +14,7 @@ public class TheList {
      * @param keywords Danh sách từ khóa để lọc
      * @return Danh sách mới chứa các chuỗi đáp ứng điều kiện
      */
-    public static List<String> hasFiltered(List<String> strings, List<String> keywords) {
+    public static List<String> filteredAttributes(List<String> strings, List<String> keywords) {
         return strings.stream()
                 .filter(s -> keywords.stream().anyMatch(keyword -> s.contains(keyword)))
                 .collect(Collectors.toList());
@@ -26,7 +26,7 @@ public class TheList {
      * @param strings Danh sách chuỗi ban đầu
      * @return Danh sách mới chứa các chuỗi đáp ứng điều kiện với từ khóa mặc định
      */
-    public static List<String> hasFiltered(List<String> strings) {
-        return hasFiltered(strings, DEFAULT_KEYWORDS);
+    public static List<String> filteredAttributes(List<String> strings) {
+        return filteredAttributes(strings, DEFAULT_KEYWORDS);
     }
 }
