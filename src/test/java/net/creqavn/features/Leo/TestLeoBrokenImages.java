@@ -201,9 +201,9 @@ public class TestLeoBrokenImages {
                 System.err.println("Exception: " + e.getMessage());
             }
         }
-        System.out.println("Total image URLs found: " + lastedData.size());
+//        System.out.println("Total image URLs found: " + lastedData.size());
         lastedData = DataProcessor.removeDuplicates(lastedData);
-        System.out.println("Total image URLs after check duplicate: " + lastedData.size());
+//        System.out.println("Total image URLs after check duplicate: " + lastedData.size());
 
         // Danh sách các UrlStatus chứa các URL và mã trạng thái
         List<UrlStatus> brokenImageUrls = DataProcessor.sendRequests(lastedData);
@@ -217,7 +217,6 @@ public class TestLeoBrokenImages {
 
             logBuilder.append(domain).append(" ").append(statusCode).append("-").append(imageUrl).append("\n");
 //            System.out.println(logBuilder); //https://leo88.top 200-/_next/image?url=/_next/static/media/age.04319df5.png&w=640&q=75
-
         }
     }
 }
