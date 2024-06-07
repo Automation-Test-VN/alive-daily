@@ -14,7 +14,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,6 +43,25 @@ public class TestGetAllImageLink {
         List<String> listDOMAIN = new ArrayList<>();
         listDOMAIN.add("https://leo88.top");
         listDOMAIN.add("https://leo88.top/en-TH/casino?provider=techplay&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=nextspin&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=jili&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=pgsoft&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=amb&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=pragmatic&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=evoplay&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=microgaming&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=jdb&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=kingmaker&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=fachai&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=playngo&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=btg&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=netent&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=redtiger&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/casino?provider=nlc&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/lottery?provider=all&category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/siam-game?category=all");
+        listDOMAIN.add("https://leo88.top/en-TH/fishing?provider=all&category=all&tab=all");
+        listDOMAIN.add("https://leo88.top/en-TH/fast-game?tab=all");
         // (Add other domains as necessary)
 
         List<String> lastedData = new ArrayList<>();

@@ -30,9 +30,6 @@ public class TestLeoBrokenImages {
     private EnvironmentVariables environmentVariables;
     private String baseURI = "https://leo88.top";
 
-
-    //@TestData(columnNames = "link")
-
     @Test
     public void testBrokenImage() {
         theRestApiBaseUrl = environmentVariables.optionalProperty("restapi.baseurl").orElse(baseURI);
