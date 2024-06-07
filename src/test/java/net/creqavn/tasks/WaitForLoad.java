@@ -23,10 +23,27 @@ public class WaitForLoad {
         });
     }
 
+    public static Performable thePage() {
+        return Task.where("{0} wait for element loaded on the page", actor -> {
+            BrowseTheWeb.as(actor).evaluateJavascript("return document.readyState=='complete'");
+        });
+    }
+
     public static Performable theURL(String url) {
         return Task.where("{0} wait for page url loaded ", actor -> {
             BrowseTheWeb.as(actor).evaluateJavascript("return document.readyState=='complete'");
             Ensure.thatTheCurrentPage().currentUrl().hasValue().contains(url);
         });
+    }
+
+    public static Performable thePageInFewSeconds(int seconds) {
+        return Task.where("{0} waits for #seconds seconds",
+                actor -> {
+                    try {
+                        Thread.sleep(seconds * 1000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
+                });
     }
 }

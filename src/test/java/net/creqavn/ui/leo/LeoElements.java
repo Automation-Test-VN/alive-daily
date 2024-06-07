@@ -53,7 +53,7 @@ public class LeoElements {
             .locatedBy("//input[@id='{0}']");
     public static final Target SIGN_UP_USERNAME = FORM_SIGN_UP.of("username");
     public static final Target SIGN_UP_PWD = FORM_SIGN_UP.of("password");
-    public static final Target SIGN_UP_RE_PWD = FORM_SIGN_UP.of("confirmPassword");
+    public static final Target SIGN_UP_PHONE = FORM_SIGN_UP.of("phoneNumber");
     public static final Target SIGN_UP_SUBMIT = Target
             .the("sign up submit")
             .locatedBy(".text-base > .w-full");

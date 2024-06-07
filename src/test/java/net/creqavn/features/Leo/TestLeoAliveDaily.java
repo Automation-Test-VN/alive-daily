@@ -16,7 +16,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
-import static java.lang.Thread.sleep;
 import static net.creqavn.ui.leo.LeoElements.*;
 
 @RunWith(SerenityRunner.class)
@@ -39,7 +38,6 @@ public class TestLeoAliveDaily {
     public void setUp() {
         swagger.attemptsTo(Open.url(DOMAIN));
     }
-
 
     @Test
     public void Register() {
@@ -68,7 +66,7 @@ public class TestLeoAliveDaily {
     @Test
     public void LoginTheValidAccountOnPopup() {
         swagger.attemptsTo(
-                Click.on(LIVE_CASINO_BTN),
+                HoverOverElement.over(LIVE_CASINO_BTN),
                 Click.on(LIVE_CASINO_EVOLUTION_BTN),
                 JavaScriptClick.on(GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(validAccount)
@@ -78,8 +76,9 @@ public class TestLeoAliveDaily {
     @Test
     public void LoginTheInvalidAccountOnPopup() {
         swagger.attemptsTo(
-                Click.on(LIVE_CASINO_BTN),
+                HoverOverElement.over(LIVE_CASINO_BTN),
                 Click.on(LIVE_CASINO_EVOLUTION_BTN),
+                WaitForLoad.thePageInFewSeconds(3),
                 JavaScriptClick.on(GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(invalidAccount)
         );
@@ -114,15 +113,7 @@ public class TestLeoAliveDaily {
                 WaitForLoad.theURL(CONTAINS_HERO_BANNER)
         );
     }
-/*
-    @Test
-    public void HomepageSubBanner() {
-        swagger.attemptsTo(
-                Click.on(SUB_BANNER),
-                WaitForLoad.theURL(CONTAIN_SUB_BANNER)
-        );
-    }
-*/
+
     @Test
     public void HomepageMostPopular() {
         swagger.attemptsTo(
@@ -133,27 +124,23 @@ public class TestLeoAliveDaily {
     }
 
     @Test
-    public void HomepageMostCommon() throws InterruptedException {
+    public void HomepageMostCommon() {
         swagger.attemptsTo(
                 Access.theGameFrom(MOST_COMMON_BTN),
-                Login.theAccount(validAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(validAccount),
+                WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
                 Verify.theElementIsDisplayed(CANVAS_1)
         );
     }
 
     @Test
-    public void HomepageBestLiveCasino() throws InterruptedException {
+    public void HomepageBestLiveCasino(){
         swagger.attemptsTo(
                 SwipeTo.theMiddle(),
                 Click.on(BEST_LIVE_CASINO),
-                Login.theAccount(validAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(validAccount),
+                WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
                 Verify.theElementIsDisplayed(LIVE_CASINO_SA_GAMING_VERIFY)
         );
@@ -187,6 +174,7 @@ public class TestLeoAliveDaily {
     public void HomepageLottery() {
         swagger.attemptsTo(
                 Click.on(LOTTERY_BTN),
+                Switch.toNewWindow(),
                 WaitForLoad.theURL(CONTAINS_LOTTERY)
         );
     }
@@ -216,14 +204,12 @@ public class TestLeoAliveDaily {
     }
 
     @Test
-    public void HomepageCockFight() throws InterruptedException {
+    public void HomepageCockFight() {
         swagger.attemptsTo(
                 HoverOverElement.over(COCK_FIGHT_BTN),
                 Click.on(COCK_FIGHT_GAME_BTN),
-                Login.theAccount(invalidAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(invalidAccount),
+                WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
                 WaitForLoad.theURL(CONTAINS_COCK_FIGHT)
         );
@@ -344,12 +330,10 @@ public class TestLeoAliveDaily {
     }
 
     @Test
-    public void SportbookLeoVirtual() throws InterruptedException {
+    public void SportbookLeoVirtual() {
         swagger.attemptsTo(
-                Access.theFunctionFromMenu(SPORTS_BTN, SPORT_LEO_VIRTUAL)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Access.theFunctionFromMenu(SPORTS_BTN, SPORT_LEO_VIRTUAL),
+                WaitForLoad.thePageInFewSeconds(2),
                 Switch.toFrame(V_SPORT_IFRAME.resolveFor(swagger)),
                 Switch.toFrame(VIRTUAL_IFRAME.resolveFor(swagger)),
                 Verify.theElementIsDisplayed(SPORT_LEO_VIRTUAL_VERIFY, 60)
@@ -387,39 +371,33 @@ public class TestLeoAliveDaily {
     }
 
     @Test
-    public void LiveCasinoSAGaming() throws InterruptedException {
+    public void LiveCasinoSAGaming() {
         swagger.attemptsTo(
                 Access.theGameFrom(LIVE_CASINO_BTN, LIVE_CASINO_SAGAMING_BTN),
-                Login.theAccount(validAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(validAccount),
+                WaitForLoad.thePageInFewSeconds(10),
                 SwitchTo.newWindow(),
                 Verify.theElementIsDisplayed(LIVE_CASINO_SA_GAMING_VERIFY)
         );
     }
 
     @Test
-    public void LiveCasinoEzugi() throws InterruptedException {
+    public void LiveCasinoEzugi() {
         swagger.attemptsTo(
                 Access.theGameFrom(LIVE_CASINO_BTN, LIVE_CASINO_EZUGI_BTN),
-                Login.theAccount(validAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(validAccount),
+                WaitForLoad.thePageInFewSeconds(10),
                 SwitchTo.newWindow(),
                 Verify.theElementIsDisplayed(LIVE_CASINO_EZUGI_VERIFY)
         );
     }
 
     @Test
-    public void LiveCasinoEvolution() throws InterruptedException {
+    public void LiveCasinoEvolution() {
         swagger.attemptsTo(
                 Access.theGameFrom(LIVE_CASINO_BTN, LIVE_CASINO_EVOLUTION_BTN),
-                Login.theAccount(validAccount)
-        );
-        sleep(4000);
-        swagger.attemptsTo(
+                Login.theAccount(validAccount),
+                WaitForLoad.thePageInFewSeconds(10),
                 SwitchTo.newWindow(),
                 Switch.toFrame(EVOLUTION_IFRAME.resolveFor(swagger)),
                 Verify.theElementIsDisplayed(LIVE_CASINO_EVOLUTION_VERIFY)
@@ -427,52 +405,44 @@ public class TestLeoAliveDaily {
     }
 
     @Test
-    public void LiveCasinoPragmatic() throws InterruptedException {
+    public void LiveCasinoPragmatic() {
         swagger.attemptsTo(
                 Access.theGameFrom(LIVE_CASINO_BTN, LIVE_CASINO_PRAGMATIC_BTN),
-                Login.theAccount(validAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(validAccount),
+                WaitForLoad.thePageInFewSeconds(10),
                 SwitchTo.newWindow(),
                 Verify.theElementIsDisplayed(LIVE_CASINO_PRAGMATIC_VERIFY)
         );
     }
 
     @Test
-    public void LiveCasinoMicrogaming() throws InterruptedException {
+    public void LiveCasinoMicrogaming() {
         swagger.attemptsTo(
                 Access.theGameFrom(LIVE_CASINO_BTN, LIVE_CASINO_MICROGAMING_BTN),
-                Login.theAccount(validAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(validAccount),
+                WaitForLoad.thePageInFewSeconds(10),
                 SwitchTo.newWindow(),
                 Verify.theElementIsDisplayed(LIVE_CASINO_MICROGAMING_VERIFY)
         );
     }
 
     @Test
-    public void CasinoFaChai() throws InterruptedException {
+    public void CasinoFaChai() {
         swagger.attemptsTo(
                 Access.theGameFrom(CASINO_BTN, CASINO_FACHAI_BTN),
-                Login.theAccount(invalidAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(invalidAccount),
+                WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
                 Verify.theElementIsDisplayed(CANVAS_1)
         );
     }
 
     @Test
-    public void CasinoAskmebet() throws InterruptedException {
+    public void CasinoAskmebet() {
         swagger.attemptsTo(
                 Access.theGameFrom(CASINO_BTN, CASINO_ASKMEBET_BTN),
-                Login.theAccount(invalidAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(invalidAccount),
+                WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
                 Switch.toFrame(GAME_IFRAME.resolveFor(swagger)),
                 Verify.theElementIsDisplayed(CANVAS_1)
@@ -480,65 +450,55 @@ public class TestLeoAliveDaily {
     }
 
     @Test
-    public void CasinoEvoplay() throws InterruptedException {
+    public void CasinoEvoplay() {
         swagger.attemptsTo(
                 Access.theGameFrom(CASINO_BTN, CASINO_EVOPLAY_BTN),
-                Login.theAccount(invalidAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(invalidAccount),
+                WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
                 Verify.theElementIsDisplayed(SLOT_CANVAS)
         );
     }
 
     @Test
-    public void CasinoMicrogaming() throws InterruptedException {
+    public void CasinoMicrogaming() {
         swagger.attemptsTo(
                 Access.theGameFrom(CASINO_BTN, CASINO_MICROGAMING_BTN),
-                Login.theAccount(invalidAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(invalidAccount),
+                WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
                 Verify.theElementIsDisplayed(CANVAS_VIEW)
         );
     }
 
     @Test
-    public void CasinoPlayNGo() throws InterruptedException {
+    public void CasinoPlayNGo() {
         swagger.attemptsTo(
                 Access.theGameFrom(CASINO_BTN, CASINO_PLAY_N_GO_BTN),
-                Login.theAccount(validAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(validAccount),
+                WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
                 Verify.theElementIsDisplayed(CANVAS_1)
         );
     }
 
     @Test
-    public void CasinoPragmatic() throws InterruptedException {
+    public void CasinoPragmatic() {
         swagger.attemptsTo(
                 Access.theGameFrom(CASINO_BTN, CASINO_PRAGMATIC_BTN),
-                Login.theAccount(validAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(validAccount),
+                WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
                 Verify.theElementIsDisplayed(CANVAS_1)
         );
     }
 
     @Test
-    public void CasinoNetEnt() throws InterruptedException {
+    public void CasinoNetEnt() {
         swagger.attemptsTo(
                 Access.theGameFrom(CASINO_BTN, CASINO_NETENT_BTN),
-                Login.theAccount(validAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(validAccount),
+                WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
                 Switch.toFrame(CASINO_NETENT_IFRAME.resolveFor(swagger)),
                 Switch.toFrame(SLOT_CONTAINER_IFRAME.resolveFor(swagger)),
@@ -547,39 +507,33 @@ public class TestLeoAliveDaily {
     }
 
     @Test
-    public void CasinoJili() throws InterruptedException {
+    public void CasinoJili() {
         swagger.attemptsTo(
                 Access.theGameFrom(CASINO_BTN, CASINO_JILI_BTN),
-                Login.theAccount(validAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(validAccount),
+                WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
                 Verify.theElementIsDisplayed(GAME_CANVAS)
         );
     }
 
     @Test
-    public void CasinoJDB() throws InterruptedException {
+    public void CasinoJDB() {
         swagger.attemptsTo(
                 Access.theGameFrom(CASINO_BTN, CASINO_JDB_BTN),
-                Login.theAccount(validAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(validAccount),
+                WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
                 Verify.theElementIsDisplayed(CASINO_JDB_VERIFY)
         );
     }
 
     @Test
-    public void CasinoRedTiger() throws InterruptedException {
+    public void CasinoRedTiger() {
         swagger.attemptsTo(
                 Access.theGameFrom(CASINO_BTN, CASINO_RED_TIGER_BTN),
-                Login.theAccount(validAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(validAccount),
+                WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
                 Switch.toFrame(CASINO_RED_TIGER_IFRAME.resolveFor(swagger)),
                 Switch.toFrame(CASINO_RED_TIGER_IFRAME_2.resolveFor(swagger)),
@@ -588,13 +542,11 @@ public class TestLeoAliveDaily {
     }
 
     @Test
-    public void CasinoNLC() throws InterruptedException {
+    public void CasinoNLC() {
         swagger.attemptsTo(
                 Access.theGameFrom(CASINO_BTN, CASINO_NLC_BTN),
-                Login.theAccount(validAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(validAccount),
+                WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
                 Switch.toFrame(CASINO_NLC_IFRAME.resolveFor(swagger)),
                 Switch.toFrame(CASINO_NLC_IFRAME_2.resolveFor(swagger)),
@@ -612,26 +564,22 @@ public class TestLeoAliveDaily {
     }
 
     @Test
-    public void LotteryAskMeBet() throws InterruptedException {
+    public void LotteryAskMeBet() {
         swagger.attemptsTo(
                 Access.theGameFrom(LOTTERY_BTN, LOTTERY_ASKMEBET_BTN),
-                Login.theAccount(validAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(validAccount),
+                WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
                 Verify.theElementIsDisplayed(LOTTERY_ASKMEBET_VERIFY)
         );
     }
 
     @Test
-    public void LotteryIBC() throws InterruptedException {
+    public void LotteryIBC() {
         swagger.attemptsTo(
                 Access.theGameFrom(LOTTERY_BTN, LOTTERY_IBC_BTN),
-                Login.theAccount(validAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(validAccount),
+                WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
                 Switch.toFrame(IFRAME_GAME.resolveFor(swagger)),
                 Verify.theElementIsDisplayed(LOTTERY_IBC_VERIFY)
@@ -639,26 +587,22 @@ public class TestLeoAliveDaily {
     }
 
     @Test
-    public void SiamGame() throws InterruptedException {
+    public void SiamGame() {
         swagger.attemptsTo(
-                Access.theGameFrom(SIAM_GAMES_BTN,"2"),
-                Login.theAccount(validAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Access.theGameFrom(SIAM_GAMES_BTN, "2"),
+                Login.theAccount(validAccount),
+                WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
                 Verify.theElementIsDisplayed(GAME_CANVAS)
         );
     }
 
     @Test
-    public void FishingAskMeBet() throws InterruptedException {
+    public void FishingAskMeBet() {
         swagger.attemptsTo(
                 Access.theGameFrom(FISHING_BTN, FISHING_ASKMEBET_BTN),
-                Login.theAccount(validAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(validAccount),
+                WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
                 Switch.toFrame(GAME_IFRAME.resolveFor(swagger)),
                 Verify.theElementIsDisplayed(GAME_CANVAS)
@@ -666,46 +610,40 @@ public class TestLeoAliveDaily {
     }
 
     @Test
-    public void FishingJili() throws InterruptedException {
+    public void FishingJili() {
         swagger.attemptsTo(
                 Access.theGameFrom(FISHING_BTN, FISHING_JILI_BTN),
-                Login.theAccount(validAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(validAccount),
+                WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
                 Verify.theElementIsDisplayed(GAME_CANVAS)
         );
     }
 
     @Test
-    public void FishingJDB() throws InterruptedException {
+    public void FishingJDB() {
         swagger.attemptsTo(
                 Access.theGameFrom(FISHING_BTN, FISHING_JDB_BTN),
-                Login.theAccount(validAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(validAccount),
+                WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
                 Verify.theElementIsDisplayed(CANVAS_2)
         );
     }
 
     @Test
-    public void FishingFaChai() throws InterruptedException {
+    public void FishingFaChai() {
         swagger.attemptsTo(
                 Access.theGameFrom(FISHING_BTN, FISHING_FACHAI_BTN),
-                Login.theAccount(validAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(validAccount),
+                WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
                 Verify.theElementIsDisplayed(GAME_CANVAS)
         );
     }
 
     @Test
-    public void FastGame() throws InterruptedException {
+    public void FastGame() {
         swagger.attemptsTo(
                 Click.on(FAST_GAMES_BTN),
                 Click.on(SIGN_IN_BTN),
@@ -714,10 +652,8 @@ public class TestLeoAliveDaily {
         int leng = swagger.asksFor(ElementUtils.lengthOfElements(FAST_GAMES_TOTAL_GAME));
         for (int i = 1; i < leng + 1; i++) {
             swagger.attemptsTo(
-                    JavaScriptClick.on(GAME_INDEX_PLAY_BTN.of(String.valueOf(i)))
-            );
-            sleep(1500);
-            swagger.attemptsTo(
+                    JavaScriptClick.on(GAME_INDEX_PLAY_BTN.of(String.valueOf(i))),
+                    WaitForLoad.thePageInFewSeconds(2),
                     SwitchTo.newWindow(),
                     Verify.theElementIsDisplayed(FAST_GAME_VERIFY),
                     SwitchTo.mainWindowAfterCloseCurrentWindow()
@@ -726,13 +662,11 @@ public class TestLeoAliveDaily {
     }
 
     @Test
-    public void CockFight() throws InterruptedException {
+    public void CockFight() {
         swagger.attemptsTo(
                 Access.theFunctionFromMenu(COCK_FIGHT_BTN, COCK_FIGHT_GAME_BTN),
-                Login.theAccount(validAccount)
-        );
-        sleep(3000);
-        swagger.attemptsTo(
+                Login.theAccount(validAccount),
+                WaitForLoad.thePageInFewSeconds(2),
                 SwitchTo.newWindow(),
                 Verify.theElementIsDisplayed(COCK_FIGHT_VERIFY)
         );

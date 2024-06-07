@@ -16,6 +16,7 @@ public class Access {
             actor.attemptsTo(
                     HoverOverElement.over(functionName),
                     Click.on(subFunction),
+                    WaitForLoad.thePageInFewSeconds(2),
                     JavaScriptClick.on(GAME_INDEX_PLAY_BTN.of("1"))
             );
         });

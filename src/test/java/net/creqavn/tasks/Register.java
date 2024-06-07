@@ -50,8 +50,8 @@ public class Register {
                             .into(LeoElements.SIGN_UP_USERNAME),
                     Enter.keyValues(registerAccount.getPwd())
                             .into(LeoElements.SIGN_UP_PWD),
-                    Enter.keyValues(registerAccount.getPwd())
-                            .into(LeoElements.SIGN_UP_RE_PWD),
+                    Enter.keyValues(registerAccount.getPhoneNumber())
+                            .into(LeoElements.SIGN_UP_PHONE),
                     Click.on(LeoElements.SIGN_UP_SUBMIT)
             );
         });
