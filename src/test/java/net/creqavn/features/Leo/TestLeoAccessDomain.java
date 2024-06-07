@@ -1,50 +1,44 @@
 package net.creqavn.features.Leo;
 
 
-import io.restassured.response.Response;
-import net.serenitybdd.annotations.Step;
-import net.serenitybdd.annotations.Title;
 import net.serenitybdd.junit.runners.SerenityRunner;
+import net.serenitybdd.screenplay.Actor;
+import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
+import net.thucydides.model.util.EnvironmentVariables;
+import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
-import net.serenitybdd.rest.SerenityRest;
+import net.serenitybdd.screenplay.rest.interactions.Get;
 
-import static net.thucydides.model.domain.ReportData.withTitle;
+import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeThatResponse;
 
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestLeoAccessDomain {
-    @Step("Send GET request to {0} and check if status is 200")
-    public void sendRequestAndCheckStatus(String url) {
-        SerenityRest.given()
-                .when()
-                .get(url)
-                .then()
-                .statusCode(200);
+    private String theRestApiBaseUrl;
+    private EnvironmentVariables environmentVariables;
+    static Actor swagger = Actor.named("Swagger");
+    private String DOMAIN = "https://leo88.top/";
 
-        // Ghi lại response vào báo cáo của Serenity
-        Response response = SerenityRest.given()
-                .when()
-                .get(url);
 
-        int statusCode = response.getStatusCode();
-
-        // Ghi lại status code vào báo cáo của Serenity
-        withTitle("HTTP Status Code").andContents(String.valueOf(statusCode));
-
-        // Kiểm tra mã trạng thái
-        if (statusCode >= 400) {
-            System.out.println("Test failed: Status code: " + statusCode);
-            throw new AssertionError("Expected status code 200 but received " + statusCode);
-        }
+    @Before
+    public void configureBaseUrl() {
+        theRestApiBaseUrl = environmentVariables.optionalProperty("restapi.baseurl")
+                .orElse(DOMAIN);
+        swagger.whoCan(CallAnApi.at(theRestApiBaseUrl));
     }
 
     @Test
-    @Title("Test if homepage is accessible")
     public void testHomepage() {
-        String homepageUrl = "https://leo88.top/";  // Thay thế bằng URL của trang chủ
-        sendRequestAndCheckStatus(homepageUrl);
+        swagger.attemptsTo(
+                Get.resource("")
+        );
+
+       swagger.should(
+                seeThatResponse( "Status code should be 200",
+                        response -> response.statusCode(200))
+        );
     }
 }

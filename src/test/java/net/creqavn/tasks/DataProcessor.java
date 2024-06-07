@@ -1,5 +1,6 @@
 package net.creqavn.tasks;
 
+import com.google.common.base.Splitter;
 import io.restassured.response.Response;
 import net.creqavn.models.UrlStatus;
 import net.creqavn.questions.TheImage;
@@ -15,29 +16,51 @@ import java.net.URLDecoder;
 
 public class DataProcessor {
     /**
-     * Phương thức để xử lý các URL từ danh sách chuỗi dữ liệu đầu vào.
-     * Mỗi chuỗi trong danh sách được tách thành các URL dựa trên dấu phẩy, sau đó
-     * mỗi URL được xử lý bằng cách loại bỏ phần cuối chứa dấu cách và giải mã.
+     * Phương thức để xử lý các thuộc tính từ danh sách đầu vào.
+     * Mỗi chuỗi trong danh sách sẽ được tách thành các URL, cắt bỏ khoảng trắng không cần thiết, giải mã và thu thập vào danh sách kết quả.
      *
-     * @param dataSrc Danh sách chuỗi dữ liệu đầu vào
-     * @return Danh sách mới chứa các URL đã xử lý
+     * @param dataSrc Danh sách các chuỗi cần xử lý
+     * @return Danh sách các URL đã xử lý
      */
     public static List<String> processAttributes(List<String> dataSrc) {
         List<String> allProcessedUrls = new ArrayList<>();
         for (String data : dataSrc) {
-            List<String> finalUrlsList = Arrays.stream(data.split(",\\s*"))
-                    .map(url -> {
-                        int indexOfLastSpace = url.lastIndexOf(' ');       // Tìm vị trí của dấu cách cuối cùng
-                        if (indexOfLastSpace != -1) {
-                            return url.substring(0, indexOfLastSpace).trim();  // Cắt chuỗi trước dấu cách cuối cùng
-                        }
-                        return url.trim();
-                    })
-                    .map(DataProcessor::decodeUrl)
-                    .collect(Collectors.toList());  // Thu thập các URL đã xử lý vào danh sách
+            List<String> finalUrlsList = processUrls(data);
             allProcessedUrls.addAll(finalUrlsList);
         }
         return allProcessedUrls;
+    }
+
+    /**
+     * Phương thức để xử lý một chuỗi, tách nó thành các URL, cắt bỏ khoảng trắng không cần thiết và giải mã.
+     *
+     * @param data Chuỗi chứa các URL cần xử lý
+     * @return Danh sách các URL đã xử lý
+     */
+    private static List<String> processUrls(String data) {
+        return Splitter.on(',')
+                .trimResults()
+                .omitEmptyStrings()
+                .splitToList(data)
+                .stream()
+                .map(DataProcessor::trimLastSpace)
+                .map(DataProcessor::decodeUrl)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Phương thức để tìm và cắt bỏ khoảng trắng cuối cùng trong một chuỗi.
+     * Nếu không có khoảng trắng, trả về chuỗi đã cắt bỏ khoảng trắng ở đầu và cuối.
+     *
+     * @param url Chuỗi cần xử lý
+     * @return Chuỗi đã được cắt bỏ khoảng trắng cuối cùng
+     */
+    private static String trimLastSpace(String url) {
+        int indexOfLastSpace = url.lastIndexOf(' ');
+        if (indexOfLastSpace != -1) {
+            return url.substring(0, indexOfLastSpace).trim();
+        }
+        return url.trim();
     }
 
     /**
@@ -78,11 +101,11 @@ public class DataProcessor {
         return failedUrls;
     }
 
-    public static List<String> getAndCheckDataSource(Actor actor, String DOMAIN) {
+    public static void getAndCheckDataSource(Actor actor, String DOMAIN) {
         List<String> processedData = DataProcessor.getProcessedImageUrls(actor, DOMAIN);
         List<String> lastedData = DataProcessor.removeDuplicates(processedData);
         System.out.println("Total image URLs found: " + lastedData.size());
-        return lastedData;
+        sendRequests(lastedData);
     }
 
     /**
