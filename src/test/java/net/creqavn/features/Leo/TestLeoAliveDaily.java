@@ -100,9 +100,7 @@ public class TestLeoAliveDaily {
         swagger.attemptsTo(
                 Click.on(SIGN_IN_BTN),
                 Login.theAccount(invalidAccount),
-                Click.on(LOGGED_USER),
-                Click.on(LOGOUT_BTN),
-                Verify.theElementIsDisplayed(SIGN_IN_BTN)
+                Logout.theLeoAccount()
         );
     }
 
@@ -126,7 +124,7 @@ public class TestLeoAliveDaily {
     @Test
     public void HomepageMostCommon() {
         swagger.attemptsTo(
-                Access.theGameFrom(MOST_COMMON_BTN),
+                Access.theGameFrom(MOST_COMMON_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(validAccount),
                 WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
@@ -135,7 +133,7 @@ public class TestLeoAliveDaily {
     }
 
     @Test
-    public void HomepageBestLiveCasino(){
+    public void HomepageBestLiveCasino() {
         swagger.attemptsTo(
                 SwipeTo.theMiddle(),
                 Click.on(BEST_LIVE_CASINO),
@@ -373,7 +371,7 @@ public class TestLeoAliveDaily {
     @Test
     public void LiveCasinoSAGaming() {
         swagger.attemptsTo(
-                Access.theGameFrom(LIVE_CASINO_BTN, LIVE_CASINO_SAGAMING_BTN),
+                Access.theGameFrom(LIVE_CASINO_BTN, LIVE_CASINO_SAGAMING_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(validAccount),
                 WaitForLoad.thePageInFewSeconds(10),
                 SwitchTo.newWindow(),
@@ -384,7 +382,7 @@ public class TestLeoAliveDaily {
     @Test
     public void LiveCasinoEzugi() {
         swagger.attemptsTo(
-                Access.theGameFrom(LIVE_CASINO_BTN, LIVE_CASINO_EZUGI_BTN),
+                Access.theGameFrom(LIVE_CASINO_BTN, LIVE_CASINO_EZUGI_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(validAccount),
                 WaitForLoad.thePageInFewSeconds(10),
                 SwitchTo.newWindow(),
@@ -395,7 +393,7 @@ public class TestLeoAliveDaily {
     @Test
     public void LiveCasinoEvolution() {
         swagger.attemptsTo(
-                Access.theGameFrom(LIVE_CASINO_BTN, LIVE_CASINO_EVOLUTION_BTN),
+                Access.theGameFrom(LIVE_CASINO_BTN, LIVE_CASINO_EVOLUTION_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(validAccount),
                 WaitForLoad.thePageInFewSeconds(10),
                 SwitchTo.newWindow(),
@@ -407,7 +405,7 @@ public class TestLeoAliveDaily {
     @Test
     public void LiveCasinoPragmatic() {
         swagger.attemptsTo(
-                Access.theGameFrom(LIVE_CASINO_BTN, LIVE_CASINO_PRAGMATIC_BTN),
+                Access.theGameFrom(LIVE_CASINO_BTN, LIVE_CASINO_PRAGMATIC_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(validAccount),
                 WaitForLoad.thePageInFewSeconds(10),
                 SwitchTo.newWindow(),
@@ -418,7 +416,7 @@ public class TestLeoAliveDaily {
     @Test
     public void LiveCasinoMicrogaming() {
         swagger.attemptsTo(
-                Access.theGameFrom(LIVE_CASINO_BTN, LIVE_CASINO_MICROGAMING_BTN),
+                Access.theGameFrom(LIVE_CASINO_BTN, LIVE_CASINO_MICROGAMING_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(validAccount),
                 WaitForLoad.thePageInFewSeconds(10),
                 SwitchTo.newWindow(),
@@ -429,7 +427,7 @@ public class TestLeoAliveDaily {
     @Test
     public void CasinoFaChai() {
         swagger.attemptsTo(
-                Access.theGameFrom(CASINO_BTN, CASINO_FACHAI_BTN),
+                Access.theGameFrom(CASINO_BTN, CASINO_FACHAI_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(invalidAccount),
                 WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
@@ -440,7 +438,7 @@ public class TestLeoAliveDaily {
     @Test
     public void CasinoAskmebet() {
         swagger.attemptsTo(
-                Access.theGameFrom(CASINO_BTN, CASINO_ASKMEBET_BTN),
+                Access.theGameFrom(CASINO_BTN, CASINO_ASKMEBET_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(invalidAccount),
                 WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
@@ -452,7 +450,7 @@ public class TestLeoAliveDaily {
     @Test
     public void CasinoEvoplay() {
         swagger.attemptsTo(
-                Access.theGameFrom(CASINO_BTN, CASINO_EVOPLAY_BTN),
+                Access.theGameFrom(CASINO_BTN, CASINO_EVOPLAY_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(invalidAccount),
                 WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
@@ -463,7 +461,7 @@ public class TestLeoAliveDaily {
     @Test
     public void CasinoMicrogaming() {
         swagger.attemptsTo(
-                Access.theGameFrom(CASINO_BTN, CASINO_MICROGAMING_BTN),
+                Access.theGameFrom(CASINO_BTN, CASINO_MICROGAMING_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(invalidAccount),
                 WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
@@ -474,7 +472,7 @@ public class TestLeoAliveDaily {
     @Test
     public void CasinoPlayNGo() {
         swagger.attemptsTo(
-                Access.theGameFrom(CASINO_BTN, CASINO_PLAY_N_GO_BTN),
+                Access.theGameFrom(CASINO_BTN, CASINO_PLAY_N_GO_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(validAccount),
                 WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
@@ -485,7 +483,7 @@ public class TestLeoAliveDaily {
     @Test
     public void CasinoPragmatic() {
         swagger.attemptsTo(
-                Access.theGameFrom(CASINO_BTN, CASINO_PRAGMATIC_BTN),
+                Access.theGameFrom(CASINO_BTN, CASINO_PRAGMATIC_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(validAccount),
                 WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
@@ -496,7 +494,7 @@ public class TestLeoAliveDaily {
     @Test
     public void CasinoNetEnt() {
         swagger.attemptsTo(
-                Access.theGameFrom(CASINO_BTN, CASINO_NETENT_BTN),
+                Access.theGameFrom(CASINO_BTN, CASINO_NETENT_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(validAccount),
                 WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
@@ -509,7 +507,7 @@ public class TestLeoAliveDaily {
     @Test
     public void CasinoJili() {
         swagger.attemptsTo(
-                Access.theGameFrom(CASINO_BTN, CASINO_JILI_BTN),
+                Access.theGameFrom(CASINO_BTN, CASINO_JILI_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(validAccount),
                 WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
@@ -520,7 +518,7 @@ public class TestLeoAliveDaily {
     @Test
     public void CasinoJDB() {
         swagger.attemptsTo(
-                Access.theGameFrom(CASINO_BTN, CASINO_JDB_BTN),
+                Access.theGameFrom(CASINO_BTN, CASINO_JDB_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(validAccount),
                 WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
@@ -531,7 +529,7 @@ public class TestLeoAliveDaily {
     @Test
     public void CasinoRedTiger() {
         swagger.attemptsTo(
-                Access.theGameFrom(CASINO_BTN, CASINO_RED_TIGER_BTN),
+                Access.theGameFrom(CASINO_BTN, CASINO_RED_TIGER_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(validAccount),
                 WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
@@ -544,7 +542,7 @@ public class TestLeoAliveDaily {
     @Test
     public void CasinoNLC() {
         swagger.attemptsTo(
-                Access.theGameFrom(CASINO_BTN, CASINO_NLC_BTN),
+                Access.theGameFrom(CASINO_BTN, CASINO_NLC_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(validAccount),
                 WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
@@ -557,7 +555,7 @@ public class TestLeoAliveDaily {
     @Test
     public void LotteryLeo88() {
         swagger.attemptsTo(
-                Access.theGameFrom(LOTTERY_BTN, LOTTERY_LEO88_BTN),
+                Access.theGameFrom(LOTTERY_BTN, LOTTERY_LEO88_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(validAccount),
                 Verify.theElementIsDisplayed(LOTTERY_LEO88_VERIFY)
         );
@@ -566,7 +564,7 @@ public class TestLeoAliveDaily {
     @Test
     public void LotteryAskMeBet() {
         swagger.attemptsTo(
-                Access.theGameFrom(LOTTERY_BTN, LOTTERY_ASKMEBET_BTN),
+                Access.theGameFrom(LOTTERY_BTN, LOTTERY_ASKMEBET_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(validAccount),
                 WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
@@ -577,7 +575,7 @@ public class TestLeoAliveDaily {
     @Test
     public void LotteryIBC() {
         swagger.attemptsTo(
-                Access.theGameFrom(LOTTERY_BTN, LOTTERY_IBC_BTN),
+                Access.theGameFrom(LOTTERY_BTN, LOTTERY_IBC_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(validAccount),
                 WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
@@ -589,7 +587,7 @@ public class TestLeoAliveDaily {
     @Test
     public void SiamGame() {
         swagger.attemptsTo(
-                Access.theGameFrom(SIAM_GAMES_BTN, "2"),
+                Access.theGameFrom(SIAM_GAMES_BTN, GAME_INDEX_PLAY_BTN.of("2")),
                 Login.theAccount(validAccount),
                 WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
@@ -600,7 +598,7 @@ public class TestLeoAliveDaily {
     @Test
     public void FishingAskMeBet() {
         swagger.attemptsTo(
-                Access.theGameFrom(FISHING_BTN, FISHING_ASKMEBET_BTN),
+                Access.theGameFrom(FISHING_BTN, FISHING_ASKMEBET_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(validAccount),
                 WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
@@ -612,7 +610,7 @@ public class TestLeoAliveDaily {
     @Test
     public void FishingJili() {
         swagger.attemptsTo(
-                Access.theGameFrom(FISHING_BTN, FISHING_JILI_BTN),
+                Access.theGameFrom(FISHING_BTN, FISHING_JILI_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(validAccount),
                 WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
@@ -623,7 +621,7 @@ public class TestLeoAliveDaily {
     @Test
     public void FishingJDB() {
         swagger.attemptsTo(
-                Access.theGameFrom(FISHING_BTN, FISHING_JDB_BTN),
+                Access.theGameFrom(FISHING_BTN, FISHING_JDB_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(validAccount),
                 WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
@@ -634,7 +632,7 @@ public class TestLeoAliveDaily {
     @Test
     public void FishingFaChai() {
         swagger.attemptsTo(
-                Access.theGameFrom(FISHING_BTN, FISHING_FACHAI_BTN),
+                Access.theGameFrom(FISHING_BTN, FISHING_FACHAI_BTN,GAME_INDEX_PLAY_BTN.of("1")),
                 Login.theAccount(validAccount),
                 WaitForLoad.thePageInFewSeconds(3),
                 SwitchTo.newWindow(),
@@ -674,6 +672,9 @@ public class TestLeoAliveDaily {
 
     @After
     public void tearDown() {
-        swagger.attemptsTo(SwitchTo.mainWindowAfterCloseCurrentWindow());
+        swagger.attemptsTo(
+                SwitchTo.mainWindowAfterCloseCurrentWindow()
+//                Logout.theLeoAccount()
+        );
     }
 }

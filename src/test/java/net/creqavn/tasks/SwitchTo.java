@@ -8,8 +8,6 @@ import net.serenitybdd.screenplay.actions.SwitchToNewWindow;
 
 import java.util.Set;
 
-import static java.lang.Thread.sleep;
-
 public class SwitchTo {
     public SwitchTo() {
     }

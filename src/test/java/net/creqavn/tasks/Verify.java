@@ -1,6 +1,7 @@
 package net.creqavn.tasks;
 
 import net.serenitybdd.screenplay.Performable;
+import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.ensure.Ensure;
@@ -30,15 +31,16 @@ public class Verify {
     public static Performable theTextIsEqual(Target target, String compareString) {
         return Task.where("{0} compare the text of element", actor -> {
             actor.attemptsTo(
+                    WaitUntil.the(target, isVisible()).forNoMoreThan(DEFAULT_TIMEOUT).seconds(),
                     Ensure.that(target).text().isEqualTo(compareString)
             );
         });
     }
 
-    public static Performable theValueIsNotEmpty(Target target1) {
+    public static Performable theValueIsNotEmpty(Target target) {
         return Task.where("{0} verify the value is not empty", actor -> {
             actor.attemptsTo(
-                    WaitUntil.the(target1,isNotEmpty())
+                    WaitUntil.the(target, isNotEmpty())
             );
         });
     }
